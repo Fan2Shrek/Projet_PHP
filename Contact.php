@@ -5,12 +5,16 @@ require_once 'Host.php';
 
 class Contact
 {
-	private int $id;
-	private string $email;
-    private string $phone_number;
-    private string $role;
-	private Customer $customer;
-	private Host $host;
+	public function __construct(
+	private int $id,
+	private string $email,
+    	private string $phone_number,
+    	private string $role,
+	private Customer $customer,
+	private Host $host,
+	)
+	{
+	}
 
 	public function getID(): string
 	{
