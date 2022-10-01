@@ -20,100 +20,100 @@ class Environnement
     }
 
     //id
-    private function getId(): int
+    public function getId(): int
     {
         return $this->id;
     }
 
-    private function setId(int $id): void
+    public function setId(int $id): void
     {
         $this->id = $id;
     }
 
     //name
-    private function getName(): string
+    public function getName(): string
     {
         return $this->name;
     }
     
-    private function setName(string $name): void
+    public function setName(string $name): void
     {
         $this->name = $name;
     }
 
     //link
-    private function getLink(): string
+    public function getLink(): string
     {
         return $this->link;
     }
     
-    private function setLink(string $link): void
+    public function setLink(string $link): void
     {
         $this->link = $link;
     }
 
     //ip_address
-    private function getIp_address(): string
+    public function getIp_address(): string
     {
         return $this->ip_address;
     }
     
-    private function setIp_address(string $ip_address): void
+    public function setIp_address(string $ip_address): void
     {
         $this->link = $ip_address;
     }
 
     //ssh_port
-    private function getSsh_port(): int
+    public function getSsh_port(): int
     {
         return $this->ssh_port;
     }
     
-    private function setSsh_port(int $ssh_port): void
+    public function setSsh_port(int $ssh_port): void
     {
         $this->link = $ssh_port;
     }
 
     //ssh_username
-    private function getSsh_username(): string
+    public function getSsh_username(): string
     {
         return $this->ssh_username;
     }
     
-    private function setSsh_username(string $ssh_username): void
+    public function setSsh_username(string $ssh_username): void
     {
         $this->link = $ssh_username;
     }
 
     //phpmyadmin_link
-    private function getPhpmyadmin_link(): string
+    public function getPhpmyadmin_link(): string
     {
         return $this->phpmyadmin_link;
     }
     
-    private function setPhpmyadmin_link(string $phpmyadmin_link): void
+    public function setPhpmyadmin_link(string $phpmyadmin_link): void
     {
         $this->link = $phpmyadmin_link;
     }
 
     //ip_restriction
-    private function getIp_restriction(): int
+    public function getIp_restriction(): int
     {
         return $this->ip_restriction;
     }
     
-    private function setIp_restriction(int $ip_restriction): void
+    public function setIp_restriction(int $ip_restriction): void
     {
         $this->link = $ip_restriction;
     }
 
     //project_id
-    private function getProject_id(): Project
+    public function getProject_id(): Project
     {
         return $this->project_id;
     }
     
-    private function setProject_id(int $project_id): void
+    public function setProject_id(int $project_id): void
     {
         $this->link = $project_id;
     }

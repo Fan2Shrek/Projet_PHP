@@ -5,15 +5,20 @@ require_once 'Host.php';
 
 class Contact
 {
+	private ?Customer $customer;
+	private ?Host $host;
+
 	public function __construct(
 	private int $id,
 	private string $email,
-    	private string $phone_number,
-    	private string $role,
-	private Customer $customer,
-	private Host $host,
+	private string $phone_number,
+	private string $role,
+	Customer $customer = null,
+	Host $host = null,
 	)
 	{
+		$this->customer = $customer;
+		$this->host = $host;
 	}
 
 	public function getID(): string
@@ -56,8 +61,7 @@ class Contact
 		$this->role = $role;
 	}
 
-
-	public function getHost(): Host 
+	public function getHost(): ?Host 
 	{
 		return $this->host;
 	}

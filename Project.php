@@ -21,78 +21,78 @@ class Project
     }
 
     //id
-    private function getId(): int
+    public function getId(): int
     {
         return $this->id;
     }
 
-    private function setId(int $id): void
+    public function setId(int $id): void
     {
         $this->id = $id;
     }
 
     //name
-    private function getName(): string
+    public function getName(): string
     {
         return $this->name;
     }
 
-    private function setName(string $name): void
+    public function setName(string $name): void
     {
         $this->name = $name;
     }
 
     //code
-    private function getCode(): string
+    public function getCode(): string
     {
         return $this->code;
     }
 
-    private function setCode(string $code): void
+    public function setCode(string $code): void
     {
         $this->code = $code;
     }
 
     //lastpast_folder
-    private function getLastpast_folder(): string
+    public function getLastpast_folder(): string
     {
         return $this->lastpast_folder;
     }
 
-    private function setLastpast_folder(string $lastpast_folder): void
+    public function setLastpast_folder(string $lastpast_folder): void
     {
         $this->lastpast_folder = $lastpast_folder;
     }
 
     //link_mock_ups
-    private function getLink_mock_ups(): string
+    public function getLink_mock_ups(): string
     {
         return $this->link_mock_ups;
     }
 
-    private function setLink_mock_ups(string $link_mock_ups): void
+    public function setLink_mock_ups(string $link_mock_ups): void
     {
         $this->link_mock_ups = $link_mock_ups;
     }
 
     //managed_server
-    private function getManaged_server(): int
+    public function getManaged_server(): int
     {
         return $this->managed_server;
     }
 
-    private function setManaged_server(int $managed_server): void
+    public function setManaged_server(int $managed_server): void
     {
         $this->managed_server = $managed_server;
     }
 
     //notes
-    private function getNotes(): string
+    public function getNotes(): string
     {
         return $this->notes;
     }
 
-    private function setNotes(string $notes): void
+    public function setNotes(string $notes): void
     {
         $this->notes = $notes;
     }

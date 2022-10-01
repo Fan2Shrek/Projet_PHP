@@ -10,35 +10,35 @@ class Customer{
     {
     }
 
-    private function getId(): int{
+    public function getId(): int{
         return $this->id;
     }
 
-    private function setId(int $id): void{
+    public function setId(int $id): void{
         $this->id = $id;
     }
 
-    private function getCode(): string{
+    public function getCode(): string{
         return $this->code;
     }
 
-    private function setCode(string $code): void{
+    public function setCode(string $code): void{
         $this->code = $code;
     }
 
-    private function getName(): string{
+    public function getName(): string{
         return $this->name;
     }
 
-    private function setName(string $name): void{
+    public function setName(string $name): void{
         $this->name = $name;
     }
 
-    private function getNotes(): string{
+    public function getNotes(): string{
         return $this->notes;
     }
 
-    private function setNotes(string $notes): void{
+    public function setNotes(string $notes): void{
         $this->notes = $notes;
     }
 }
