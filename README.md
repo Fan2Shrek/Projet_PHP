@@ -1,4 +1,4 @@
 # Projet_PHP
-Gestion de projets  
-Premier sprint de la deuxième année de BTS  
-Introduction à la POO par un professionnel
+
+Un site internet qui permet de gerer des différents projets,  
+Le projet introduit au php objet et ses principes plus poussés
