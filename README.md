@@ -1,2 +1,4 @@
 # Projet_PHP
-Projet POC en php
+Gestion de projets
+Premier sprint de la deuxième année de BTS
+Introduction à la POO
