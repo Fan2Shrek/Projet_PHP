@@ -8,7 +8,7 @@ use src\Traits\NameTrait;
 use src\Interfaces\CodeNoteInterface;
 use src\Interfaces\NameInterface;
 use src\Interfaces\IdInterface;
-use src\Php\Connection;
+use src\Database\Connection;
 use FFI\Exception;
 
 class Customer implements IdInterface, nameInterface, codeNoteInterface{
