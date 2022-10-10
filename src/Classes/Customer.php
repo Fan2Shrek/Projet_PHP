@@ -2,11 +2,11 @@
 
 namespace src\Classes;
 
-use src\Traits\idTrait;
-use src\Traits\codeNotesTrait;
+use src\Traits\IdTrait;
+use src\Traits\CodeNotesTrait;
 use src\Traits\NameTrait;
-use src\Interfaces\codeNoteInterface;
-use src\Interfaces\nameInterface;
+use src\Interfaces\CodeNoteInterface;
+use src\Interfaces\NameInterface;
 use src\Interfaces\IdInterface;
 use src\Form\Connection;
 
@@ -21,6 +21,7 @@ class Customer implements IdInterface, nameInterface, codeNoteInterface{
     {
     }
     
+    /*
     public function addCustomer(): bool{
         try{
             $database = Database::connect();
@@ -30,9 +31,9 @@ class Customer implements IdInterface, nameInterface, codeNoteInterface{
             $statement->bindParam(':notes', $this->notes);
             $statement.execute();
             return true;
-        }
-        catch{
+        }catch (Exception $e)
+        {
             return false;
         }
-    }
+    }*/
 }   

@@ -3,7 +3,7 @@
 namespace src\Classes;
 
 use src\Interfaces\IdInterface;
-use src\Traits\idTrait;
+use src\Traits\IdTrait;
 use src\Classes\Customer;
 use src\Classes\Host;
 

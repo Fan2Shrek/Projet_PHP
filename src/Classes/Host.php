@@ -2,11 +2,11 @@
 
 namespace src\Classes;
 
-use src\Traits\idTrait;
-use src\Traits\codeNotesTrait;
+use src\Traits\IdTrait;
+use src\Traits\CodeNotesTrait;
 use src\Traits\NameTrait;
-use src\Interfaces\codeNoteInterface;
-use src\Interfaces\nameInterface;
+use src\Interfaces\CodeNoteInterface;
+use src\Interfaces\NameInterface;
 use src\Interfaces\IdInterface;
 
 class Host implements IdInterface, nameInterface, codeNoteInterface{

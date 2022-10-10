@@ -3,8 +3,8 @@
 namespace src\Classes;
 
 use src\Interfaces\IdInterface;
-use src\Interfaces\nameInterface;
-use src\Traits\idTrait;
+use src\Interfaces\NameInterface;
+use src\Traits\IdTrait;
 use src\Traits\NameTrait;
 use src\Classes\Project;
 

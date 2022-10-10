@@ -3,10 +3,10 @@
 namespace src\Classes;
 
 use src\Interfaces\IdInterface;
-use src\Interfaces\nameInterface;
-use src\Interfaces\codeNoteInterface;
-use src\Traits\codeNotesTrait;
-use src\Traits\idTrait;
+use src\Interfaces\NameInterface;
+use src\Interfaces\CodeNoteInterface;
+use src\Traits\CodeNotesTrait;
+use src\Traits\IdTrait;
 use src\Traits\NameTrait;
 use src\Classes\Customer;
 use src\Classes\Host;
