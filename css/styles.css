@@ -48,17 +48,18 @@
 }
 
 ul a {
-  display: block;
-  color: #000;
-  padding: 15px 15px 15px 15px;
+    display: block;
+    color: #000;
+    padding: 15px 15px 15px 15px;
 }
 
 ul a.active {
-  background-color: #cb7857;
+    background-color: #cb7857;
 }
 
 ul a:hover:not(.active) {
-  background-color: #cb7857;
+    background-color: #cb7857;
+    color: white !important;
 }
 
 
