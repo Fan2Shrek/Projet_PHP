@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le : sam. 08 oct. 2022 à 11:26
+-- Généré le : lun. 10 oct. 2022 à 15:51
 -- Version du serveur : 10.4.24-MariaDB
 -- Version de PHP : 8.1.6
 
@@ -131,9 +131,9 @@ INSERT INTO `environment` (`id`, `name`, `link`, `ip_address`, `ssh_port`, `ssh_
 (7, 'Production_7', 'https://adobe-xd.com//pmu-extranet', '172.00.00.07', 23, 'ssh-pmu', 'http://localhost/phpmyadmin/index.php?route=/database/structure&db=poo_php', 0, 7),
 (8, 'Production_8', 'https://adobe-xd.com//poclainHydraulics-extranet', '172.00.00.08', 22, 'ssh-poclainHudraulics', 'http://localhost/phpmyadmin/index.php?route=/database/structure&db=poo_php', 0, 8),
 (9, 'Production_9', 'https://adobe-xd.com//cofidis-extranet', '172.00.00.09', 22, 'ssh-cofidis', 'http://localhost/phpmyadmin/index.php?route=/database/structure&db=poo_php', 1, 9),
-(10, 'Production_10', 'https://adobe-xd.com//ipsec-extranet', '172.00.00.10', 22, 'ssh-ipsec', 'http://localhost/phpmyadmin/index.php?route=/database/structure&db=poo_php', 1, 10),
-(11, 'Production_11', 'https://adobe-xd.com//eads-extranet', '172.00.00.11', 22, 'ssh-eads', 'http://localhost/phpmyadmin/index.php?route=/database/structure&db=poo_php', 1, 11),
-(12, 'Production_12', 'https://adobe-xd.com//B&B_Hotels-extranet', '172.00.00.20', 21, 'ssh-B&B_Hotels', 'http://localhost/phpmyadmin/index.php?route=/database/structure&db=poo_php', 1, 12);
+(10, 'Production_10', 'https://adobe-xd.com//ipsec-extranet', '172.00.00.10', 22, 'ssh-ipsec', 'http://localhost/phpmyadmin/index.php?route=/database/structure&db=poo_php', 1, 11),
+(11, 'Production_11', 'https://adobe-xd.com//eads-extranet', '172.00.00.11', 22, 'ssh-eads', 'http://localhost/phpmyadmin/index.php?route=/database/structure&db=poo_php', 0, 11),
+(12, 'Production_12', 'https://adobe-xd.com//B&B_Hotels-extranet', '172.00.00.20', 21, 'ssh-B&B_Hotels', 'http://localhost/phpmyadmin/index.php?route=/database/structure&db=poo_php', 1, 11);
 
 -- --------------------------------------------------------
 
@@ -190,17 +190,17 @@ CREATE TABLE `project` (
 
 INSERT INTO `project` (`id`, `name`, `code`, `lastpass_folder`, `link_mock_ups`, `managed_server`, `notes`, `host_id`, `customer_id`) VALUES
 (1, 'Dyson', 'PROJECT_DYSON', 'Clients/Dyson/Extranet', 'https://adobe-xd.com//dyson-extranet', 0, 'Site web pour la société Dyson', 1, 1),
-(2, 'Crédit agricole', 'PROJECT_CREDIT_AGRICOLE', 'Clients/creditAgricole/Extranet', 'https://adobe-xd.com//creditAgricole-extranet', 0, 'Site web pour la société Crédit Agricole', 2, 2),
-(3, 'Citroen', 'PROJECT_CITROEN', 'Clients/Citroen/Extranet', 'https://adobe-xd.com//Citroen-extranet', 0, 'Site web pour la société Citroen', 3, 3),
+(2, 'Crédit agricole', 'PROJECT_CREDIT_AGRICOLE', 'Clients/creditAgricole/Extranet', 'https://adobe-xd.com//creditAgricole-extranet', 1, 'Site web pour la société Crédit Agricole', 1, 2),
+(3, 'Citroen', 'PROJECT_CITROEN', 'Clients/Citroen/Extranet', 'https://adobe-xd.com//Citroen-extranet', 0, 'Site web pour la société Citroen', 1, 3),
 (4, 'Philips', 'PROJECT_PHILIPS', 'Clients/Philips/Extranet', 'https://adobe-xd.com//Philips-extranet', 0, 'Site web pour la société Philips', 4, 4),
-(5, 'Orpi', 'PROJECT_ORPI', 'Clients/Orpi/Extranet', 'https://adobe-xd.com//Orpi-extranet', 0, 'Site web pour la société Orpi', 5, 5),
-(6, 'Saint-Gobain', 'PROJECT_SAINT_GOBAIN', 'Clients/Saint-Gobain/Extranet', 'https://adobe-xd.com//Saint-Gobain-extranet', 0, 'Site web pour la société Saint-Gobain', 6, 6),
+(5, 'Orpi', 'PROJECT_ORPI', 'Clients/Orpi/Extranet', 'https://adobe-xd.com//Orpi-extranet', 1, 'Site web pour la société Orpi', 5, 4),
+(6, 'Saint-Gobain', 'PROJECT_SAINT_GOBAIN', 'Clients/Saint-Gobain/Extranet', 'https://adobe-xd.com//Saint-Gobain-extranet', 0, 'Site web pour la société Saint-Gobain', 6, 4),
 (7, 'PMU', 'PROJECT_PMU', 'Clients/PMU/Extranet', 'https://adobe-xd.com//PMU-extranet', 1, 'Site web pour la société PMU', 7, 7),
 (8, 'Poclain Hydraulics', 'PROJECT_POCLAIN_HYDRAULICS', 'Clients/poclainHydraulics/Extranet', 'https://adobe-xd.com//poclainHydraulics-extranet', 1, 'Site web pour la société Poclain Hydraulics', 8, 8),
-(9, 'Cofidis', 'PROJECT_COFIDIS', 'Clients/Cofidis/Extranet', 'https://adobe-xd.com//Cofidis-extranet', 1, 'Site web pour la société Cofidis', 9, 9),
+(9, 'Cofidis', 'PROJECT_COFIDIS', 'Clients/Cofidis/Extranet', 'https://adobe-xd.com//Cofidis-extranet', 0, 'Site web pour la société Cofidis', 9, 9),
 (10, 'Ipsec', 'PROJECT_IPSEC', 'Clients/Ipsec/Extranet', 'https://adobe-xd.com//Ipsec-extranet', 1, 'Site web pour la société Ipsec', 10, 10),
 (11, 'Eads', 'PROJECT_EADS', 'Clients/Eads/Extranet', 'https://adobe-xd.com//Eads-extranet', 1, 'Site web pour la société Eads', 11, 11),
-(12, 'B&B Hotels', 'PROJECT_B&B_HOTELS', 'Clients/B&B_Hotels/Extranet', 'https://adobe-xd.com//B&B_Hotels-extranet', 1, 'Site web pour la société B&B_Hotels', 12, 12);
+(12, 'B&B Hotels', 'PROJECT_B&B_HOTELS', 'Clients/B&B_Hotels/Extranet', 'https://adobe-xd.com//B&B_Hotels-extranet', 1, 'Site web pour la société B&B_Hotels', 12, 1);
 
 --
 -- Index pour les tables déchargées
@@ -273,7 +273,7 @@ ALTER TABLE `host`
 -- AUTO_INCREMENT pour la table `project`
 --
 ALTER TABLE `project`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- Contraintes pour les tables déchargées
