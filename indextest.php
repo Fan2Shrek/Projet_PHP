@@ -8,6 +8,8 @@ use App\Classes\Environment;
 use App\Classes\Host;
 use App\Classes\Customer;
 
+use App\Forms\Validator;
+
 // création objets
 
 $host = new Host(1, 'codeHost', 'Johnatan', 'ceci est un hébergeur');

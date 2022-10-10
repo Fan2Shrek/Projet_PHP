@@ -36,4 +36,4 @@ class Customer implements IdInterface, nameInterface, codeNoteInterface{
             return false;
         }
     }
-}   
+}

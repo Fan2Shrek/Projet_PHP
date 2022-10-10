@@ -11,16 +11,16 @@
     
     <body>
         
-        <?php require 'php/navbar.php' ?>
+        <?php require 'layout/navbar.php' ?>
         
         <section id="sec1">
             
-            <?php require 'php/menu.php' ?>
+            <?php require 'layout/menu.php' ?>
             
         </section>
         
-        <?php require 'php/footer.php' ?>
+        <?php require 'layout/footer.php' ?>
         
     </body>
-    
+
 </html>
