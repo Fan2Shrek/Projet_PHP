@@ -1,6 +1,8 @@
 <?php
 
-trait codeNameTrait{
+namespace src\Traits;
+
+trait codeNotesTrait{
     public function getCode(): string{
         return $this->code;
     }

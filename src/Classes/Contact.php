@@ -1,8 +1,11 @@
 <?php
 
-require_once 'Customer.php';
-require_once 'Host.php';
-require_once 'traits/idTrait.php';
+namespace src\Classes;
+
+use src\Interfaces\IdInterface;
+use src\Traits\idTrait;
+use src\Classes\Customer;
+use src\Classes\Host;
 
 class Contact implements IdInterface
 {

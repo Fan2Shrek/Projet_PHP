@@ -1,5 +1,7 @@
 <?php
 
+namespace src\Traits;
+
 trait idTrait{
     private int $id;
 

@@ -1,6 +1,12 @@
 <?php
 
-require_once __DIR__.'/Project.php';
+namespace src\Classes;
+
+use src\Interfaces\IdInterface;
+use src\Interfaces\nameInterface;
+use src\Traits\idTrait;
+use src\Traits\NameTrait;
+use src\Classes\Project;
 
 class Environnement implements IdInterface, nameInterface
 {

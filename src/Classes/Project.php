@@ -1,11 +1,19 @@
 <?php
 
-require_once __DIR__.'/Customer.php';
-require_once __DIR__.'/Host.php';
+namespace src\Classes;
+
+use src\Interfaces\IdInterface;
+use src\Interfaces\nameInterface;
+use src\Interfaces\codeNoteInterface;
+use src\Traits\codeNotesTrait;
+use src\Traits\idTrait;
+use src\Traits\NameTrait;
+use src\Classes\Customer;
+use src\Classes\Host;
 
 class Project implements IdInterface, nameInterface, codeNoteInterface
 {
-    use idTrait, NameTrait, codeNameTrait;
+    use idTrait, NameTrait, codeNotesTrait;
     public function __construct
     (
         private int $id,

@@ -1,9 +1,12 @@
 <?php
 
-// require
-require 'classes/Contact.php';
-require 'classes/Project.php';
-require 'classes/Environnement.php';
+require 'src/autoloader.php';
+
+use src\Classes\Contact;
+use src\Classes\Project;
+use src\Classes\Environnement;
+use src\Classes\Host;
+use src\Classes\Customer;
 
 // création objets
 

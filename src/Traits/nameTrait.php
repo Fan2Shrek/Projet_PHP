@@ -1,5 +1,7 @@
 <?php
 
+namespace src\Traits;
+
 trait NameTrait{
     private string $name;
 

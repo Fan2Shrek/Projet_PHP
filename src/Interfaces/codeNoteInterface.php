@@ -1,5 +1,7 @@
 <?php
 
+namespace src\Interfaces;
+
 interface codeNoteInterface{
     public function getCode(): string;
     public function setCode(string $code): void;
