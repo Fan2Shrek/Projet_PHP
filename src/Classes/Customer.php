@@ -1,14 +1,14 @@
 <?php
 
-namespace src\Classes;
+namespace App\Classes;
 
-use src\Traits\IdTrait;
-use src\Traits\CodeNotesTrait;
-use src\Traits\NameTrait;
-use src\Interfaces\CodeNoteInterface;
-use src\Interfaces\NameInterface;
-use src\Interfaces\IdInterface;
-use src\Database\Connection;
+use App\Traits\IdTrait;
+use App\Traits\CodeNotesTrait;
+use App\Traits\NameTrait;
+use App\Interfaces\CodeNoteInterface;
+use App\Interfaces\NameInterface;
+use App\Interfaces\IdInterface;
+use App\Database\Connection;
 use FFI\Exception;
 
 class Customer implements IdInterface, nameInterface, codeNoteInterface{

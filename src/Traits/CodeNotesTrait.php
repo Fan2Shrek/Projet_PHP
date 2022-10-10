@@ -1,8 +1,8 @@
 <?php
 
-namespace src\Traits;
+namespace App\Traits;
 
-trait codeNotesTrait{
+trait CodeNotesTrait{
     public function getCode(): string{
         return $this->code;
     }

@@ -1,15 +1,15 @@
 <?php
 
-namespace src\Classes;
+namespace App\Classes;
 
-use src\Interfaces\IdInterface;
-use src\Interfaces\NameInterface;
-use src\Interfaces\CodeNoteInterface;
-use src\Traits\CodeNotesTrait;
-use src\Traits\IdTrait;
-use src\Traits\NameTrait;
-use src\Classes\Customer;
-use src\Classes\Host;
+use App\Interfaces\IdInterface;
+use App\Interfaces\NameInterface;
+use App\Interfaces\CodeNoteInterface;
+use App\Traits\CodeNotesTrait;
+use App\Traits\IdTrait;
+use App\Traits\NameTrait;
+use App\Classes\Customer;
+use App\Classes\Host;
 
 class Project implements IdInterface, nameInterface, codeNoteInterface
 {

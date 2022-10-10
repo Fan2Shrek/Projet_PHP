@@ -1,6 +1,6 @@
 <?php
 
-namespace src\Interfaces;
+namespace App\Interfaces;
 
 interface IdInterface{
     public function getId(): int;

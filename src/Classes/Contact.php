@@ -1,11 +1,11 @@
 <?php
 
-namespace src\Classes;
+namespace App\Classes;
 
-use src\Interfaces\IdInterface;
-use src\Traits\IdTrait;
-use src\Classes\Customer;
-use src\Classes\Host;
+use App\Interfaces\IdInterface;
+use App\Traits\IdTrait;
+use App\Classes\Customer;
+use App\Classes\Host;
 
 class Contact implements IdInterface
 {

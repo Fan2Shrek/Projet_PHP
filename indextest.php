@@ -2,11 +2,11 @@
 
 require 'src/autoloader.php';
 
-use src\Classes\Contact;
-use src\Classes\Project;
-use src\Classes\Environment;
-use src\Classes\Host;
-use src\Classes\Customer;
+use App\Classes\Contact;
+use App\Classes\Project;
+use App\Classes\Environment;
+use App\Classes\Host;
+use App\Classes\Customer;
 
 // création objets
 

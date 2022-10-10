@@ -1,6 +1,6 @@
 <?php
 
-namespace src\Traits;
+namespace App\Traits;
 
 trait NameTrait{
     private string $name;

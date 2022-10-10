@@ -1,16 +1,17 @@
 <?php
 
-namespace src\Classes;
+namespace App\Classes;
 
-use src\Traits\IdTrait;
-use src\Traits\CodeNotesTrait;
-use src\Traits\NameTrait;
-use src\Interfaces\CodeNoteInterface;
-use src\Interfaces\NameInterface;
-use src\Interfaces\IdInterface;
+use App\Traits\CodeNotesTrait;
+use App\Traits\IdTrait;
+use App\Traits\NameTrait;
+use App\Interfaces\CodeNoteInterface;
+use App\Interfaces\NameInterface;
+use App\Interfaces\IdInterface;
 
 class Host implements IdInterface, nameInterface, codeNoteInterface{
-    use idTrait, NameTrait, codeNotesTrait;
+
+    use IdTrait, NameTrait, CodeNotesTrait;
     public function __construct(
         private int $id,
         private string $name,

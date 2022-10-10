@@ -1,8 +1,8 @@
 <?php
+	
+namespace App\Traits;
 
-namespace src\Traits;
-
-trait idTrait{
+trait IdTrait{
     private int $id;
 
     public function getId(): int

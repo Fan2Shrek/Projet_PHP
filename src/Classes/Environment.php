@@ -1,12 +1,12 @@
 <?php
 
-namespace src\Classes;
+namespace App\Classes;
 
-use src\Interfaces\IdInterface;
-use src\Interfaces\NameInterface;
-use src\Traits\IdTrait;
-use src\Traits\NameTrait;
-use src\Classes\Project;
+use App\Interfaces\IdInterface;
+use App\Interfaces\NameInterface;
+use App\Traits\IdTrait;
+use App\Traits\NameTrait;
+use App\Classes\Project;
 
 class Environment implements IdInterface, nameInterface
 {
