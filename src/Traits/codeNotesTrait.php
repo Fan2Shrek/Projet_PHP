@@ -2,7 +2,7 @@
 
 namespace src\Traits;
 
-trait codeNotesTrait{
+trait CodeNotesTrait{
     public function getCode(): string{
         return $this->code;
     }

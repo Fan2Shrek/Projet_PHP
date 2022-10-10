@@ -2,7 +2,7 @@
 
 namespace src\Interfaces;
 
-interface nameInterface{
+interface NameInterface{
     public function getName(): string;
     public function setName(string $newName): void; 
 }

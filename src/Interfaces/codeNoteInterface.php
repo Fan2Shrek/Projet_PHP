@@ -2,7 +2,7 @@
 
 namespace src\Interfaces;
 
-interface codeNoteInterface{
+interface CodeNoteInterface{
     public function getCode(): string;
     public function setCode(string $code): void;
     public function getNotes(): string;
