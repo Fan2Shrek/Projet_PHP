@@ -7,13 +7,15 @@ use App\Classes\Project;
 use App\Classes\Environment;
 use App\Classes\Host;
 use App\Classes\Customer;
-
+use App\Repository\CustomerRepository;
 use App\Forms\Validator;
 
 // création objets
 
 $host = new Host(1, 'codeHost', 'Johnatan', 'ceci est un hébergeur');
-$customer = new Customer(1, 'codeCustomer', 'Jean', 'ceci est un client');
+$customer = new Customer(1, 'codeCustomer', ' new Jean', 'ceci est un client');
+
+// $customer = Customer::getCustomerById(1);
 
 $contact = new Contact(1, 'johnatan@gmail.com', '0612345678', 'role', host: $host);
 $contact1 = new Contact(2, 'jean@gmail.com', '0612345678' , 'role2', customer: $customer);
@@ -116,3 +118,20 @@ echo '- ';
 echo $environment->getIp_address().PHP_EOL;
 echo '- ';
 echo $environment->getProject_id()->getName();
+
+echo 'dsojqsodijsq';
+
+$customers = CustomerRepository::getCustomers();
+
+foreach($customers as $customer){
+    echo 'Client : ';
+    echo $customer->getId().PHP_EOL;
+    echo '- ';
+    echo $customer->getCode().PHP_EOL;
+    echo '- ';
+    echo $customer->getName().PHP_EOL;
+    echo '- ';
+    echo $customer->getNotes().PHP_EOL;
+    echo'<br>';
+    echo'<br>';
+}
