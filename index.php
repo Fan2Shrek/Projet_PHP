@@ -21,5 +21,5 @@
         <?php require 'layout/footer.php' ?>
         
     </body>
-
+    
 </html>

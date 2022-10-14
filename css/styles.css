@@ -86,3 +86,137 @@ footer h4{
     background-color: #ccc;
     padding-bottom: 0px;
 }
+
+
+
+/* VIEW CLIENT */
+
+#viewClient{
+    background-color: #ccc;
+    padding-bottom: 0px;
+}
+
+.fondTableau{
+    font-weight: bold;
+    background-color: white;
+    padding-top: 18px;
+    padding-left: 8px;
+    width: 100%;
+    height: 545px;
+
+}
+
+
+
+/* INSERT CLIENT */
+
+#insertClient{
+    background-color: #ccc;
+    padding-bottom: 0px;
+}
+
+.nouv
+{
+    padding-top: 25px;
+    padding-bottom: 25px;
+}
+
+.infoGenerale
+{
+    font-weight: bold;
+    background-color: white;
+    padding-top: 18px;
+    padding-left: 30px;
+    width: 273px;
+    height: 50px;
+}
+
+.lab
+{
+    padding-left: 30px;
+}
+
+.lab2
+{
+    padding-left: 30px;
+    padding-top: 30px;
+    vertical-align: top;
+}
+
+.AddClient
+{
+    margin-top: 30px;
+    margin-left: 160px;
+    padding: 7px;
+    padding-right: 125px;
+    border-radius: #ccc 5px;
+}
+
+.AddClient1
+{
+    margin-top: 30px;
+    margin-left: 112px;
+    padding: 7px;
+    padding-right: 82px;
+    border-radius: #ccc 5px;
+}
+
+.AddClient2
+{
+    margin-top: 30px;
+    margin-left: 74px;
+    padding: 7px;
+    padding-right: 142px;
+    padding-bottom: 100px;
+    border-radius: #ccc 5px;
+}
+
+.addClient
+{
+    background-color: white;
+    width: 100%;
+    height: 544px;
+}
+
+.btnInsert1
+{
+    color: #cb7857;
+    border: solid #cb7857 1px;
+    padding-left: 40px;
+    padding-right: 40px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.btnInsert1:hover
+{
+    color: #fff;
+    background-color: #cb7857;
+    text-decoration: none;
+}
+
+.btnInsertSave
+{
+    color: #fff;
+    border: solid #cb7857 1px;
+    background-color: #cb7857;
+    padding-left: 26px;
+    padding-right: 26px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+}
+
+.btnInsertSave:hover
+{
+    color: #cb7857;
+    background-color: #fff;
+    text-decoration: none;
+    border: solid #cb7857 1px;
+}
+
+.btnAdd
+{
+    margin-top: 150px;
+    display: flex;
+    justify-content: right; 
+}

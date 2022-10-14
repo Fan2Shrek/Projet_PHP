@@ -6,6 +6,8 @@ use App\Classes\Customer;
 use App\Database\Connection;
 
 class CustomerRepository{
+
+    //select id
     public static function getCustomerById(int $id): ?Customer{
         $database = Connection::connect();
         $statement = $database->prepare('SELECT * FROM customer WHERE id = ?');
@@ -16,6 +18,7 @@ class CustomerRepository{
         return $cus;
     }
 
+    //select *
     public static function getCustomers() : array{
         $rep = array();
         $database = Connection::connect();
@@ -29,6 +32,7 @@ class CustomerRepository{
         return $rep;
     }
 
+    //insert
     public static function addCustomer(Customer $customer): void{
         $database = Connection::connect();
         $statement = $database->prepare('INSERT INTO customer (code, name, notes) VALUES (?, ?, ?)');
@@ -36,6 +40,7 @@ class CustomerRepository{
         $database = Connection::disconnect();
     }
 
+    //update
     public static function updateCustomer (Customer $oldCus, Customer $newCus): void{
         $database = Connection::connect();
         $statement = $database->prepare ('UPDATE customer set code = ? , name = ?, notes = ? WHERE id= ?');
@@ -43,6 +48,7 @@ class CustomerRepository{
         $database = Connection::disconnect();
     }
 
+    //delete
     public static function deleteCustomer(Customer $customer): void{
         $database = Connection::connect();
         $statement = $database->prepare('DELETE from Customer WHERE id = ?');

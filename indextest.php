@@ -7,7 +7,7 @@ use App\Classes\Project;
 use App\Classes\Environment;
 use App\Classes\Host;
 use App\Classes\Customer;
-use App\Repository\CustomerRepository;
+use App\Repository\CustomerRepository;//namespace
 use App\Forms\Validator;
 
 // création objets
@@ -135,3 +135,6 @@ foreach($customers as $customer){
     echo'<br>';
     echo'<br>';
 }
+
+// CustomerRepository::deleteCustomer($customer);
+// CustomerRepository::updateCustomer($oldCustomer, $newCustomer);

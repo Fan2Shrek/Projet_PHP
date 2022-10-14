@@ -24,11 +24,11 @@ if (isset($_POST['submit'])){
 
 <form method='Post'>
     <input name='name' placeholder="Nom">
-    <small><?php echo (!isset($errors['notesName']))? '' : $errors['notesName'] ?></small>
+    <small>< ?php echo (!isset($errors['notesName']))? '' : $errors['notesName'] ?></small>
 
     <br>
 
     <textarea name='notes'></textarea>
-    <small><?php echo (!isset($errors['notesError']))? '' : $errors['notesError'] ?></small>
+    <small>< ?php echo (!isset($errors['notesError']))? '' : $errors['notesError'] ?></small>
     <button type='submit' name='submit'>Creer</button>
-</form>
+</form> 
