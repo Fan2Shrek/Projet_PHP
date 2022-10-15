@@ -27,19 +27,21 @@ $customers = CustomerRepository::getCustomers();
             <div class="container-fluid">
                 <div class="row">
 
-                    <div class="col-lg-3 col-md-6 col-sm-12">
+                    <div class="col-lg-3 col-md-3 col-sm-12">
                         <?php require 'layout/menu.php' ?>
                     </div>
 
-                    <div class="col-lg-9 col-md-6 col-sm-12">
-                        <h3 class="nouv">Clients</h3>
+                    <div class="col-lg-9 col-md-9 col-sm-12">
+                        <h3 class="nouv">&emsp;Clients</h3>
 
                          <!-- debut carré -->
                         <div class="col-lg-12 col-md-12 col-sm-12">
                             
                             <div class="fondTableau">
 
-                                <table class="table table-bordered">
+                            <div class="table-responsive">
+
+                                <table class="table table-bordered" id="tabClient">
                                     <tr class="trTableau">
                                         <th>Nom</th>
                                         <th>Code</th>
@@ -58,13 +60,14 @@ $customers = CustomerRepository::getCustomers();
                                             </tr>";
                                         }   
                                     ?>
-
                                 </table>
+
+                            </div>
 
                                 <div class="btnAdd2">
                                     <a href='insert.php' class="btnInsertLien">+ Ajouter</a>&emsp;
                                 </div>
-                                
+                                <br>
                             </div>
                         </div>
 
