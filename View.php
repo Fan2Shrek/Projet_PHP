@@ -1,3 +1,12 @@
+<?php 
+
+require 'src/autoloader.php';
+
+use App\Repository\CustomerRepository;
+
+$customers = CustomerRepository::getCustomers();
+?>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -6,12 +15,12 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
         <script src="../js/script.js"></script>
-        <link rel="stylesheet" href="../css/styles.css">
+        <link rel="stylesheet" href="css/styles.css">
     </head>
     
     <body>
         
-        <?php require '../layout/navbar.php' ?>
+        <?php require 'layout/navbar.php' ?>
         
         <section id="viewClient">
 
@@ -19,7 +28,7 @@
                 <div class="row">
 
                     <div class="col-lg-4 col-md-6 col-sm-12">
-                        <?php require '../layout/menu.php' ?>
+                        <?php require 'layout/menu.php' ?>
                     </div>
 
                     <div class="col-lg-8 col-md-6 col-sm-12">
@@ -34,20 +43,26 @@
                                     <th>Notes</th>
                                     <th>Modifier</th>
                                 </tr>
-
-                                <tr>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                </tr>
+                                <?php
+                                    foreach ($customers as $customer){
+                                        echo "
+                                        <tr>
+                                            <td>". $customer->getName() ."</td>
+                                            <td>". $customer->getCode() ."</td>
+                                            <td>". $customer->getNotes() ."</td>
+                                            <td>
+                                                <a href='Update.php?id=". $customer->getId() ."'>update</a>
+                                            </td>
+                                        </tr>";
+                                    }
+                                ?>
 
                             </table>
 
 
                         </div>
                         
-
-
+                        <a href='insert.php'>insert</a>
                         
 
                     </div>
@@ -56,12 +71,8 @@
             </div>
 
         </section>
-        
 
-<a href="insert.php">insert</a>
-<a href="Update.php">update</a>
-
-        <?php require '../layout/footer.php' ?>
+        <?php require 'layout/footer.php' ?>
         
     </body>
 

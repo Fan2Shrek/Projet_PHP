@@ -15,7 +15,7 @@ if (isset($_POST['submit'])){
 
     $errors = Validator::checkCustomer($customer);
     if (null === $errors){
-        $customer->addCustomer();
+        // $customer->addCustomer();
         header("Location: index.php");
     }
 }

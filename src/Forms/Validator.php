@@ -4,19 +4,16 @@ namespace App\Forms;
 
 use App\Classes\Customer;
 
-class Validator extends Customer{
+class Validator{
     public static function checkCustomer(Customer $customer): ?array{
         $rep = array();
-        if (null == $customer->getCode()){
-            $rep["codeErreur"] = 'Veuillez renseigner un code';
-        }
 
         if (null == $customer->getName()){
-            $rep ["nameErreur"] = 'Veuillez renseigner un code';
+            $rep ["nameError"] = 'Veuillez renseigner un code';
         }
 
         if (null == $customer->getNotes()){
-            $rep ["notesErreur"] = 'Veuillez renseigner un code';
+            $rep ["notesError"] = 'Veuillez renseigner une note';
         }
 
         return (empty($rep))? null : $rep;
