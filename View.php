@@ -14,7 +14,7 @@ $customers = CustomerRepository::getCustomers();
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-        <script src="../js/script.js"></script>
+        <script src="js/script.js"></script>
         <link rel="stylesheet" href="css/styles.css">
     </head>
     
@@ -27,43 +27,46 @@ $customers = CustomerRepository::getCustomers();
             <div class="container-fluid">
                 <div class="row">
 
-                    <div class="col-lg-4 col-md-6 col-sm-12">
+                    <div class="col-lg-3 col-md-6 col-sm-12">
                         <?php require 'layout/menu.php' ?>
                     </div>
 
-                    <div class="col-lg-8 col-md-6 col-sm-12">
+                    <div class="col-lg-9 col-md-6 col-sm-12">
                         <h3 class="nouv">Clients</h3>
 
-                        <div class="fondTableau">
+                         <!-- debut carré -->
+                        <div class="col-lg-12 col-md-12 col-sm-12">
+                            
+                            <div class="fondTableau">
 
-                            <table class="table table-bordered">
-                                <tr>
-                                    <th>Nom</th>
-                                    <th>Code</th>
-                                    <th>Notes</th>
-                                    <th>Modifier</th>
-                                </tr>
-                                <?php
-                                    foreach ($customers as $customer){
-                                        echo "
-                                        <tr>
-                                            <td>". $customer->getName() ."</td>
-                                            <td>". $customer->getCode() ."</td>
-                                            <td>". $customer->getNotes() ."</td>
-                                            <td>
-                                                <a href='Update.php?id=". $customer->getId() ."'>update</a>
-                                            </td>
-                                        </tr>";
-                                    }
-                                ?>
+                                <table class="table table-bordered">
+                                    <tr class="trTableau">
+                                        <th>Nom</th>
+                                        <th>Code</th>
+                                        <th>Notes</th>
+                                        <th>Modifier</th>
+                                    </tr>
+                                    <?php
+                                        foreach ($customers as $customer){
+                                            echo "<tr class='tr2Tableau'>
+                                                <td>". $customer->getName() ."</td>
+                                                <td>". $customer->getCode() ."</td>
+                                                <td>". $customer->getNotes() ."</td>
+                                                <td>
+                                                    <a class='aTabl' href='Update.php?id=". $customer->getId() ."'>Modifier</a>
+                                                </td>
+                                            </tr>";
+                                        }   
+                                    ?>
 
-                            </table>
+                                </table>
 
-
+                                <div class="btnAdd2">
+                                    <a href='insert.php' class="btnInsertLien">+ Ajouter</a>&emsp;
+                                </div>
+                                
+                            </div>
                         </div>
-                        
-                        <a href='insert.php'>insert</a>
-                        
 
                     </div>
 
@@ -75,5 +78,4 @@ $customers = CustomerRepository::getCustomers();
         <?php require 'layout/footer.php' ?>
         
     </body>
-
 </html>

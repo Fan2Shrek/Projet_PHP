@@ -32,7 +32,7 @@ if (isset($_POST['submit'])){
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-        <script src="../js/script.js"></script>
+        <script src="js/script.js"></script>
         <link rel="stylesheet" href="css/styles.css">
     </head>
     
@@ -46,12 +46,12 @@ if (isset($_POST['submit'])){
                 <div class="row">
 
                     
-                    <div class="col-lg-4 col-md-6 col-sm-12">
+                    <div class="col-lg-3 col-md-6 col-sm-12">
                         <?php require 'layout/menu.php' ?>
                     </div>
 
                     <!-- titre -->
-                    <div class="col-lg-8 col-md-6 col-sm-12">
+                    <div class="col-lg-9 col-md-6 col-sm-12">
                         <h3 class="nouv">Nouveau client</h3>
 
                         <!-- section1 -->

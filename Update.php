@@ -37,7 +37,7 @@ if (isset($_POST['submit_delete'])){
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-        <script src="../js/script.js"></script>
+        <script src="js/script.js"></script>
         <link rel="stylesheet" href="css/styles.css">
     </head>
     
@@ -51,12 +51,12 @@ if (isset($_POST['submit_delete'])){
                 <div class="row">
 
                     
-                    <div class="col-lg-4 col-md-6 col-sm-12">
+                    <div class="col-lg-3 col-md-6 col-sm-12">
                         <?php require 'layout/menu.php' ?>
                     </div>
 
                     <!-- titre -->
-                    <div class="col-lg-8 col-md-6 col-sm-12">
+                    <div class="col-lg-9 col-md-6 col-sm-12">
                         <h3 class="nouv"><?php echo $customer->getName();?></h3>
 
                         <!-- section1 -->
@@ -94,7 +94,7 @@ if (isset($_POST['submit_delete'])){
                                             <a href="view.php" class="btnInsert1">Annuler</a>&emsp; 
                                             <form method="post">
                                                 <input type='hidden' value="<?php echo $_GET['id']?>">
-                                                <button type='submit' name='submit_delete' class="btnInsert1"></span> Supprimer</button>&emsp;
+                                                <button type='submit' name='submit_delete' class="btnInsert1">Supprimer</button>&emsp;
                                             </form>                                           
                                             <button type='submit' name='submit' class="btnInsertSave"><span class="glyphicon glyphicon-ok"></span> Sauvegarder</button>
                                         </div>
