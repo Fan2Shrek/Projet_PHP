@@ -9,7 +9,7 @@ class Validator{
         $rep = array();
 
         if (null == $customer->getName()){
-            $rep ["nameError"] = 'Veuillez renseigner un code';
+            $rep ["nameError"] = 'Veuillez renseigner un nom';
         }
 
         if (null == $customer->getNotes()){

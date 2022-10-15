@@ -18,7 +18,7 @@ if (isset($_POST['submit'])){
     $errors = Validator::checkCustomer($newCustomer);
     if (null === $errors){
         CustomerRepository::updateCustomer($customer, $newCustomer);
-        header("Location: index.php");
+        header("Location: view.php");
     }
 }
 
@@ -57,7 +57,7 @@ if (isset($_POST['submit_delete'])){
 
                     <!-- titre -->
                     <div class="col-lg-8 col-md-6 col-sm-12">
-                        <h3 class="nouv">NOM DU CLIENT</h3> <!-- ATTENTION A NE PAS OUBLIER D'AJOUTER LE NOM DU CLIENT -->
+                        <h3 class="nouv"><?php echo $customer->getName();?></h3>
 
                         <!-- section1 -->
                         <div class="col-lg-12 col-md-12 col-sm-12">
@@ -74,31 +74,30 @@ if (isset($_POST['submit_delete'])){
                                 <form method='Post'>
 
                                     <label class="lab">Nom <span style="color:red">*</span></label>
-                                    <input name='name' class="AddClient" value="<?php echo $customer->getName(); ?>"><!-- MONTRER VALEUR NOM -->
+                                    <input name='name' class="AddClient" value="<?php echo $customer->getName(); ?>">
                                     <small style="color:red; font-style:italic;"><?php echo (!isset($errors['nameError']))? '' : $errors['nameError'] ?></small>
 
                                     <br>
 
                                     <label class="lab">Code interne</label>
-                                    <button disabled="disabled" class="AddClient1" value=""><?php echo $customer->getCode(); ?></button><!-- MONTRER VALEUR CODE MAIS NON MODIFIABLE -->
+                                    <button disabled="disabled" class="UpClient"><?php echo $customer->getCode(); ?></button>
 
                                     <br>
 
                                     <label class="lab2">Notes / remarques</label>
-                                    <textarea name='notes' class="AddClient2"><?php echo $customer->getNotes(); ?></textarea><!-- MONTRER VALEUR NOTES MODIFIABLES-->
+                                    <textarea name='notes' class="AddClient2"><?php echo $customer->getNotes(); ?></textarea>
                                     <small style="color:red; font-style:italic;"><?php echo (!isset($errors['notesError']))? '' : $errors['notesError'] ?></small>
 
                                     <!-- bouton form -->
                                     <div class="col-lg-12 col-md-12 col-sm-12">
                                         <div class="btnAdd">
-                                            <a href="index.php" class="btnInsert1">Annuler</a>&emsp;
+                                            <a href="view.php" class="btnInsert1">Annuler</a>&emsp; 
+                                            <form method="post">
+                                                <input type='hidden' value="<?php echo $_GET['id']?>">
+                                                <button type='submit' name='submit_delete' class="btnInsert1"></span> Supprimer</button>&emsp;
+                                            </form>                                           
                                             <button type='submit' name='submit' class="btnInsertSave"><span class="glyphicon glyphicon-ok"></span> Sauvegarder</button>
                                         </div>
-
-                                        <form method="post">
-                                            <input type='hidden' value="<?php echo $_GET['id']?>">
-                                            <button type='submit' name='submit_delete' ></span> Supprimer</button>
-                                        </form>
                                     </div>
 
                                 </form>

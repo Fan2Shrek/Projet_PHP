@@ -181,6 +181,7 @@ footer h4{
 .btnInsert1
 {
     color: #cb7857;
+    background-color: white;
     border: solid #cb7857 1px;
     padding-left: 40px;
     padding-right: 40px;
@@ -219,4 +220,17 @@ footer h4{
     margin-top: 150px;
     display: flex;
     justify-content: right; 
+}
+
+
+
+/* UPDATE CLIENT */
+
+.UpClient
+{
+    margin-top: 30px;
+    margin-left: 112px;
+    padding: 7px;
+    padding-right: 144px;
+    border-radius: #ccc 5px;
 }

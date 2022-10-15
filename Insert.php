@@ -8,16 +8,18 @@ use App\Forms\Validator;
 
 $errors = array();
 
+
 if (isset($_POST['submit'])){
+    $code = 'CUST_'. $_POST['name'];
     $customer = new Customer(0,
-    rand(0,100),
+    $code,
     $_POST['name'],
     $_POST['notes']);
 
     $errors = Validator::checkCustomer($customer);
     if (null === $errors){
         CustomerRepository::addCustomer($customer);
-        header("Location: index.php");
+        header("Location: view.php");
     }
 }
 
@@ -84,7 +86,7 @@ if (isset($_POST['submit'])){
                                     <!-- bouton form -->
                                     <div class="col-lg-12 col-md-12 col-sm-12">
                                         <div class="btnAdd">
-                                            <a href="index.php" class="btnInsert1">Annuler</a>&emsp;
+                                            <a href="view.php" class="btnInsert1">Annuler</a>&emsp;
                                             <button type='submit' name='submit' class="btnInsertSave"><span class="glyphicon glyphicon-ok"></span> Sauvegarder</button>
                                         </div>
                                     </div>
