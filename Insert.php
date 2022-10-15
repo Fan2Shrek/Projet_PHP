@@ -8,7 +8,6 @@ use App\Forms\Validator;
 
 $errors = array();
 
-
 if (isset($_POST['submit'])){
     $code = 'CUST_'. $_POST['name'];
     $customer = new Customer(0,
@@ -46,16 +45,18 @@ if (isset($_POST['submit'])){
                 <div class="row">
 
                     
-                    <div class="col-lg-3 col-md-6 col-sm-12">
+                    <div class="col-lg-3 col-md-3 col-sm-6">
                         <?php require 'layout/menu.php' ?>
                     </div>
 
                     <!-- titre -->
-                    <div class="col-lg-9 col-md-6 col-sm-12">
+                    <div class="col-lg-9 col-md-9 col-sm-12">
+
+                        <!-- section -->
+                        <div class="col-lg-12 col-md-12 col-sm-12">
+
                         <h3 class="nouv">Nouveau client</h3>
 
-                        <!-- section1 -->
-                        <div class="col-lg-12 col-md-12 col-sm-12">
                             <div class="infoGenerale">
                                 <p><strong>INFORMATIONS GÉNÉRALES</strong></p>
                             </div>
@@ -70,7 +71,7 @@ if (isset($_POST['submit'])){
 
                                     <label class="lab">Nom <span style="color:red">*</span></label>
                                     <input name='name' class="AddClient" value="<?php echo (!isset($_POST['name']))? '' : $_POST['name'] ?>">
-                                    <small style="color:red; font-style:italic;"><?php echo (!isset($errors['nameError']))? '' : $errors['nameError'] ?></small>
+                                    <p class="error"><?php echo (!isset($errors['nameError']))? '' : $errors['nameError'] ?></p>
 
                                     <br>
 
@@ -81,7 +82,7 @@ if (isset($_POST['submit'])){
 
                                     <label class="lab2">Notes / remarques</label>
                                     <textarea name='notes' class="AddClient2"><?php echo (!isset($_POST['notes']))? '' : $_POST['notes'] ?></textarea>
-                                    <small style="color:red; font-style:italic;"><?php echo (!isset($errors['notesError']))? '' : $errors['notesError'] ?></small>
+                                    <p class="error"><?php echo (!isset($errors['notesError']))? '' : $errors['notesError'] ?></p>
 
                                     <!-- bouton form -->
                                     <div class="col-lg-12 col-md-12 col-sm-12">

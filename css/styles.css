@@ -34,6 +34,7 @@
     background-color: #fff;
     height: 800px;
     width: 264px;
+    margin-left: -4%;
 }
 
 #menu ul a{
@@ -157,34 +158,38 @@ footer h4{
 }
 
 .lab{
-    padding-left: 30px;
+    padding-top: 2%;
+    padding-left: 2.7%;
 }
 
 .lab2{
-    padding-left: 30px;
-    padding-top: 30px;
+    padding-left: 2.7%;
+    padding-top: 5%;
     vertical-align: top;
 }
 
+/*nom */
 .AddClient{
-    margin-top: 30px;
-    margin-left: 160px;
+    margin-top: 4%;
+    margin-left: 15%;
     padding: 7px;
     padding-right: 125px;
     border-radius: #ccc 5px;
 }
 
+/* code */
 .AddClient1{
-    margin-top: 30px;
-    margin-left: 112px;
+    margin-bottom: 2%;
+    margin-left: 10.6%;
     padding: 7px;
     padding-right: 82px;
     border-radius: #ccc 5px;
 }
 
+/* notes */
 .AddClient2{
-    margin-top: 30px;
-    margin-left: 74px;
+    margin-top: 3%;
+    margin-left: 7%;
     padding: 7px;
     padding-right: 142px;
     padding-bottom: 100px;
@@ -232,9 +237,17 @@ footer h4{
 
 .btnAdd{
     position: relative;
-    margin-top: 250px;
+    margin-top: 13%;
     display: flex;
     justify-content: right; 
+}
+
+.error{
+    text-align: left;
+    color: red;
+    font-style: italic;
+    padding-left: 2.7%;
+    padding-top: 5px;
 }
 
 
@@ -242,13 +255,26 @@ footer h4{
 /* UPDATE CLIENT */
 
 .UpClient{
-    margin-top: 30px;
-    margin-left: 112px;
+    margin-bottom: 2%;
+    margin-left: 10.6%;
     padding: 7px;
-    padding-right: 144px;
+    padding-right: 4.6%;
     border-radius: #ccc 5px;
 }
 
+.btnAdd3{
+    position: relative;
+    margin-top: 8%;
+    display: flex;
+    justify-content: right; 
+}
+
+.btnAdd4{
+    position: relative;
+    margin-top: 2%;
+    display: flex;
+    justify-content: right; 
+}
 
 
 /* INDEX */

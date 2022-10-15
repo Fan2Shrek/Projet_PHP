@@ -13,13 +13,20 @@
         <?php require 'layout/navbar.php' ?>
         
         <section id="sec1">
-            
-            <?php require 'layout/menu.php' ?>
-            
+
+            <div class="container-fluid">
+                <div class="row">
+
+                    <div class="col-lg-3 col-md-6 col-sm-12">
+                        <?php require 'layout/menu.php' ?>
+                    </div>
+                
+                </div>
+            </div>
         </section>
-        
+
         <?php require 'layout/footer.php' ?>
-        
+
     </body>
     
 </html>

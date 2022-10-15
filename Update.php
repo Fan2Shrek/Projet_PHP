@@ -11,8 +11,9 @@ if (isset($_GET['id'])){
 }
 
 if (isset($_POST['submit'])){
+    $code = 'CUST_'. $_POST['name'];
     $newCustomer = new Customer(0,
-    '',
+    $code,
     $_POST['name'],
     $_POST['notes']);
     $errors = Validator::checkCustomer($newCustomer);
@@ -51,16 +52,16 @@ if (isset($_POST['submit_delete'])){
                 <div class="row">
 
                     
-                    <div class="col-lg-3 col-md-6 col-sm-12">
+                    <div class="col-lg-3 col-md-3 col-sm-12">
                         <?php require 'layout/menu.php' ?>
                     </div>
 
                     <!-- titre -->
-                    <div class="col-lg-9 col-md-6 col-sm-12">
-                        <h3 class="nouv"><?php echo $customer->getName();?></h3>
+                    <div class="col-lg-9 col-md-9 col-sm-12">
 
-                        <!-- section1 -->
+                        <!-- section -->
                         <div class="col-lg-12 col-md-12 col-sm-12">
+                            <h3 class="nouv"><?php echo $customer->getName();?></h3>
                             <div class="infoGenerale">
                                 <p><strong>INFORMATIONS GÉNÉRALES</strong></p>
                             </div>
@@ -75,33 +76,35 @@ if (isset($_POST['submit_delete'])){
 
                                     <label class="lab">Nom <span style="color:red">*</span></label>
                                     <input name='name' class="AddClient" value="<?php echo $customer->getName(); ?>">
-                                    <small style="color:red; font-style:italic;"><?php echo (!isset($errors['nameError']))? '' : $errors['nameError'] ?></small>
+                                    <p class="error"><?php echo (!isset($errors['nameError']))? '' : $errors['nameError'] ?></p>
 
                                     <br>
 
                                     <label class="lab">Code interne</label>
-                                    <button disabled="disabled" class="UpClient"><?php echo $customer->getCode(); ?></button>
+                                    <input size="30" disabled="disabled" class="UpClient" value="<?php echo $customer->getCode(); ?>">
 
                                     <br>
 
                                     <label class="lab2">Notes / remarques</label>
                                     <textarea name='notes' class="AddClient2"><?php echo $customer->getNotes(); ?></textarea>
-                                    <small style="color:red; font-style:italic;"><?php echo (!isset($errors['notesError']))? '' : $errors['notesError'] ?></small>
+                                    <p class="error"><?php echo (!isset($errors['notesError']))? '' : $errors['notesError'] ?></p>
 
                                     <!-- bouton form -->
                                     <div class="col-lg-12 col-md-12 col-sm-12">
-                                        <div class="btnAdd">
-                                            <a href="view.php" class="btnInsert1">Annuler</a>&emsp; 
-                                            <form method="post">
-                                                <input type='hidden' value="<?php echo $_GET['id']?>">
-                                                <button type='submit' name='submit_delete' class="btnInsert1">Supprimer</button>&emsp;
-                                            </form>                                           
-                                            <button type='submit' name='submit' class="btnInsertSave"><span class="glyphicon glyphicon-ok"></span> Sauvegarder</button>
+                                        <div class="btnAdd3"> 
+                                        <a href="view.php" class="btnInsert1">Annuler</a>&emsp;    
+                                        <button type='submit' name='submit' class="btnInsertSave"><span class="glyphicon glyphicon-ok"></span> Sauvegarder</button>
                                         </div>
+                                        <div class="btnAdd4"> 
+                                            <form method="post">
+                                                    <input type='hidden' value="<?php echo $_GET['id']?>">
+                                                    <button type='submit' name='submit_delete' class="btnInsertSave"><span class="glyphicon glyphicon-trash"></span> Supprimer</button>&emsp;
+                                            </form> 
+                                        </div>                                          
                                     </div>
 
                                 </form>
-
+                                
                             </div>
                         </div>
 

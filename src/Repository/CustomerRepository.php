@@ -43,8 +43,8 @@ class CustomerRepository{
     //update
     public static function updateCustomer (Customer $oldCus, Customer $newCus): void{
         $database = Connection::connect();
-        $statement = $database->prepare ('UPDATE customer set name = ?, notes = ? WHERE id= ?');
-        $statement->execute(array($newCus->getName(), $newCus->getNotes(), $oldCus->getId()));
+        $statement = $database->prepare ('UPDATE customer set code = ?, name = ?, notes = ? WHERE id= ?');
+        $statement->execute(array($newCus->getCode(), $newCus->getName(), $newCus->getNotes(), $oldCus->getId()));
         $database = Connection::disconnect();
     }
 
