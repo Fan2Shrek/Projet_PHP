@@ -13,20 +13,20 @@ class HostRepository{
         $statement = $database->prepare('SELECT * FROM host WHERE id = ?');
         $statement->execute(array($id));
         $rep = $statement->fetch();
-        $cus = ($rep) ? new Host ($id, $rep['code'], $rep['name'], $rep['notes']) : null;
+        $host = ($rep) ? new Host ($id, $rep['code'], $rep['name'], $rep['notes']) : null;
         $database = Connection::disconnect();
-        return $cus;
+        return $host;
     }
 
     //select *
-    public static function getHosts() : array{
+    public static function getHost() : array{
         $rep = array();
         $database = Connection::connect();
         $statement = $database->prepare('SELECT * FROM host');
         $statement->execute();
         $database = Connection::disconnect();
-        while($cus = $statement->fetch()){
-            $temp = new Host ($cus['id'], $cus['code'], $cus['name'], $cus['notes']);
+        while($host = $statement->fetch()){
+            $temp = new Host ($host['id'], $host['code'], $host['name'], $host['notes']);
             $rep[] = $temp;
         }
         return $rep;
@@ -41,10 +41,10 @@ class HostRepository{
     }
 
     //update
-    public static function updateHost (Host $oldCus, Host $newCus): void{
+    public static function updateHost (Host $oldHost, Host $newHost): void{
         $database = Connection::connect();
         $statement = $database->prepare ('UPDATE host set code = ?, name = ?, notes = ? WHERE id= ?');
-        $statement->execute(array($newCus->getCode(), $newCus->getName(), $newCus->getNotes(), $oldCus->getId()));
+        $statement->execute(array($newHost->getCode(), $newHost->getName(), $newHost->getNotes(), $oldHost->getId()));
         $database = Connection::disconnect();
     }
 

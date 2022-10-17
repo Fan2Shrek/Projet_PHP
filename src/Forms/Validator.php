@@ -3,9 +3,12 @@
 namespace App\Forms;
 
 use App\Classes\Customer;
+use App\Classes\Host;
 use App\Classes\Project;
 
+
 class Validator{
+    //customer
     public static function checkCustomer(Customer $customer): ?array{
         $rep = array();
 
@@ -20,6 +23,22 @@ class Validator{
         return (empty($rep))? null : $rep;
     }
 
+    //host
+    public static function checkHost(Host $host): ?array{
+        $rep = array();
+
+        if (null == $host->getName()){
+            $rep ["nameError"] = 'Veuillez renseigner un nom';
+        }
+
+        if (null == $host->getNotes()){
+            $rep ["notesError"] = 'Veuillez renseigner une note';
+        }
+
+        return (empty($rep))? null : $rep;
+    }
+
+    //project
     public static function checkProjet(Project $project): ?array{
         $rep = array();
 
