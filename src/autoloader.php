@@ -10,6 +10,8 @@ class Autoloader{
             if (file_exists($file)){
                 require $file;
                 return true;
+            }else{
+                require '../'.$file;
             }
             return false;
         });
