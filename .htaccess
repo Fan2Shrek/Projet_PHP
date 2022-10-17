@@ -1,11 +1,18 @@
-# Le serveur doit suivre les liens symboliques :
 Options +FollowSymlinks
-
-# Activation du module de réécriture d'URL :
 RewriteEngine on
 
-# Client sans numéro de page :
-RewriteRule ^Customers/$   Customers/View.php [L]
-RewriteRule ^Customer/new$ Customers/Insert.php [L]
+#--------------------------------------------------
+# Répertoire : Index
+#--------------------------------------------------
 
-RewriteRule ^Customer/([0-9]+)  Customers/Update.php?id=$1 [L]
+RewriteRule index index.php [L,NC]
+RewriteRule test test.php [L,NC]
+
+#--------------------------------------------------
+# Répertoire : /Customer/
+#--------------------------------------------------
+
+RewriteRule ^Customer/all   Customers/View.php [L,NC]
+RewriteRule ^Customer/new Customers/Insert.php [L,NC]
+
+RewriteRule ^Customer/([0-9]+)  Customers/Update.php?id=$1 [L,NC]
