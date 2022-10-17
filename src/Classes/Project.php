@@ -23,8 +23,8 @@ class Project implements IdInterface, nameInterface, codeNoteInterface
         private string $link_mock_ups,
         private int $managed_server,
         private string $notes,
-        private Host $host_id,
-        private Customer $customer_id
+        private Host $host,
+        private Customer $customer,
     )
     {
     }
@@ -63,24 +63,24 @@ class Project implements IdInterface, nameInterface, codeNoteInterface
     }
 
     //host
-    public function getHost_id(): Host 
+    public function getHost(): Host 
 	{
-		return $this->host_id;
+		return $this->host;
 	}
 
-	public function setHost_id(Host $host_id): void
+	public function setHost(Host $host_id): void
 	{
-		$this->host_id = $host_id;
+		$this->host = $host_id;
 	}
 
     //customer
-	public function getCustomer_id(): Customer 
+	public function getCustomer(): Customer 
 	{
-		return $this->customer_id;
+		return $this->customer;
 	}
 
-	public function setCustomer_id(Customer $customer_id): void
+	public function setCustomer(Customer $customer_id): void
 	{
-		$this->customer_id = $customer_id;
+		$this->customer = $customer_id;
 	}
 }
