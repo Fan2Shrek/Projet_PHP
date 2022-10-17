@@ -55,7 +55,7 @@ $customers = CustomerRepository::getCustomers();
                                                 <td>". $customer->getCode() ."</td>
                                                 <td>". $customer->getNotes() ."</td>
                                                 <td>
-                                                    <a class='aTabl' href='Update.php?id=". $customer->getId() ."'>Modifier</a>
+                                                    <a class='aTabl' href='Customers/Update.php?id=". $customer->getId() ."'>Modifier</a>
                                                 </td>
                                             </tr>";
                                         }   
@@ -65,7 +65,7 @@ $customers = CustomerRepository::getCustomers();
                             </div>
 
                                 <div class="btnAdd2">
-                                    <a href='insert.php' class="btnInsertLien">+ Ajouter</a>&emsp;
+                                    <a href='Customers/Insert.php' class="btnInsertLien">+ Ajouter</a>&emsp;
                                 </div>
                                 <br>
                             </div>
