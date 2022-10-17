@@ -14,7 +14,7 @@ class Connection
     private static $dbUserpassword = "";
     private static $connection = null;
     
-    // fonction connection
+    // fonction connexion
     public static function connect()
     {
         if(self::$connection == null)
