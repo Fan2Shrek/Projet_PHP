@@ -1,6 +1,6 @@
 <?php 
 
-require 'src/autoloader.php';
+require '../src/autoloader.php';
 
 use App\Repository\CustomerRepository;
 
@@ -10,7 +10,8 @@ $customers = CustomerRepository::getCustomers();
 <!DOCTYPE html>
 <html>
     <head>
-    <title>Consuler les clients</title>
+        <base href='../'>
+        <title>Consuler les clients</title>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
@@ -20,7 +21,7 @@ $customers = CustomerRepository::getCustomers();
     
     <body>
         
-        <?php require 'layout/navbar.php' ?>
+        <?php require '../layout/navbar.php' ?>
         
         <section id="viewClient">
 
@@ -28,7 +29,7 @@ $customers = CustomerRepository::getCustomers();
                 <div class="row">
 
                     <div class="col-lg-3 col-md-3 col-sm-12">
-                        <?php require 'layout/menu.php' ?>
+                        <?php require '../layout/menu.php' ?>
                     </div>
 
                     <div class="col-lg-9 col-md-9 col-sm-12">
@@ -55,7 +56,7 @@ $customers = CustomerRepository::getCustomers();
                                                 <td>". $customer->getCode() ."</td>
                                                 <td>". $customer->getNotes() ."</td>
                                                 <td>
-                                                    <a class='aTabl' href='Customers/Update.php?id=". $customer->getId() ."'>Modifier</a>
+                                                    <a class='aTabl' href='Customer/". $customer->getId() ."'>Modifier</a>
                                                 </td>
                                             </tr>";
                                         }   
@@ -78,7 +79,7 @@ $customers = CustomerRepository::getCustomers();
 
         </section>
 
-        <?php require 'layout/footer.php' ?>
+        <?php require '../layout/footer.php' ?>
         
     </body>
 </html>
