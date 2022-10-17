@@ -4,7 +4,7 @@ require '../src/autoloader.php';
 
 use App\Repository\CustomerRepository;
 
-$customers = CustomerRepository::getCustomers();
+$customer = CustomerRepository::getCustomer();
 ?>
 
 <!DOCTYPE html>
@@ -50,7 +50,7 @@ $customers = CustomerRepository::getCustomers();
                                         <th>Modifier</th>
                                     </tr>
                                     <?php
-                                        foreach ($customers as $customer){
+                                        foreach ($customer as $customer){
                                             echo "<tr class='tr2Tableau'>
                                                 <td>". $customer->getName() ."</td>
                                                 <td>". $customer->getCode() ."</td>
@@ -66,7 +66,7 @@ $customers = CustomerRepository::getCustomers();
                             </div>
 
                                 <div class="btnAdd2">
-                                    <a href='Customers/Insert.php' class="btnInsertLien">+ Ajouter</a>&emsp;
+                                    <a href='Customer/Insert.php' class="btnInsertLien">+ Ajouter</a>&emsp;
                                 </div>
                                 <br>
                             </div>

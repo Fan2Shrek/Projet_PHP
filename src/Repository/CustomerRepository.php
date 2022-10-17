@@ -19,7 +19,7 @@ class CustomerRepository{
     }
 
     //select *
-    public static function getCustomers() : array{
+    public static function getCustomer() : array{
         $rep = array();
         $database = Connection::connect();
         $statement = $database->prepare('SELECT * FROM customer');
@@ -43,8 +43,10 @@ class CustomerRepository{
     //update
     public static function updateCustomer (Customer $oldCus, Customer $newCus): void{
         $database = Connection::connect();
-        $statement = $database->prepare ('UPDATE customer set code = ?, name = ?, notes = ? WHERE id= ?');
-        $statement->execute(array($newCus->getCode(), $newCus->getName(), $newCus->getNotes(), $oldCus->getId()));
+        $statement = $database->prepare ('UPDATE customer set code = ?, name = ?, 
+        notes = ? WHERE id= ?');
+        $statement->execute(array($newCus->getCode(), $newCus->getName(), 
+        $newCus->getNotes(), $oldCus->getId()));
         $database = Connection::disconnect();
     }
 

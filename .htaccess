@@ -12,7 +12,16 @@ RewriteRule test test.php [L,NC]
 # Répertoire : /Customer/
 #--------------------------------------------------
 
-RewriteRule ^Customer/all   Customers/View.php [L,NC]
-RewriteRule ^Customer/new Customers/Insert.php [L,NC]
+RewriteRule ^Customer/all   Customer/View.php [L,NC]
+RewriteRule ^Customer/new Customer/Insert.php [L,NC]
 
-RewriteRule ^Customer/([0-9]+)  Customers/Update.php?id=$1 [L,NC]
+RewriteRule ^Customer/([0-9]+)  Customer/Update.php?id=$1 [L,NC]
+
+#--------------------------------------------------
+# Répertoire : /Host/
+#--------------------------------------------------
+
+RewriteRule ^Host/all   Host/View.php [L,NC]
+RewriteRule ^Host/new Host/Insert.php [L,NC]
+
+RewriteRule ^Host/([0-9]+)  Host/Update.php?id=$1 [L,NC]
