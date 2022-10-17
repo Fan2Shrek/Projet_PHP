@@ -1,0 +1,13 @@
+#--------------------------------------------------
+# Répertoire : /articles/
+#--------------------------------------------------
+
+# Le serveur doit suivre les liens symboliques :
+Options +FollowSymlinks
+
+# Activation du module de réécriture d'URL :
+RewriteEngine on
+
+# Client sans numéro de page :
+RewriteRule ^clients$   View.php [L]
+RewriteRule ^client/([0-9]+)$   Update.php?id=$1 [L]
