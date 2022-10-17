@@ -17,11 +17,11 @@ class ProjectRepository{
         $statement->execute(array($id));
         $rep = $statement->fetch();
 
-        $host = HostRepository::getHostById($rep['host']);
-        $customer = CustomerRepository::getCustomerById($rep['customer']);
+        $customer = CustomerRepository::getCustomerById($rep['customer_id']);
+        $host = HostRepository::getHostById($rep['host_id']);
 
         $pro = ($rep) ? new Project($id, $rep['name'], $rep['code'], 
-            $rep['lastpast_folder'], $rep['link_mock_ups'], 
+            $rep['lastpass_folder'], $rep['link_mock_ups'], 
             $rep['managed_server'], $rep['notes'], 
             $host, $customer) : null;
         $database = Connection::disconnect();
@@ -34,13 +34,13 @@ class ProjectRepository{
         $database = Connection::connect();
         $statement = $database->prepare('SELECT * FROM project');
         $statement->execute();
-        while($cus = $statement->fetch()){
-            $host = HostRepository::getHostById($rep['host']);
-            $customer = CustomerRepository::getCustomerById($rep['customer']);
+        while($pro = $statement->fetch()){
+            $host = HostRepository::getHostById($pro['host_id']);
+            $customer = CustomerRepository::getCustomerById($pro['customer_id']);
             $temp = 
-            new Project($rep['id'], $rep['name'], $rep['code'], 
-                $rep['lastpast_folder'], $rep['link_mock_ups'], 
-                $rep['managed_server'], $rep['notes'], 
+            new Project($pro['id'], $pro['name'], $pro['code'], 
+                $pro['lastpass_folder'], $pro['link_mock_ups'], 
+                $pro['managed_server'], $pro['notes'], 
                 $host, $customer);
             $rep[] = $temp;
         }
@@ -51,9 +51,9 @@ class ProjectRepository{
     //insert
     public static function addProject(Project $project): void{
         $database = Connection::connect();
-        $statement = $database->prepare('INSERT INTO project (name, code, lastpast_folder, link_mock_ups, 
+        $statement = $database->prepare('INSERT INTO project (name, code, lastpass_folder, link_mock_ups, 
             managed_server, notes, host_id, customer_id) 
-            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)');
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?)');
         $statement->execute(array($project->getName(), $project->getCode(), 
             $project->getLastpast_folder(), $project->getLink_mock_ups(), 
             $project->getManaged_server(), $project->getNotes(), $project->getHost()->getId(), 
@@ -64,8 +64,8 @@ class ProjectRepository{
     //update
     public static function updateProject (Project $oldPro, Project $newPro): void{
         $database = Connection::connect();
-        $statement = $database->prepare('UPDATE project set name=? , code=?, lastpast_folder=?, 
-            link_mock_ups=?, managed_server=?, notes=?, host_id=?, customer_id=?) 
+        $statement = $database->prepare('UPDATE project set name=? , code=?, lastpass_folder=?, 
+            link_mock_ups=?, managed_server=?, notes=?, host_id=?, customer_id=?
             WHERE id = ?');
         $statement->execute(array($newPro->getName(), $newPro->getCode(), 
             $newPro->getLastpast_folder(), $newPro->getLink_mock_ups(), 

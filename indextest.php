@@ -7,7 +7,7 @@ use App\Classes\Project;
 use App\Classes\Environment;
 use App\Classes\Host;
 use App\Classes\Customer;
-use App\Repository\CustomerRepository;//namespace
+use App\Repository\ProjectRepository;//namespace
 use App\Forms\Validator;
 
 // création objets
@@ -21,6 +21,9 @@ $contact = new Contact(1, 'johnatan@gmail.com', '0612345678', 'role', host: $hos
 $contact1 = new Contact(2, 'jean@gmail.com', '0612345678' , 'role2', customer: $customer);
 
 $projet = new Project(1, 'ProjetPhp', '1', 'dossierPHP', 'lien1', 1, 'ceci est un poc en php', $host, $customer);
+// $projet = ProjectRepository::getProjectById(15);
+
+
 $environment = new Environment(1, 'EnvironmentPHP', 'lien1', '172.00.00.00', 22, 'ssh1', 'phpmyadmin_local', 1, $projet);
 
 //affichage test : jeu d'essai
@@ -93,9 +96,9 @@ echo $projet->getManaged_server().PHP_EOL;
 echo '- ';
 echo $projet->getNotes().PHP_EOL;
 echo '- ';
-echo $projet->getHost_id()->getId().PHP_EOL;
+echo $projet->getHost()->getName().PHP_EOL;
 echo '- ';
-echo $projet->getCustomer_id()->getId().PHP_EOL;
+echo $projet->getCustomer()->getName().PHP_EOL;
 echo'<br>';
 echo'<br>';
 
@@ -119,22 +122,28 @@ echo $environment->getIp_address().PHP_EOL;
 echo '- ';
 echo $environment->getProject_id()->getName();
 
-echo 'dsojqsodijsq';
+/*
+$projets = ProjectRepository::getProjects();
 
-$customers = CustomerRepository::getCustomers();
-
-foreach($customers as $customer){
-    echo 'Client : ';
-    echo $customer->getId().PHP_EOL;
+foreach($projets as $projet){
+    echo 'Projet : ';
+    echo $projet->getId().PHP_EOL;
     echo '- ';
-    echo $customer->getCode().PHP_EOL;
+    echo $projet->getName().PHP_EOL;
     echo '- ';
-    echo $customer->getName().PHP_EOL;
+    echo $projet->getCode().PHP_EOL;
     echo '- ';
-    echo $customer->getNotes().PHP_EOL;
+    echo $projet->getLastpast_folder().PHP_EOL;
+    echo '- ';
+    echo $projet->getLink_mock_ups().PHP_EOL;
+    echo '- ';
+    echo $projet->getManaged_server().PHP_EOL;
+    echo '- ';
+    echo $projet->getNotes().PHP_EOL;
+    echo '- ';
+    echo $projet->getHost()->getName().PHP_EOL;
+    echo '- ';
+    echo $projet->getCustomer()->getName().PHP_EOL;
     echo'<br>';
     echo'<br>';
-}
-
-// CustomerRepository::deleteCustomer($customer);
-// CustomerRepository::updateCustomer($oldCustomer, $newCustomer);
+}*/
