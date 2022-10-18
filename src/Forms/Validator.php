@@ -6,6 +6,12 @@ use App\Classes\Customer;
 use App\Classes\Host;
 use App\Classes\Project;
 
+function verifyInput($var){
+    $var = trim($var);
+    $var = stripslashes($var);
+    $var = htmlspecialchars($var);
+    return $var;
+}
 
 class Validator{
     //customer
