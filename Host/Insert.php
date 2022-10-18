@@ -11,11 +11,13 @@ $errors = array();
 if (isset($_POST['submit'])){
     $code = 'HOST_'. $_POST['name'];
     $host = new Host(0,
-    $code,
     $_POST['name'],
+    $code,
     $_POST['notes']);
 
     $errors = Validator::checkHost($host);
+    // var_dump($errors);
+
     if (null === $errors){
         HostRepository::addHost($host);
         header("Location: View.php");

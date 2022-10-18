@@ -13,8 +13,8 @@ if (isset($_GET['id'])){
 if (isset($_POST['submit'])){
     $code = 'HOST_'. $_POST['name'];
     $newHost = new Host(0,
-    $code,
     $_POST['name'],
+    $code,
     $_POST['notes']);
     $errors = Validator::checkHost($newHost);
     if (null === $errors){

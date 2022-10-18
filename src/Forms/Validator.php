@@ -16,10 +16,6 @@ class Validator{
             $rep ["nameError"] = 'Veuillez renseigner un nom';
         }
 
-        if (null == $customer->getNotes()){
-            $rep ["notesError"] = 'Veuillez renseigner une note';
-        }
-
         return (empty($rep))? null : $rep;
     }
 
@@ -29,10 +25,6 @@ class Validator{
 
         if (null == $host->getName()){
             $rep ["nameError"] = 'Veuillez renseigner un nom';
-        }
-
-        if (null == $host->getNotes()){
-            $rep ["notesError"] = 'Veuillez renseigner une note';
         }
 
         return (empty($rep))? null : $rep;
@@ -52,10 +44,6 @@ class Validator{
 
         if (null == $project->getLink_mock_ups()){
             $rep ["link_mock_upsError"] = 'Veuillez renseigner un lien';
-        }
-
-        if (null == $project->getNotes()){
-            $rep ["notesError"] = 'Veuillez renseigner une note';
         }
 
         if (null == $project->getHost()){

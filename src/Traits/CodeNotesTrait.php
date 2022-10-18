@@ -11,7 +11,7 @@ trait CodeNotesTrait{
         $this->code = $code;
     }
 
-    public function getNotes(): string{
+    public function getNotes(): ?string{
         return $this->notes;
     }
 
