@@ -8,12 +8,19 @@ use App\Forms\Validator;
 
 $errors = array();
 
+function verifyInput($var){
+    $var = trim($var);
+    $var = stripslashes($var);
+    $var = htmlspecialchars($var);
+    return $var;
+}
+
 if (isset($_POST['submit'])){
-    $code = 'CUST_'. $_POST['name'];
+    $code = 'CUST_'. verifyInput($_POST['name']);
     $customer = new Customer(0,
     $code,
-    $_POST['name'],
-    $_POST['notes']);
+    verifyInput($_POST['name']),
+    verifyInput($_POST['notes']));
 
     $errors = Validator::checkCustomer($customer);
     if (null === $errors){

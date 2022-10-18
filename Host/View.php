@@ -52,8 +52,8 @@ $host = HostRepository::getHost();
                                     <?php
                                         foreach ($host as $host){
                                             echo "<tr class='tr2Tableau'>
-                                                <td>". $host->getName() ."</td>
                                                 <td>". $host->getCode() ."</td>
+                                                <td>". $host->getName() ."</td>
                                                 <td>". $host->getNotes() ."</td>
                                                 <td>
                                                     <a class='aTabl' href='Host/". $host->getId() ."'>Modifier</a>

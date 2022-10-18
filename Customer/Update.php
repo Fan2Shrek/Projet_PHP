@@ -6,16 +6,23 @@ use App\Classes\Customer;
 use App\Repository\CustomerRepository;
 use App\Forms\Validator;
 
+function verifyInput($var){
+    $var = trim($var);
+    $var = stripslashes($var);
+    $var = htmlspecialchars($var);
+    return $var;
+}
+
 if (isset($_GET['id'])){
     $customer = CustomerRepository::getCustomerById($_GET['id']);
 }
 
 if (isset($_POST['submit'])){
-    $code = 'CUST_'. $_POST['name'];
+    $code = 'CUST_'. verifyInput($_POST['name']);
     $newCustomer = new Customer(0,
     $code,
-    $_POST['name'],
-    $_POST['notes']);
+    verifyInput($_POST['name']),
+    verifyInput($_POST['notes']));
     $errors = Validator::checkCustomer($newCustomer);
     if (null === $errors){
         CustomerRepository::updateCustomer($customer, $newCustomer);

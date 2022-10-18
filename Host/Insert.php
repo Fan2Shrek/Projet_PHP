@@ -8,15 +8,21 @@ use App\Forms\Validator;
 
 $errors = array();
 
+function verifyInput($var){
+    $var = trim($var);
+    $var = stripslashes($var);
+    $var = htmlspecialchars($var);
+    return $var;
+}
+
 if (isset($_POST['submit'])){
-    $code = 'HOST_'. $_POST['name'];
+    $code = 'HOST_'. verifyInput($_POST['name']);
     $host = new Host(0,
-    $_POST['name'],
+    verifyInput($_POST['name']),
     $code,
-    $_POST['notes']);
+    verifyInput($_POST['notes']));
 
     $errors = Validator::checkHost($host);
-    // var_dump($errors);
 
     if (null === $errors){
         HostRepository::addHost($host);

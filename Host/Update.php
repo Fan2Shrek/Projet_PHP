@@ -6,16 +6,23 @@ use App\Classes\Host;
 use App\Repository\HostRepository;
 use App\Forms\Validator;
 
+function verifyInput($var){
+    $var = trim($var);
+    $var = stripslashes($var);
+    $var = htmlspecialchars($var);
+    return $var;
+}
+
 if (isset($_GET['id'])){
     $host = HostRepository::getHostById($_GET['id']);
 }
 
 if (isset($_POST['submit'])){
-    $code = 'HOST_'. $_POST['name'];
+    $code = 'HOST_'. verifyInput($_POST['name']);
     $newHost = new Host(0,
-    $_POST['name'],
+    verifyInput($_POST['name']),
     $code,
-    $_POST['notes']);
+    verifyInput($_POST['notes']));
     $errors = Validator::checkHost($newHost);
     if (null === $errors){
         HostRepository::updateHost($host, $newHost);
