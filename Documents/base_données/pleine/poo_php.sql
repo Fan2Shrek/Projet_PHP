@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le : mar. 18 oct. 2022 à 15:59
+-- Généré le : mar. 18 oct. 2022 à 16:42
 -- Version du serveur : 10.4.24-MariaDB
 -- Version de PHP : 8.1.6
 
@@ -176,8 +176,8 @@ CREATE TABLE `project` (
   `id` int(11) NOT NULL,
   `name` varchar(255) NOT NULL,
   `code` varchar(255) NOT NULL,
-  `lastpass_folder` varchar(255) NOT NULL,
-  `link_mock_ups` varchar(255) NOT NULL,
+  `lastpass_folder` varchar(255) DEFAULT NULL,
+  `link_mock_ups` varchar(255) DEFAULT NULL,
   `managed_server` tinyint(1) NOT NULL,
   `notes` text DEFAULT NULL,
   `host_id` int(11) NOT NULL,
@@ -255,7 +255,7 @@ ALTER TABLE `contact`
 -- AUTO_INCREMENT pour la table `customer`
 --
 ALTER TABLE `customer`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 
 --
 -- AUTO_INCREMENT pour la table `environment`
