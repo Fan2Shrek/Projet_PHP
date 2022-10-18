@@ -44,10 +44,10 @@ $customer = CustomerRepository::getCustomer();
 
                                 <table class="table table-bordered" id="tabClient">
                                     <tr class="trTableau">
-                                        <th>Nom</th>
-                                        <th>Code</th>
-                                        <th>Notes</th>
-                                        <th>Modifier</th>
+                                        <th>NOM</th>
+                                        <th>CODE</th>
+                                        <th>NOTES</th>
+                                        <th>MODIFIER</th>
                                     </tr>
                                     <?php
                                         foreach ($customer as $customer){
