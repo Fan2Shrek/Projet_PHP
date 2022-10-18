@@ -6,7 +6,6 @@ RewriteEngine on
 #--------------------------------------------------
 
 RewriteRule index index.php [L,NC]
-RewriteRule test test.php [L,NC]
 
 #--------------------------------------------------
 # Répertoire : /Customer/
