@@ -29,7 +29,7 @@ class ProjectRepository{
     }
 
     //select *
-    public static function getProjects() : array{
+    public static function getProject() : array{
         $rep = array();
         $database = Connection::connect();
         $statement = $database->prepare('SELECT * FROM project');

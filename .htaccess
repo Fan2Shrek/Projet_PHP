@@ -25,3 +25,12 @@ RewriteRule ^Host/all   Host/View.php [L,NC]
 RewriteRule ^Host/new Host/Insert.php [L,NC]
 
 RewriteRule ^Host/([0-9]+)  Host/Update.php?id=$1 [L,NC]
+
+#--------------------------------------------------
+# Répertoire : /PROJECT/
+#--------------------------------------------------
+
+RewriteRule ^PROJECT/all   PROJECT/View.php [L,NC]
+RewriteRule ^PROJECT/new PROJECT/Insert.php [L,NC]
+
+RewriteRule ^PROJECT/([0-9]+)  PROJECT/Update.php?id=$1 [L,NC]
