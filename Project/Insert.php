@@ -23,7 +23,7 @@ if (isset($_POST['submit'])){
     $code = 'CUST_'. verifyInput($_POST['name']);
     $lastpass_folder = (isset($_POST['lastpass_folder'])) ? $_POST['lastpass_folder'] : null ;
     $link_mock_ups = (isset($_POST['link_mock_ups'])) ? $_POST['link_mock_ups'] : null ;
-    $managed_server = (isset($_POST['managed_server'])) ? 0 : 1;
+    $managed_server = (isset($_POST['managed_server'])) ? 1 : 0;
     $host = (isset($_POST['host'])) ? HostRepository::getHostById($_POST['host']) : new Host(0,0,0,0);
     $customer = (isset($_POST['customer'])) ? CustomerRepository::getCustomerById($_POST['customer']) : new Customer(0,0,0,0);
 
