@@ -3,6 +3,7 @@
 require '../src/autoloader.php';
 
 use App\Classes\Customer;
+use App\Classes\Host;
 use App\Classes\Project;
 use App\Repository\ProjectRepository;
 use App\Repository\CustomerRepository;
@@ -20,10 +21,21 @@ function verifyInput($var){
 
 if (isset($_POST['submit'])){
     $code = 'CUST_'. verifyInput($_POST['name']);
-    $project = new Project(0,//en cours PAS FONCTIONNEL PAS FINI
-    $code,
+    $lastpass_folder = (isset($_POST['lastpass_folder'])) ? $_POST['lastpass_folder'] : null ;
+    $link_mock_ups = (isset($_POST['link_mock_ups'])) ? $_POST['link_mock_ups'] : null ;
+    $managed_server = (isset($_POST['managed_server'])) ? 0 : 1;
+    $host = (isset($_POST['host'])) ? HostRepository::getHostById($_POST['host']) : new Host(0,0,0,0);
+    $customer = (isset($_POST['customer'])) ? CustomerRepository::getCustomerById($_POST['customer']) : new Customer(0,0,0,0);
+
+    $project = new Project(0,
     verifyInput($_POST['name']),
-    verifyInput($_POST['notes']));
+    $code,
+    verifyInput($lastpass_folder),
+    verifyInput($link_mock_ups),
+    verifyInput($managed_server),
+    verifyInput($_POST['notes']),
+    $host,
+    $customer);
 
     $errors = Validator::checkProjet($project);
     if (null === $errors){
@@ -81,7 +93,7 @@ if (isset($_POST['submit'])){
                                 <form method='Post'>
 
                                     <!-- col-lg-6-->
-                                    <label class="lab">Nom <span style="color:red">*</span></label>
+                                    <label class="lab" for='name'>Nom <span style="color:red">*</span></label>
                                     <input name='name' class="AddClient" value="<?php echo (!isset($_POST['name']))? '' : $_POST['name'] ?>">
                                     <p class="error"><?php echo (!isset($errors['nameError']))? '' : $errors['nameError'] ?></p>
 
@@ -92,8 +104,9 @@ if (isset($_POST['submit'])){
 
                                     <br>
 
-                                    <select type="text" value="
-                                    
+                                    <label class="lab" for='customer'>Client <span style="color:red">*</span></label>
+                                    <select type="text" name='customer' class="AddClient">  
+                                        <option disabled selected>Selectionnez un client</option>
                                     <?php 
 
                                     $customers = CustomerRepository::getCustomer();
@@ -103,13 +116,15 @@ if (isset($_POST['submit'])){
                                         echo '<option value="'. $customer->getId() . '">'. $customer->getName() . '</option>';
                                     }
 
-                                    ?>">
-
+                                    ?>
                                     </select>
+                                    <p class="error"><?php echo (!isset($errors['customerError']))? '' : $errors['customerError'] ?></p>
 
                                     <br>
 
-                                    <select type="text" value="
+                                    <label class="lab" for='host'>Herbergeur <span style="color:red">*</span></label>
+                                    <select type="text" name='host' class="AddClient">
+                                        <option disabled selected>Selectionnez un hebergeur</option>
                                     
                                     <?php 
 
@@ -123,10 +138,10 @@ if (isset($_POST['submit'])){
                                     ?>
 
                                     </select>
-
-
-
-
+                                    <p class="error"><?php echo (!isset($errors['hostError']))? '' : $errors['hostError'] ?></p>
+                                    
+                                    <label class="lab" for='managed_server'>Serveur infogéré</label>
+                                    <input name='managed_server' type='checkbox' class="AddClient" class="AddClient">
 
                                     <label class="lab2">Notes / remarques</label>
                                     <textarea name='notes' class="AddClient2"><?php echo (!isset($_POST['notes']))? '' : $_POST['notes'] ?></textarea>
@@ -138,17 +153,11 @@ if (isset($_POST['submit'])){
 
 
                                     <label class="lab">Dossier Lastpass</label>
-                                    <input name='dossier_lastpass' class="AddClient" value="<?php echo (!isset($_POST['dossier_lastpass']))? '' : $_POST['dossier_lastpass'] ?>">
-                                    <p class="error"><?php echo (!isset($errors['nameError']))? '' : $errors['nameError'] ?></p>
-
-
+                                    <input name='lastpass_folder' class="AddClient" value="<?php echo (!isset($_POST['lastpass_folder']))? '' : $_POST['lastpass_folder'] ?>">
 
                                     <label class="lab">Lien maquettes</label>
-                                    <input name='lien_maquettes' class="AddClient" value="<?php echo (!isset($_POST['lien_maquettes']))? '' : $_POST['lien_maquettes'] ?>">
-                                    <p class="error"><?php echo (!isset($errors['nameError']))? '' : $errors['nameError'] ?></p>
-
-
-
+                                    <input name='link_mock_ups' class="AddClient" value="<?php echo (!isset($_POST['link_mock_ups']))? '' : $_POST['link_mock_ups'] ?>">
+                                    
                                     <!-- bouton form -->
                                     <div class="col-lg-12 col-md-12 col-sm-12">
                                         <div class="btnAdd">

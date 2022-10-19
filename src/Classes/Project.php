@@ -19,10 +19,10 @@ class Project implements IdInterface, nameInterface, codeNoteInterface
         private int $id,
         private string $name,
         private string $code,
-        private string $lastpass_folder,
-        private string $link_mock_ups,
+        private ?string $lastpass_folder,
+        private ?string $link_mock_ups,
         private int $managed_server,
-        private string $notes,
+        private ?string $notes,
         private Host $host,
         private Customer $customer,
     )
@@ -30,7 +30,7 @@ class Project implements IdInterface, nameInterface, codeNoteInterface
     }
 
     //lastpass_folder
-    public function getLastpast_folder(): string
+    public function getLastpast_folder(): ?string
     {
         return $this->lastpass_folder;
     }
@@ -41,7 +41,7 @@ class Project implements IdInterface, nameInterface, codeNoteInterface
     }
 
     //link_mock_ups
-    public function getLink_mock_ups(): string
+    public function getLink_mock_ups(): ?string
     {
         return $this->link_mock_ups;
     }

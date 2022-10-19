@@ -5,6 +5,8 @@ namespace App\Forms;
 use App\Classes\Customer;
 use App\Classes\Host;
 use App\Classes\Project;
+use App\Repository\CustomerRepository;
+use App\Repository\HostRepository;
 
 function verifyInput($var){
     $var = trim($var);
@@ -44,19 +46,11 @@ class Validator{
             $rep ["nameError"] = 'Veuillez renseigner un nom';
         }
 
-        if (null == $project->getLastpast_folder()){
-            $rep ["lastpast_folderError"] = 'Veuillez renseigner un dossier';
+        if (null == HostRepository::getHostById($project->getHost()->getId())){
+            $rep ["hostError"] = 'Veuillez renseigner un hebergeur';
         }
 
-        if (null == $project->getLink_mock_ups()){
-            $rep ["link_mock_upsError"] = 'Veuillez renseigner un lien';
-        }
-
-        if (null == $project->getHost()){
-            $rep ["HostError"] = 'Veuillez renseigner un hebergeur';
-        }
-
-        if (null == $project->getCustomer()){
+        if (null == CustomerRepository::getCustomerById($project->getCustomer()->getId())){
             $rep ["customerError"] = 'Veuillez renseigner un client';
         }
 
