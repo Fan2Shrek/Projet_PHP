@@ -5,6 +5,8 @@ require '../src/autoloader.php';
 use App\Classes\Customer;
 use App\Classes\Project;
 use App\Repository\ProjectRepository;
+use App\Repository\CustomerRepository;
+use App\Repository\HostRepository;
 use App\Forms\Validator;
 
 $errors = array();
@@ -88,46 +90,35 @@ if (isset($_POST['submit'])){
                                     <label class="lab">Code interne</label>
                                     <button disabled="disabled" class="AddClient1">Champs généré automatiquement</button>
 
-
-                                    
-
                                     <br>
 
-
-
-
-
-
-                                    <select type="text" class="select" name="" id="" value="
+                                    <select type="text" value="
                                     
                                     <?php 
 
-                                    foreach ($customer as $customer) 
+                                    $customers = CustomerRepository::getCustomer();
+
+                                    foreach ($customers as $customer) 
                                     {
-                                        echo '<option value="'. $customer->getCustomer()->getName() . '">'. '</option>';
+                                        echo '<option value="'. $customer->getId() . '">'. $customer->getName() . '</option>';
                                     }
 
                                     ?>">
 
                                     </select>
 
+                                    <br>
 
-
-
-
-
-                                    <select type="text" class="select" name="" id="" value="<?php echo $host->getName();?>">
+                                    <select type="text" value="
                                     
                                     <?php 
 
+                                    $host = HostRepository::getHost();
+
                                     foreach ($host as $host) 
                                     {
-                                        echo "<option value='. $host->getName() . '></option>'";
+                                        echo '<option value="'. $host->getId() . '">'. $host->getName() . '</option>';
                                     }
-
-                                    
-
-                                    
 
                                     ?>
 
