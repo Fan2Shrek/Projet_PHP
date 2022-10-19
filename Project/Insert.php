@@ -151,12 +151,13 @@ if (isset($_POST['submit'])){
 
                                     <!-- col-lg-6 -->
 
+                                    <div class='project-right'>
+                                        <label class="lab">Dossier Lastpass</label>
+                                        <input name='lastpass_folder' class="AddClient" value="<?php echo (!isset($_POST['lastpass_folder']))? '' : $_POST['lastpass_folder'] ?>">
 
-                                    <label class="lab">Dossier Lastpass</label>
-                                    <input name='lastpass_folder' class="AddClient" value="<?php echo (!isset($_POST['lastpass_folder']))? '' : $_POST['lastpass_folder'] ?>">
-
-                                    <label class="lab">Lien maquettes</label>
-                                    <input name='link_mock_ups' class="AddClient" value="<?php echo (!isset($_POST['link_mock_ups']))? '' : $_POST['link_mock_ups'] ?>">
+                                        <label class="lab">Lien maquettes</label>
+                                        <input name='link_mock_ups' class="AddClient" value="<?php echo (!isset($_POST['link_mock_ups']))? '' : $_POST['link_mock_ups'] ?>">
+                                    </div>                                    
                                     
                                     <!-- bouton form -->
                                     <div class="col-lg-12 col-md-12 col-sm-12">

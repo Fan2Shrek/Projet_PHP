@@ -286,6 +286,16 @@ footer h4{
 }
 
 
+/* INSERT PROJECT */
+
+.project-right{
+    display: inline-grid;
+    position: relative;
+    left: 66%;
+    bottom: 570px;
+}
+
+
 /* INDEX */
 
 #sec1{
