@@ -285,6 +285,22 @@ footer h4{
     justify-content: right; 
 }
 
+.modalFermer1{
+    color: #cb7857;
+    border: solid #cb7857 1px;
+    background-color: white;
+    padding-left: 26px;
+    padding-right: 26px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+}
+
+.modalFermer1:hover{
+    color: white;
+    background-color: #cb7857;
+    text-decoration: none;
+    border: solid #cb7857 1px;
+}
 
 /* INSERT PROJECT */
 

@@ -101,19 +101,35 @@ if (isset($_POST['submit_delete'])){
                                     <!-- bouton form -->
                                     <div class="col-lg-12 col-md-12 col-sm-12">
                                         <div class="btnAdd3"> 
-                                        <a href="Host/View.php" class="btnInsert1">Annuler</a>&emsp;    
-                                        <button type='submit' name='submit' class="btnInsertSave"><span class="glyphicon glyphicon-ok"></span> Sauvegarder</button>
+                                            <a href="Host/View.php" class="btnInsert1">Annuler</a>&emsp;    
+                                            <button type='submit' name='submit' class="btnInsertSave"><span class="glyphicon glyphicon-ok"></span> Sauvegarder</button>&emsp;
+                                            <a href="#" data-toggle='modal' data-target='#modal'class="btnInsertSave"><span class="glyphicon glyphicon-trash"></span> Supprimer</a>
                                         </div>
-                                        <div class="btnAdd4"> 
-                                            <form method="post">
-                                                    <input type='hidden' value="<?php echo $_GET['id']?>">
-                                                    <button type='submit' name='submit_delete' class="btnInsertSave"><span class="glyphicon glyphicon-trash"></span> Supprimer</button>&emsp;
-                                            </form> 
-                                        </div>                                          
-                                    </div>
 
+                                        <!-- modal suppression -->
+                                        <div class='modal fade' id='modal'> 
+                                            <div class='modal-dialog'>
+                                                <div class='modal-content'>
+                                                    <div class='modal-header'>
+                                                        <button type='button' class='close' data-dismiss='modal'>x</button>
+                                                        <h5 class='modal-title' style="font-weight: bold;">Suppression d'un hébergeur</h5>
+                                                    </div>
+                                                    <div class='modal-body'>
+                                                        <p>Voulez-vous vraiment supprimer l'hébergeur <strong>"<?php echo $host->getName(); ?>"</strong> ?</p>
+                                                    </div>
+                                                    <div class='modal-footer'>
+                                                        <form method="post">
+                                                            <input type='hidden' value="<?php echo $_GET['id']?>">
+                                                            <button type='submit' name='submit_delete' class="btnInsertSave">Supprimer</button>&emsp;
+                                                        </form>
+                                                        <button type='button' class='modalFermer1' data-dismiss='modal'>Fermer</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </form>
-                                
+                                                              
                             </div>
                         </div>
 
