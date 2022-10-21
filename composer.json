@@ -1,5 +1,5 @@
 {
-    "name": "pierre/projet_php",
+    "name": "projet_php",
     "description": "Projec de php",
     "type": "library",
     "autoload": {
