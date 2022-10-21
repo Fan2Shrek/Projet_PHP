@@ -4,7 +4,14 @@ require '../src/autoloader.php';
 
 use App\Repository\ProjectRepository;
 
-$project = ProjectRepository::getProject();
+
+if (isset($_GET['name'])){
+    $projects = ProjectRepository::getByName($_GET['name']);
+}
+else{
+    $projects = ProjectRepository::getProject();
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -49,17 +56,33 @@ $project = ProjectRepository::getProject();
                                         <th>HÉBERGEURS</th>
                                         <th>Modifier</th>
                                     </tr>
+                                    <form>
+                                        <tr>
+                                            <td><input name='name'></td>
+                                            <td><input name='customer'></td>
+                                            <td><input name='host'></td>
+                                            <td>
+                                                <button type='submit' style='display:none'>Chercher</button>
+                                                <a class='btn btn-secondary' href='project/all'><span class='glyphicon glyphicon-repeat'></span></button>
+                                            </td>
+                                        </tr>
+                                    </form>
                                     <?php
-                                        foreach ($project as $project){
-                                            echo "<tr class='tr2Tableau'>
-                                                <td>". $project->getName() ."</td>
-                                                <td>". $project->getCustomer()->getName() ."</td>
-                                                <td>". $project->getHost()->getName() ."</td>
-                                                <td>
-                                                    <a class='aTabl' href='Project/". $project->getId() ."'>Modifier</a>
-                                                </td>
-                                            </tr>";
-                                        }   
+                                        if (null === $projects){
+                                            echo '<tr><td colspan="4" style="text-align:center">Aucun projet</td></tr>';
+                                        }
+                                        else{
+                                            foreach ($projects as $project){
+                                                echo "<tr class='tr2Tableau'>
+                                                    <td>". $project->getName() ."</td>
+                                                    <td>". $project->getCustomer()->getName() ."</td>
+                                                    <td>". $project->getHost()->getName() ."</td>
+                                                    <td>
+                                                        <a class='aTabl' href='Project/". $project->getId() ."'>Modifier</a>
+                                                    </td>
+                                                </tr>";
+                                            }  
+                                        } 
                                     ?>
                                 </table>
 
