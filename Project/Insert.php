@@ -21,7 +21,7 @@ function verifyInput($var){
 }
 
 if (isset($_POST['submit'])){
-    $code = s\slugify('CUST_'. verifyInput($_POST['name']));
+    $code = s\slugify('CUST_'. verifyInput($_POST['name']), '_');
     $code = strtoupper($code);
     $lastpass_folder = (isset($_POST['lastpass_folder'])) ? $_POST['lastpass_folder'] : null ;
     $link_mock_ups = (isset($_POST['link_mock_ups'])) ? $_POST['link_mock_ups'] : null ;
