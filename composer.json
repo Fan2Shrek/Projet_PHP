@@ -1,0 +1,14 @@
+{
+    "name": "pierre/projet_php",
+    "description": "Projec de php",
+    "type": "library",
+    "autoload": {
+        "psr-4": {
+            "App\\": "src/"
+        }
+    },
+    "minimum-stability": "stable",
+    "require": {
+        "keyvanakbary/slugifier": "^4.0"
+    }
+}

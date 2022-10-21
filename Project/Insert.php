@@ -1,6 +1,6 @@
 <?php
 
-require '../src/autoloader.php';
+require '../vendor/autoload.php';
 
 use App\Classes\Customer;
 use App\Classes\Host;
@@ -9,6 +9,7 @@ use App\Repository\ProjectRepository;
 use App\Repository\CustomerRepository;
 use App\Repository\HostRepository;
 use App\Forms\Validator;
+use slugifier as s;
 
 $errors = array();
 
@@ -20,7 +21,8 @@ function verifyInput($var){
 }
 
 if (isset($_POST['submit'])){
-    $code = 'CUST_'. verifyInput($_POST['name']);
+    $code = s\slugify('CUST_'. verifyInput($_POST['name']));
+    $code = strtoupper($code);
     $lastpass_folder = (isset($_POST['lastpass_folder'])) ? $_POST['lastpass_folder'] : null ;
     $link_mock_ups = (isset($_POST['link_mock_ups'])) ? $_POST['link_mock_ups'] : null ;
     $managed_server = (isset($_POST['managed_server'])) ? 1 : 0;
