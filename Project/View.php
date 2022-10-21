@@ -4,13 +4,32 @@ require '../src/autoloader.php';
 
 use App\Repository\ProjectRepository;
 
-
-if (isset($_GET['name'])){
-    $projects = ProjectRepository::getByName($_GET['name']);
+$filtre = array();
+if (isset($_GET['name']) && $_GET['name'] != ''){
+    $filtre[] = ProjectRepository::getByName($_GET['name']);
+}
+if (isset($_GET['host']) && $_GET['host'] != ''){
+    $filtre[] = ProjectRepository::getProjectByHost($_GET['host']);
+}
+if (isset($_GET['customer']) && $_GET['customer'] != ''){
+    $filtre[] = ProjectRepository::getProjectByCustomer($_GET['customer']);
 }
 else{
     $projects = ProjectRepository::getProject();
 }
+
+if (!empty($filtre)){
+    if (count($filtre) == 1){
+        $projects = $filtre[0];
+    }
+    else if (count($filtre) ==2){
+        $projects = array_intersect($filtre[0], $filtre[1]);
+    }
+    else{
+        $projects = array_intersect($filtre[0], $filtre[1], $filtre[2]);
+    }
+}
+
 
 ?>
 
@@ -58,9 +77,9 @@ else{
                                     </tr>
                                     <form>
                                         <tr>
-                                            <td><input name='name'></td>
-                                            <td><input name='customer'></td>
-                                            <td><input name='host'></td>
+                                            <td><input name='name' value='<?php echo (isset($_GET['name'])) ? $_GET['name'] : "" ?>'></td>
+                                            <td><input name='customer' value='<?php echo (isset($_GET['customer'])) ? $_GET['customer'] : "" ?>'></td>
+                                            <td><input name='host' value='<?php echo (isset($_GET['host'])) ? $_GET['host'] : "" ?>'></td>
                                             <td>
                                                 <button type='submit' style='display:none'>Chercher</button>
                                                 <a class='btn btn-secondary' href='project/all'><span class='glyphicon glyphicon-repeat'></span></button>
@@ -68,7 +87,7 @@ else{
                                         </tr>
                                     </form>
                                     <?php
-                                        if (null === $projects){
+                                        if (empty($projects)){
                                             echo '<tr><td colspan="4" style="text-align:center">Aucun projet</td></tr>';
                                         }
                                         else{

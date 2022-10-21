@@ -84,33 +84,79 @@ class ProjectRepository{
     }
 
     public static function getByName(string $name): ?array{
+        $tab=array();
+
         $database = Connection::connect();
         $statement = $database->prepare('SELECT * FROM project WHERE name LIKE ?');
         $statement->execute(array('%'.$name.'%'));
-        $rep = $statement->fetch();
 
-        if (is_bool($rep)){
+        try{
+            while($pro = $statement->fetch()){
+                $host = HostRepository::getHostById($pro['host_id']);
+                $customer = CustomerRepository::getCustomerById($pro['customer_id']);
+                $temp = new Project($pro['id'], $pro['name'], $pro['code'], 
+                    $pro['lastpass_folder'], $pro['link_mock_ups'], 
+                    $pro['managed_server'], $pro['notes'], 
+                    $host, $customer);
+                $tab[] = $temp;
+            }
+        }
+        catch(int $i){
             return null;
         }
 
-        $tab=array();
-        $host = HostRepository::getHostById($rep['host_id']);
-        $customer = CustomerRepository::getCustomerById($rep['customer_id']);
-        $temp = new Project($rep['id'], $rep['name'], $rep['code'], 
-            $rep['lastpass_folder'], $rep['link_mock_ups'], 
-            $rep['managed_server'], $rep['notes'], 
-            $host, $customer);
-        $tab[] = $temp;
+        $database = Connection::disconnect();
+        return $tab;
+    }
 
-        while($pro = $statement->fetch()){
-            $host = HostRepository::getHostById($pro['host_id']);
-            $customer = CustomerRepository::getCustomerById($pro['customer_id']);
-            $temp = new Project($pro['id'], $pro['name'], $pro['code'], 
-                $pro['lastpass_folder'], $pro['link_mock_ups'], 
-                $pro['managed_server'], $pro['notes'], 
-                $host, $customer);
-            $tab[] = $temp;
+    public static function getProjectByHost(string $name): ?array{
+        $tab = array();
+        $database = Connection::connect();
+        $statement = $database->prepare('SELECT * FROM project WHERE host_id in 
+            (SELECT id FROM host WHERE name LIKE ?)');
+        $statement->execute(array('%'.$name.'%'));
+
+        try{
+            while($pro = $statement->fetch()){
+                $host = HostRepository::getHostById($pro['host_id']);
+                $customer = CustomerRepository::getCustomerById($pro['customer_id']);
+                $temp = new Project($pro['id'], $pro['name'], $pro['code'], 
+                    $pro['lastpass_folder'], $pro['link_mock_ups'], 
+                    $pro['managed_server'], $pro['notes'], 
+                    $host, $customer);
+                $tab[] = $temp;
+            }
         }
+        catch(int $i){
+            return null;
+        }
+
+        $database = Connection::disconnect();
+        return $tab;
+    }
+
+    public static function getProjectByCustomer(string $name): ?array{
+        $tab = array();
+        $database = Connection::connect();
+        $statement = $database->prepare('SELECT * FROM project WHERE host_id in 
+            (SELECT id FROM customer WHERE name LIKE ?)');
+        $statement->execute(array('%'.$name.'%'));
+
+        try{
+            while($pro = $statement->fetch()){
+                $host = HostRepository::getHostById($pro['host_id']);
+                $customer = CustomerRepository::getCustomerById($pro['customer_id']);
+                $temp = new Project($pro['id'], $pro['name'], $pro['code'], 
+                    $pro['lastpass_folder'], $pro['link_mock_ups'], 
+                    $pro['managed_server'], $pro['notes'], 
+                    $host, $customer);
+                $tab[] = $temp;
+            }
+        }
+        catch(int $i){
+            return null;
+        }
+
         $database = Connection::disconnect();
         return $tab;
     }

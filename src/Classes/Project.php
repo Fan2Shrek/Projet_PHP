@@ -29,6 +29,11 @@ class Project implements IdInterface, nameInterface, codeNoteInterface
     {
     }
 
+    public function __toString()
+    {
+        return $this->id;
+    }
+
     //lastpass_folder
     public function getLastpast_folder(): ?string
     {

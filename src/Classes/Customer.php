@@ -21,4 +21,9 @@ class Customer implements IdInterface, nameInterface, codeNoteInterface{
     )
     {
     }
+
+    public function __toString()
+    {
+        return $this->id;
+    }
 }
