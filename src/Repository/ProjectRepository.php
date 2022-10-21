@@ -138,7 +138,7 @@ class ProjectRepository{
     public static function getProjectByCustomer(string $name): ?array{
         $tab = array();
         $database = Connection::connect();
-        $statement = $database->prepare('SELECT * FROM project WHERE host_id in 
+        $statement = $database->prepare('SELECT * FROM project WHERE customer_id in 
             (SELECT id FROM customer WHERE name LIKE ?)');
         $statement->execute(array('%'.$name.'%'));
 

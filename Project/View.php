@@ -26,7 +26,7 @@ if (!empty($filtre)){
     else if (count($filtre) ==2){
         $projects = array_intersect($filtre[0], $filtre[1]);
     }
-    else{
+    else if (count($filtre) ==3){
         $projects = array_intersect($filtre[0], $filtre[1], $filtre[2]);
     }
 }
@@ -89,7 +89,7 @@ if (!empty($filtre)){
                                     </form>
                                     <?php
                                         if (empty($projects)){
-                                            echo '<tr><td colspan="4" style="text-align:center">Aucun projet</td></tr>';
+                                            echo '<tr><td colspan="4" style="text-align:center">Aucun projet ne corespond à votre recherche</td></tr>';
                                         }
                                         else{
                                             foreach ($projects as $project){
