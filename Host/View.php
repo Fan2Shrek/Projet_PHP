@@ -5,6 +5,7 @@ require '../src/autoloader.php';
 use App\Repository\HostRepository;
 
 $host = HostRepository::getHost();
+
 ?>
 
 <!DOCTYPE html>

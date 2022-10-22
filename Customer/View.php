@@ -5,6 +5,7 @@ require '../src/autoloader.php';
 use App\Repository\CustomerRepository;
 
 $customer = CustomerRepository::getCustomer();
+
 ?>
 
 <!DOCTYPE html>

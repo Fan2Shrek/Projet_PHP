@@ -48,7 +48,7 @@ if (isset($_POST['submit'])){
         
         <?php require '../layout/navbar.php' ?>
         
-        <section id="insertClient">
+        <section id="insert">
 
             <div class="container-fluid">
                 <div class="row">
