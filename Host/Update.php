@@ -5,6 +5,7 @@ require '../src/autoloader.php';
 use App\Classes\Host;
 use App\Repository\HostRepository;
 use App\Forms\Validator;
+use slugifier as s;
 
 function verifyInput($var){
     $var = trim($var);
@@ -18,7 +19,7 @@ if (isset($_GET['id'])){
 }
 
 if (isset($_POST['submit'])){
-    $code = 'HOST_'. verifyInput($_POST['name']);
+    $code = s\slugify('HOST_'. verifyInput($_POST['name']), '_');
     $newHost = new Host(0,
     verifyInput($_POST['name']),
     $code,
