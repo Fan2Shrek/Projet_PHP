@@ -34,7 +34,7 @@ if (!empty($filtre)){
 $nbPerPage = isset($_GET['nbPage']) ? $_GET['nbPage']: 15;
 $currentPage = isset($_GET['page']) ? $_GET['page']: 1;
 
-$pages = count($projects)/$nbPerPage;
+$pages = ceil(count($projects)/$nbPerPage);
 $allProject = array();
 
 for ($i=($currentPage-1)*$nbPerPage; $i<$currentPage*$nbPerPage; $i++){
@@ -42,6 +42,14 @@ for ($i=($currentPage-1)*$nbPerPage; $i<$currentPage*$nbPerPage; $i++){
 }
 
 $projects = $allProject;
+
+if(isset($_GET['page'])){
+    $uri = substr($_SERVER['REQUEST_URI'], 0, strpos($_SERVER['REQUEST_URI'], "&page="));
+}
+else{
+    $uri = $_SERVER['REQUEST_URI'];
+}
+
 
 ?>
 
@@ -121,23 +129,23 @@ $projects = $allProject;
                                 </table>
 
                                 <select name='nbPage' onchange="this.form.submit()">
-                                    <option value="5">5</option>
-                                    <option value="10">10</option>
-                                    <option value="15" selected>15</option>
-                                    <option value="20">20</option>
+                                    <option value="5" <?php echo (isset($_GET['nbPage']) && $_GET['nbPage']== 5) ?'selected': '' ?>>5</option>
+                                    <option value="10" <?php echo (isset($_GET['nbPage']) && $_GET['nbPage']== 10) ?'selected': '' ?>>10</option>
+                                    <option value="15" <?php echo (!isset($_GET['nbPage'])) ?'selected': '' ?>>15</option>
+                                    <option value="20" <?php echo (isset($_GET['nbPage']) && $_GET['nbPage']== 20) ?'selected': '' ?>>20</option>
                                 </select>
 
                                 <ul class="pagination">
-                                    <li class="page-item <?php ($currentPage == 1) ? "disabled" : "" ?>">
-                                        <a href="<?php echo $_SERVER['REQUEST_URI'].'&page='.$currentPage - 1 ?>" class="page-link">Précédente</a>
+                                    <li class="page-item">
+                                        <a <?php echo ($currentPage == 1) ? "" : "href='".$uri."&page=".$currentPage - 1 ."'"?> class="page-link">Précédente</a>
                                     </li>
                                     <?php for($page = 1; $page <= $pages; $page++): ?>
-                                        <li class="page-item <?php ($currentPage == $page) ? "active" : "" ?>">
-                                            <a href="<?php echo $_SERVER['REQUEST_URI'].'&page='.$page?>" class="page-link"><?= $page ?></a>
+                                        <li class="page-item <?php echo ($currentPage == $page) ? "active" : "" ?>">
+                                            <a href="<?php echo $uri.'&page='.$page?>" class="page-link"><?= $page ?></a>
                                         </li>
                                     <?php endfor ?>
-                                        <li class="page-item <?php ($currentPage == $pages) ? "disabled" : "" ?>">
-                                        <a href="<?php echo $_SERVER['REQUEST_URI'].'&page='.$currentPage + 1 ?>" class="page-link">Suivante</a>
+                                        <li class="page-item">
+                                        <a <?php echo ($currentPage == $pages) ? "" : "href='".$uri."&page=".$currentPage + 1 ."'"?> class="page-link">Suivante</a>
                                     </li>
                                 </ul>
 
