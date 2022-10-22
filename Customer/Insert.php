@@ -5,6 +5,9 @@ require '../src/autoloader.php';
 use App\Classes\Customer;
 use App\Repository\CustomerRepository;
 use App\Forms\Validator;
+use slugifier as s;
+
+use function slugifier\slugify;
 
 $errors = array();
 
@@ -16,7 +19,7 @@ function verifyInput($var){
 }
 
 if (isset($_POST['submit'])){
-    $code = 'CUST_'. verifyInput($_POST['name']);
+    $code = s\slugify('CUST_'. verifyInput($_POST['name']), '_');
     $customer = new Customer(0,
     $code,
     verifyInput($_POST['name']),
