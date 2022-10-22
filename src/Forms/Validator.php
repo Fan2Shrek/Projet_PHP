@@ -47,7 +47,7 @@ class Validator{
         }
 
         if (null == HostRepository::getHostById($project->getHost()->getId())){
-            $rep ["hostError"] = 'Veuillez renseigner un hebergeur';
+            $rep ["hostError"] = 'Veuillez renseigner un hébergeur';
         }
 
         if (null == CustomerRepository::getCustomerById($project->getCustomer()->getId())){

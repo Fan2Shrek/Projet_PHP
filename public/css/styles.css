@@ -258,7 +258,7 @@ footer h4{
 
 .btnAdd{
     position: relative;
-    margin-top: 30%;
+    margin-top: 8%;
     display: flex;
     justify-content: right; 
 }
@@ -293,7 +293,14 @@ footer h4{
 
 .btnAdd3{
     position: relative;
-    margin-top: 8%;
+    margin-top: 3%;
+    display: flex;
+    justify-content: right; 
+}
+
+.btnAdd6{
+    position: relative;
+    margin-top: 42%;
     display: flex;
     justify-content: right; 
 }
@@ -376,11 +383,17 @@ footer h4{
     border-radius: #ccc 5px;
 }
 
-/* VIEW PROJECTS */
+/* UPDATE PROJECT */
 
-a.active{
-    background-color: red;
+#update{
+    background-color: #ccc;
+    padding-bottom: 0px;
 }
+
+
+
+
+
 
 
 /* INDEX */

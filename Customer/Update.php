@@ -56,7 +56,7 @@ if (isset($_POST['submit_delete'])){
         
         <?php require '../layout/navbar.php' ?>
         
-        <section id="insertClient">
+        <section id="update">
 
             <div class="container-fluid">
                 <div class="row">
@@ -101,7 +101,7 @@ if (isset($_POST['submit_delete'])){
 
                                     <!-- bouton form -->
                                     <div class="col-lg-12 col-md-12 col-sm-12">
-                                        <div class="btnAdd3">   
+                                        <div class="btnAdd6">   
                                             <button type='submit' name='submit' class="btnInsertSave"><span class="glyphicon glyphicon-ok"></span> Sauvegarder</button>&emsp;
                                             <a href="#" data-toggle='modal' data-target='#modal'class="btnInsertSave"><span class="glyphicon glyphicon-trash"></span> Supprimer</a>
                                         </div>
