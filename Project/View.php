@@ -31,6 +31,17 @@ if (!empty($filtre)){
     }
 }
 
+$nbPerPage = isset($_GET['nbPage']) ? $_GET['nbPage']: 15;
+$currentPage = isset($_GET['page']) ? $_GET['page']: 1;
+
+$pages = count($projects)/$nbPerPage;
+$allProject = array();
+
+for ($i=($currentPage-1)*$nbPerPage; $i<$currentPage*$nbPerPage; $i++){
+    if (isset($projects[$i])) $allProject[] = $projects[$i];
+}
+
+$projects = $allProject;
 
 ?>
 
@@ -44,6 +55,9 @@ if (!empty($filtre)){
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
         <script src="public/js/script.js"></script>
         <link rel="stylesheet" href="public/css/styles.css">
+        <script>
+
+        </script>
     </head>
     
     <body>
@@ -86,7 +100,7 @@ if (!empty($filtre)){
                                                 <a class='btn btn-secondary' href='project/all'><span class='glyphicon glyphicon-repeat'></span></button>
                                             </td>
                                         </tr>
-                                    </form>
+                                    
                                     <?php
                                         if (empty($projects)){
                                             echo '<tr><td colspan="4" style="text-align:center">Aucun projet ne corespond à votre recherche</td></tr>';
@@ -105,6 +119,29 @@ if (!empty($filtre)){
                                         } 
                                     ?>
                                 </table>
+
+                                <select name='nbPage' onchange="this.form.submit()">
+                                    <option value="5">5</option>
+                                    <option value="10">10</option>
+                                    <option value="15" selected>15</option>
+                                    <option value="20">20</option>
+                                </select>
+
+                                <ul class="pagination">
+                                    <li class="page-item <?php ($currentPage == 1) ? "disabled" : "" ?>">
+                                        <a href="<?php echo $_SERVER['REQUEST_URI'].'&page='.$currentPage - 1 ?>" class="page-link">Précédente</a>
+                                    </li>
+                                    <?php for($page = 1; $page <= $pages; $page++): ?>
+                                        <li class="page-item <?php ($currentPage == $page) ? "active" : "" ?>">
+                                            <a href="<?php echo $_SERVER['REQUEST_URI'].'&page='.$page?>" class="page-link"><?= $page ?></a>
+                                        </li>
+                                    <?php endfor ?>
+                                        <li class="page-item <?php ($currentPage == $pages) ? "disabled" : "" ?>">
+                                        <a href="<?php echo $_SERVER['REQUEST_URI'].'&page='.$currentPage + 1 ?>" class="page-link">Suivante</a>
+                                    </li>
+                                </ul>
+
+                                </form>
 
                             </div>
 
