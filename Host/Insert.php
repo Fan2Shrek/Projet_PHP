@@ -95,7 +95,7 @@ if (isset($_POST['submit'])){
 
                                     <!-- bouton form -->
                                     <div class="col-lg-12 col-md-12 col-sm-12">
-                                        <div class="btnAdd">
+                                        <div class="btnAdd5">
                                             <a href="Host/View.php" class="btnInsert1">Annuler</a>&emsp;
                                             <button type='submit' name='submit' class="btnInsertSave"><span class="glyphicon glyphicon-ok"></span> Sauvegarder</button>
                                         </div>

@@ -79,86 +79,87 @@ if (isset($_POST['submit'])){
                         <!-- section -->
                         <div class="col-lg-12 col-md-12 col-sm-12">
 
-                        <h3 class="nouv">Nouveau projet</h3>
+                            <h3 class="nouv">Nouveau projet</h3>
 
-                            <div class="infoGenerale">
-                                <p><strong>INFORMATIONS GÉNÉRALES</strong></p>
+                                <div class="infoGenerale">
+                                    <p><strong>INFORMATIONS GÉNÉRALES</strong></p>
+                                </div>
                             </div>
-                        </div>
 
-                        <!-- debut carré -->
-                        <div class="col-lg-12 col-md-12 col-sm-12">
-                            <div class="addClient">
+                            <!-- debut carré -->
+                            <div class="col-lg-12 col-md-12 col-sm-12">
+                                <div class="addClient">
 
-                                <!-- début form -->
-                                <form method='Post'>
+                                    <!-- début form -->
+                                    <form method='Post'>
 
-                                    <!-- col-lg-6-->
-                                    <label class="lab" for='name'>Nom <span style="color:red">*</span></label>
-                                    <input name='name' class="AddClient" value="<?php echo (!isset($_POST['name']))? '' : $_POST['name'] ?>">
-                                    <p class="error"><?php echo (!isset($errors['nameError']))? '' : $errors['nameError'] ?></p>
+                                        <div class="col-lg-6 col-md-12 col-sm-12">
 
-                                    <br>
+                                        <!-- nom -->
+                                        <label class="lab" for='name'>Nom <span style="color:red">*</span></label>
+                                        <input name='name' class="AddProject" value="<?php echo (!isset($_POST['name']))? '' : $_POST['name'] ?>">
+                                        <p class="error"><?php echo (!isset($errors['nameError']))? '' : $errors['nameError'] ?></p><br>
 
-                                    <label class="lab">Code interne</label>
-                                    <button disabled="disabled" class="AddClient1">Champs généré automatiquement</button>
+                                        <!-- code -->
+                                        <label class="lab">Code interne</label>
+                                        <button disabled="disabled" class="AddClient1">Champs généré automatiquement</button><br><br>
+                                        
+                                        <!-- client -->
+                                        <label class="lab" for='customer'>Client <span style="color:red">*</span></label>
+                                        <select type="text" name='customer' class="select">  
+                                            <option disabled selected>Sélectionner un client</option>
+                                            <?php 
 
-                                    <br>
+                                            $customers = CustomerRepository::getCustomer();
 
-                                    <label class="lab" for='customer'>Client <span style="color:red">*</span></label>
-                                    <select type="text" name='customer' class="AddClient">  
-                                        <option disabled selected>Selectionnez un client</option>
-                                    <?php 
+                                            foreach ($customers as $customer) 
+                                            {
+                                                echo '<option value="'. $customer->getId() . '">'. $customer->getName() . '</option>';
+                                            }
 
-                                    $customers = CustomerRepository::getCustomer();
+                                            ?>
+                                        </select>
+                                        <p class="error"><?php echo (!isset($errors['customerError']))? '' : $errors['customerError'] ?></p><br>
 
-                                    foreach ($customers as $customer) 
-                                    {
-                                        echo '<option value="'. $customer->getId() . '">'. $customer->getName() . '</option>';
-                                    }
+                                        <!-- hebergeur -->
+                                        <label class="lab" for='host'>Herbergeur <span style="color:red">*</span></label>
+                                        <select type="text" name='host' class="select1">
+                                            <option disabled selected>Sélectionner un hébergeur</option>
+                                            <?php 
 
-                                    ?>
-                                    </select>
-                                    <p class="error"><?php echo (!isset($errors['customerError']))? '' : $errors['customerError'] ?></p>
+                                            $host = HostRepository::getHost();
 
-                                    <br>
+                                            foreach ($host as $host) 
+                                            {
+                                                echo '<option value="'. $host->getId() . '">'. $host->getName() . '</option>';
+                                            }
 
-                                    <label class="lab" for='host'>Herbergeur <span style="color:red">*</span></label>
-                                    <select type="text" name='host' class="AddClient">
-                                        <option disabled selected>Selectionnez un hebergeur</option>
+                                            ?>
+                                        </select>
+                                        <p class="error"><?php echo (!isset($errors['hostError']))? '' : $errors['hostError'] ?></p><br>
+                                        
+                                        <!-- serveur infogéré -->  
+                                        <label class="labCheck" for='managed_server'>
+                                        <input name='managed_server' type='checkbox'></label> Serveur infogéré<br><br>
+                                        
+                                        <!-- notes -->
+                                        <label class="lab2">Notes / remarques</label>
+                                        <textarea name='notes' class="AddProject2"><?php echo (!isset($_POST['notes']))? '' : $_POST['notes'] ?></textarea>
+                                        <p class="error"><?php echo (!isset($errors['notesError']))? '' : $errors['notesError'] ?></p>
+
+                                    </div>
+
+                                    <div class="col-lg-6 col-md-12 col-sm-12">
                                     
-                                    <?php 
-
-                                    $host = HostRepository::getHost();
-
-                                    foreach ($host as $host) 
-                                    {
-                                        echo '<option value="'. $host->getId() . '">'. $host->getName() . '</option>';
-                                    }
-
-                                    ?>
-
-                                    </select>
-                                    <p class="error"><?php echo (!isset($errors['hostError']))? '' : $errors['hostError'] ?></p>
-                                    
-                                    <label class="lab" for='managed_server'>Serveur infogéré</label>
-                                    <input name='managed_server' type='checkbox' class="AddClient" class="AddClient">
-
-                                    <label class="lab2">Notes / remarques</label>
-                                    <textarea name='notes' class="AddClient2"><?php echo (!isset($_POST['notes']))? '' : $_POST['notes'] ?></textarea>
-                                    <p class="error"><?php echo (!isset($errors['notesError']))? '' : $errors['notesError'] ?></p>
-
-
-
-                                    <!-- col-lg-6 -->
-
-                                    <div class='project-right'>
-                                        <label class="lab">Dossier Lastpass</label>
-                                        <input name='lastpass_folder' class="AddClient" value="<?php echo (!isset($_POST['lastpass_folder']))? '' : $_POST['lastpass_folder'] ?>">
-
-                                        <label class="lab">Lien maquettes</label>
-                                        <input name='link_mock_ups' class="AddClient" value="<?php echo (!isset($_POST['link_mock_ups']))? '' : $_POST['link_mock_ups'] ?>">
-                                    </div>                                    
+                                        <!-- dossier lastpass-->
+                                        <label class="lab3">Dossier Lastpass</label>
+                                        <input name='lastpass_folder' class="AddProject3" value="<?php echo (!isset($_POST['lastpass_folder']))? '' : $_POST['lastpass_folder'] ?>"><br>
+                                        
+                                        <!-- lien maquettes-->
+                                        <label class="lab4">Lien</label>
+                                        <input name='link_mock_ups' class="AddProject4" value="<?php echo (!isset($_POST['link_mock_ups']))? '' : $_POST['link_mock_ups'] ?>">
+                                     
+                                    </div>
                                     
                                     <!-- bouton form -->
                                     <div class="col-lg-12 col-md-12 col-sm-12">
