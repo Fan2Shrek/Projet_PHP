@@ -64,11 +64,10 @@ if (isset($_POST['submit'])){
         
         <?php require '../layout/navbar.php' ?>
         
-        <section id="insertClient">
+        <section id="insertProjet">
 
             <div class="container-fluid">
                 <div class="row">
-
                     
                     <div class="col-lg-3 col-md-3 col-sm-6">
                         <?php require '../layout/menu.php' ?>

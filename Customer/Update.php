@@ -101,10 +101,13 @@ if (isset($_POST['submit_delete'])){
 
                                     <!-- bouton form -->
                                     <div class="col-lg-12 col-md-12 col-sm-12">
-                                        <div class="btnAdd3"> 
-                                            <a href="Customer/View.php" class="btnInsert1">Annuler</a>&emsp;    
+                                        <div class="btnAdd3">   
                                             <button type='submit' name='submit' class="btnInsertSave"><span class="glyphicon glyphicon-ok"></span> Sauvegarder</button>&emsp;
                                             <a href="#" data-toggle='modal' data-target='#modal'class="btnInsertSave"><span class="glyphicon glyphicon-trash"></span> Supprimer</a>
+                                        </div>
+                                        <br>
+                                        <div class="btnAdd2">
+                                            <a href="Customer/View.php" class="btnInsert1">Annuler</a> 
                                         </div>
 
                                         <!-- modal suppression -->
