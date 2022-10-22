@@ -311,6 +311,12 @@ footer h4{
     bottom: 570px;
 }
 
+/* VIEW PROJECTS */
+
+a.active{
+    background-color: red;
+}
+
 
 /* INDEX */
 

@@ -13,7 +13,7 @@ class HostRepository{
         $statement = $database->prepare('SELECT * FROM host WHERE id = ?');
         $statement->execute(array($id));
         $rep = $statement->fetch();
-        $host = ($rep) ? new Host ($id, $rep['code'], $rep['name'], $rep['notes']) : null;
+        $host = ($rep) ? new Host ($id, $rep['name'], $rep['code'], $rep['notes']) : null;
         $database = Connection::disconnect();
         return $host;
     }
