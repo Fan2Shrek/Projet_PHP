@@ -1,6 +1,6 @@
 <?php 
 
-require '../src/autoloader.php';
+require '../vendor/autoload.php';
 
 use App\Classes\Customer;
 use App\Classes\Host;

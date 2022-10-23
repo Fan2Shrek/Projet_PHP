@@ -1,6 +1,6 @@
 <?php 
 
-require '../src/autoloader.php';
+require '../vendor/autoload.php';
 
 use App\Classes\Customer;
 use App\Repository\CustomerRepository;
@@ -19,7 +19,7 @@ if (isset($_GET['id'])){
 }
 
 if (isset($_POST['submit'])){
-    $code = s\slugify('CUST_'. verifyInput($_POST['name']), '_');
+    $code = 'CUST_'. s\slugify(verifyInput($_POST['name']), '_');
     $newCustomer = new Customer(0,
     $code,
     verifyInput($_POST['name']),

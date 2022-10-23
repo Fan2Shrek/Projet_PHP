@@ -1,6 +1,6 @@
 <?php 
 
-require '../src/autoloader.php';
+require '../vendor/autoload.php';
 
 use App\Classes\Host;
 use App\Repository\HostRepository;
@@ -19,7 +19,7 @@ if (isset($_GET['id'])){
 }
 
 if (isset($_POST['submit'])){
-    $code = s\slugify('HOST_'. verifyInput($_POST['name']), '_');
+    $code = 'HOST_' . s\slugify(verifyInput($_POST['name']), '_');
     $newHost = new Host(0,
     verifyInput($_POST['name']),
     $code,
