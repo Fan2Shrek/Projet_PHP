@@ -29,6 +29,7 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `contact` (
   `id` int(11) NOT NULL,
+  `name` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
   `phone_number` varchar(255) NOT NULL,
   `role` varchar(255) NOT NULL,
@@ -40,32 +41,32 @@ CREATE TABLE `contact` (
 -- Déchargement des données de la table `contact`
 --
 
-INSERT INTO `contact` (`id`, `email`, `phone_number`, `role`, `host_id`, `customer_id`) VALUES
-(1, 'dyson@contact.fr', '0344853614', 'Client', NULL, 1),
-(2, 'ca@contact.fr', '0344812514', 'Client', NULL, 2),
-(3, 'citroen@contact.fr', '0344813614', 'Client', NULL, 3),
-(4, 'philips@contact.fr', '0344818414', 'Client', NULL, 4),
-(5, 'orpi@contact.fr', '0344812314', 'Client', NULL, 5),
-(6, 'saint-gobain@contact.fr', '0344851354', 'Client', NULL, 6),
-(7, 'pmu@contact.fr', '0344100814', 'Client', NULL, 7),
-(8, 'pocalin@contact.fr', '0344817314', 'Client', NULL, 8),
-(9, 'cofidis@contact.fr', '0344853614', 'Client', NULL, 9),
-(10, 'ipsec@contact.fr', '0344853452', 'Client', NULL, 10),
-(11, 'eads@contact.f', '0344060606', 'Client', NULL, 11),
-(12, 'corporate@hotelbb.com', '0892788115', 'Client', NULL, 12),
-(13, 'marketing@assystem.com', '0341252900', 'Client', NULL, 13),
-(14, 'contact@ionos.fr', '0970808911', 'Hébergeur web', 1, NULL),
-(15, 'fr@hostinger.com', '0892977093', 'Hébergeur web', 2, NULL),
-(16, 'investors@godaddy.com', '0975187039', 'Gestion nom de domaine', 3, NULL),
-(17, 'support@gator.com', '0891150447', 'Hébergeur web', 4, NULL),
-(18, 'contact@com-network.fr', '03825745692', 'Gestion nom de domaine', 5, NULL),
-(19, 'contacta2hosting.com', '1734-222-4678', 'Hébergeur web', 6, NULL),
-(20, 'contact@inmotion.com', '888-321-4678', 'Hébergeur web', 7, NULL),
-(21, 'marketing@webhostingpad.com', '1847346180', 'Hébergeur web', 8, NULL),
-(22, 'contact@007hebergement.com', '0177623003', 'Hébergeur web', 9, NULL),
-(23, 'support@planethoster.com', '0176604143', 'Hébergeur web', 10, NULL),
-(24, 'support@ovh.com', '0972101007', 'Hébergeur web', 11, NULL),
-(25, 'support@lws.com', '0177623003', 'Hébergeur web', 12, NULL);
+INSERT INTO `contact` (`id`, `name`, `email`, `phone_number`, `role`, `host_id`, `customer_id`) VALUES
+(1, 'John Codeur', 'dyson@contact.fr', '0344853614', 'Client', NULL, 1),
+(2, 'Hugo Dupont', 'ca@contact.fr', '0344812514', 'Client', NULL, 2),
+(3, 'John Doe', 'citroen@contact.fr', '0344813614', 'Client', NULL, 3),
+(4, 'Josuke Higashikata', 'philips@contact.fr', '0344818414', 'Client', NULL, 4),
+(5, 'Nabil Ferry', 'orpi@contact.fr', '0344812314', 'Client', NULL, 5),
+(6, 'Loris Jolie', 'saint-gobain@contact.fr', '0344851354', 'Client', NULL, 6),
+(7, 'Titouan Trotinnette', 'pmu@contact.fr', '0344100814', 'Client', NULL, 7),
+(8, 'Pierre Aitrofort', 'pocalin@contact.fr', '0344817314', 'Client', NULL, 8),
+(9, 'Katy Ferry', 'cofidis@contact.fr', '0344853614', 'Client', NULL, 9),
+(10, 'Matthieu Ducil', 'ipsec@contact.fr', '0344853452', 'Client', NULL, 10),
+(11, 'Edouard Elric', 'eads@contact.f', '0344060606', 'Client', NULL, 11),
+(12, 'Theodort Grasset', 'corporate@hotelbb.com', '0892788115', 'Client', NULL, 12),
+(13, 'Jesus de Nazareth', 'marketing@assystem.com', '0341252900', 'Client', NULL, 13),
+(14, 'Christofer Palado', 'contact@ionos.fr', '0970808911', 'Hébergeur web', 1, NULL),
+(15, 'Alex Tiso', 'fr@hostinger.com', '0892977093', 'Hébergeur web', 2, NULL),
+(16, 'Ismaelle Venouillie', 'investors@godaddy.com', '0975187039', 'Gestion nom de domaine', 3, NULL),
+(17, 'Julia Blaze', 'support@gator.com', '0891150447', 'Hébergeur web', 4, NULL),
+(18, 'Oscar Koichi', 'contact@com-network.fr', '03825745692', 'Gestion nom de domaine', 5, NULL),
+(19, 'Jean-Pierre Polnareff', 'contacta2hosting.com', '1734-222-4678', 'Hébergeur web', 6, NULL),
+(20, 'Cassidy McCree', 'contact@inmotion.com', '888-321-4678', 'Hébergeur web', 7, NULL),
+(21, 'Noémie Pirame', 'marketing@webhostingpad.com', '1847346180', 'Hébergeur web', 8, NULL),
+(22, 'Eric Dufour', 'contact@007hebergement.com', '0177623003', 'Hébergeur web', 9, NULL),
+(23, 'Sam Grathleku', 'support@planethoster.com', '0176604143', 'Hébergeur web', 10, NULL),
+(24, 'Jim Kim-Young', 'support@ovh.com', '0972101007', 'Hébergeur web', 11, NULL),
+(25, 'Chloe Descure', 'support@lws.com', '0177623003', 'Hébergeur web', 12, NULL);
 
 -- --------------------------------------------------------
 
