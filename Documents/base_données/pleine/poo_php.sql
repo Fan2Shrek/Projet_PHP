@@ -154,18 +154,18 @@ CREATE TABLE `host` (
 --
 
 INSERT INTO `host` (`id`, `code`, `name`, `notes`) VALUES
-(1, 'HOST_IONOS', 'HOST_IONOS', 'Ceci est un hébergeur'),
-(2, 'HOST_HOSTINGER', 'HOST_HOSTINGER', 'Ceci est un autre hébergeur'),
-(3, 'HOST_GODADDY', 'HOST_GODADDY', 'Ceci est un troisième hébergeur'),
-(4, 'HOST_HOSTGATOR', 'HOST_HOSTGATOR', 'Ceci est un quatrième hébergeur'),
-(5, 'HOST_NETWORK_SOLUTIONS', 'HOST_NETWORK_SOLUTIONS', 'Ceci est un cinquième hébergeur'),
-(6, 'HOST_A2_HOSTING', 'HOST_A2_HOSTING', 'Ceci est un sixième hébergeur'),
-(7, 'HOST_INMOTION', 'HOST_INMOTION', 'Ceci est un septième hébergeur'),
-(8, 'HOST_WEBHOSTINGPAD', 'HOST_WEBHOSTINGPAD', 'Ceci est un huitième hébergeur'),
-(9, 'HOST_007HEBERGEMENT', 'HOST_007HEBERGEMENT', 'Ceci est un neuvième hébergeur'),
-(10, 'HOST_PLANETHOSTER', 'OST_PLANETHOSTER', 'Ceci est un dixième hébergeur'),
-(11, 'HOST_OVH', 'HOST_OVH', 'Ceci est un onzième hébergeur'),
-(12, 'LWS', 'HOST_LWS', 'Ceci est un douzième hébergeur');
+(1, 'HOST_IONOS', 'IONOS', 'Ceci est un hébergeur'),
+(2, 'HOST_HOSTINGER', 'HOSTINGER', 'Ceci est un autre hébergeur'),
+(3, 'HOST_GODADDY', 'GODADDY', 'Ceci est un troisième hébergeur'),
+(4, 'HOST_HOSTGATOR', 'HOSTGATOR', 'Ceci est un quatrième hébergeur'),
+(5, 'HOST_NETWORK_SOLUTIONS', 'NETWORK_SOLUTIONS', 'Ceci est un cinquième hébergeur'),
+(6, 'HOST_A2_HOSTING', 'A2_HOSTING', 'Ceci est un sixième hébergeur'),
+(7, 'HOST_INMOTION', 'INMOTION', 'Ceci est un septième hébergeur'),
+(8, 'HOST_WEBHOSTINGPAD', 'WEBHOSTINGPAD', 'Ceci est un huitième hébergeur'),
+(9, 'HOST_007HEBERGEMENT', '007HEBERGEMENT', 'Ceci est un neuvième hébergeur'),
+(10, 'HOST_PLANETHOSTER', 'PLANETHOSTER', 'Ceci est un dixième hébergeur'),
+(11, 'HOST_OVH', 'OVH', 'Ceci est un onzième hébergeur'),
+(12, 'HOST_LWS', 'LWS', 'Ceci est un douzième hébergeur');
 
 -- --------------------------------------------------------
 
