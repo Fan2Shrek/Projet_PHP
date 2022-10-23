@@ -64,7 +64,7 @@ INSERT INTO `contact` (`id`, `name`, `email`, `phone_number`, `role`, `host_id`,
 (20, 'Cassidy McCree', 'contact@inmotion.com', '888-321-4678', 'Hébergeur web', 7, NULL),
 (21, 'Noémie Pirame', 'marketing@webhostingpad.com', '1847346180', 'Hébergeur web', 8, NULL),
 (22, 'Eric Dufour', 'contact@007hebergement.com', '0177623003', 'Hébergeur web', 9, NULL),
-(23, 'Sam Grathleku', 'support@planethoster.com', '0176604143', 'Hébergeur web', 10, NULL),
+(23, 'Jean lecompte', 'support@planethoster.com', '0176604143', 'Hébergeur web', 10, NULL),
 (24, 'Jim Kim-Young', 'support@ovh.com', '0972101007', 'Hébergeur web', 11, NULL),
 (25, 'Chloe Descure', 'support@lws.com', '0177623003', 'Hébergeur web', 12, NULL);
 
@@ -88,16 +88,16 @@ CREATE TABLE `customer` (
 INSERT INTO `customer` (`id`, `code`, `name`, `notes`) VALUES
 (1, 'CUST_DYSON', 'DYSON', 'Ceci est un client'),
 (2, 'CUST_CREDIT_AGRICOLE', 'CREDIT AGRICOLE', 'Ceci est un autre client'),
-(3, 'CUST_CITROEN', 'CITROEN', 'Ceci est un troisiÃ¨me client'),
-(4, 'CUST_PHILIPS', 'PHILIPS', 'Ceci est un quatriÃ¨me client'),
-(5, 'CUST_ORPI', 'ORPI', 'Ceci est un cinquiÃ¨me client'),
-(6, 'CUST_SAINT_GOBAIN', 'SAINT-GOBAIN', 'Ceci est un sixiÃ¨me client'),
-(7, 'CUST_PMU', 'PMU', 'Ceci est un septiÃ¨me client'),
-(8, 'CUST_POCLAIN_HYDRAULICS', 'POCLAIN HYDRAULICS', 'Ceci est un huitiÃ¨me client'),
-(9, 'CUST_COFIDIS', 'COFIDIS', 'Ceci est un neuviÃ¨me client'),
-(10, 'CUST_IPSEC', 'IPSEC', 'Ceci est un dixiÃ¨me client'),
-(11, 'CUST_EADS', 'EADS', 'Ceci est un onziÃ¨me client'),
-(12, 'CUST_B&B_HOTELS', 'B&B HOTELS', 'Ceci est un douziÃ¨me client'),
+(3, 'CUST_CITROEN', 'CITROEN', 'Ceci est un troisième client'),
+(4, 'CUST_PHILIPS', 'PHILIPS', 'Ceci est un quatrième client'),
+(5, 'CUST_ORPI', 'ORPI', 'Ceci est un cinquième client'),
+(6, 'CUST_SAINT_GOBAIN', 'SAINT-GOBAIN', 'Ceci est un sixième client'),
+(7, 'CUST_PMU', 'PMU', 'Ceci est un septième client'),
+(8, 'CUST_POCLAIN_HYDRAULICS', 'POCLAIN HYDRAULICS', 'Ceci est un huitième client'),
+(9, 'CUST_COFIDIS', 'COFIDIS', 'Ceci est un neuvième client'),
+(10, 'CUST_IPSEC', 'IPSEC', 'Ceci est un dixième client'),
+(11, 'CUST_EADS', 'EADS', 'Ceci est un onzième client'),
+(12, 'CUST_B&B_HOTELS', 'B&B HOTELS', 'Ceci est un douzième client'),
 (13, 'CUST_ASSYSTEM', 'ASSYSTEM', 'Ceci est un autre client');
 
 -- --------------------------------------------------------
@@ -154,18 +154,18 @@ CREATE TABLE `host` (
 --
 
 INSERT INTO `host` (`id`, `code`, `name`, `notes`) VALUES
-(1, 'HOST_IONOS', 'HOST_HOST_IONOS', 'Ceci est un hÃ©bergeur'),
-(2, 'HOST_HOSTINGER', 'HOST_HOST_HOSTINGER', 'Ceci est un autre hÃ©bergeur'),
-(3, 'HOST_GODADDY', 'HOST_HOST_GODADDY', 'Ceci est un troisiÃ¨me hÃ©bergeur'),
-(4, 'HOST_HOSTGATOR', 'HOST_HOST_HOSTGATOR', 'Ceci est un quatriÃ¨me hÃ©bergeur'),
-(5, 'HOST_NETWORK_SOLUTIONS', 'HOST_HOST_NETWORK_SOLUTIONS', 'Ceci est un cinquiÃ¨me hÃ©bergeur'),
-(6, 'HOST_A2_HOSTING', 'HOST_HOST_A2_HOSTING', 'Ceci est un sixiÃ¨me hÃ©bergeur'),
-(7, 'HOST_INMOTION', 'HOST_HOST_INMOTION', 'Ceci est un septiÃ¨me hÃ©bergeur'),
-(8, 'HOST_WEBHOSTINGPAD', 'HOST_HOST_WEBHOSTINGPAD', 'Ceci est un huitiÃ¨me hÃ©bergeur'),
-(9, 'HOST_007HEBERGEMENT', 'HOST_HOST_007HEBERGEMENT', 'Ceci est un neuviÃ¨me hÃ©bergeur'),
-(10, 'HOST_PLANETHOSTER', 'HOST_HOST_PLANETHOSTER', 'Ceci est un dixiÃ¨me hÃ©bergeur'),
-(11, 'HOST_OVH', 'HOST_HOST_OVH', 'Ceci est un onziÃ¨me hÃ©bergeur'),
-(12, 'LWS', 'HOST_LWS', 'Ceci est un douziÃ¨me hÃ©bergeur');
+(1, 'HOST_IONOS', 'HOST_IONOS', 'Ceci est un hébergeur'),
+(2, 'HOST_HOSTINGER', 'HOST_HOSTINGER', 'Ceci est un autre hébergeur'),
+(3, 'HOST_GODADDY', 'HOST_GODADDY', 'Ceci est un troisième hébergeur'),
+(4, 'HOST_HOSTGATOR', 'HOST_HOSTGATOR', 'Ceci est un quatrième hébergeur'),
+(5, 'HOST_NETWORK_SOLUTIONS', 'HOST_NETWORK_SOLUTIONS', 'Ceci est un cinquième hébergeur'),
+(6, 'HOST_A2_HOSTING', 'HOST_A2_HOSTING', 'Ceci est un sixième hébergeur'),
+(7, 'HOST_INMOTION', 'HOST_INMOTION', 'Ceci est un septième hébergeur'),
+(8, 'HOST_WEBHOSTINGPAD', 'HOST_WEBHOSTINGPAD', 'Ceci est un huitième hébergeur'),
+(9, 'HOST_007HEBERGEMENT', 'HOST_007HEBERGEMENT', 'Ceci est un neuvième hébergeur'),
+(10, 'HOST_PLANETHOSTER', 'OST_PLANETHOSTER', 'Ceci est un dixième hébergeur'),
+(11, 'HOST_OVH', 'HOST_OVH', 'Ceci est un onzième hébergeur'),
+(12, 'LWS', 'HOST_LWS', 'Ceci est un douzième hébergeur');
 
 -- --------------------------------------------------------
 
