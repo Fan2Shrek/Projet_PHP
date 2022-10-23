@@ -66,7 +66,7 @@ class Contact implements IdInterface
 		$this->host = $host;
 	}
 
-	public function getCustomer(): Customer 
+	public function getCustomer(): ?Customer 
 	{
 		return $this->customer;
 	}

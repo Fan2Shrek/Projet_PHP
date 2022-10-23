@@ -5,6 +5,7 @@ namespace App\Forms;
 use App\Classes\Customer;
 use App\Classes\Host;
 use App\Classes\Project;
+use App\Classes\Contact;
 use App\Repository\CustomerRepository;
 use App\Repository\HostRepository;
 
@@ -55,5 +56,16 @@ class Validator{
         }
 
         return (empty($rep))? null : $rep;
+    }
+
+    //Contact
+    public static function checkContact(Contact $contact): ?array{
+    $rep = array();
+
+    if (null === $contact->getHost() && null === $contact->getCustomer()){
+        $rep['hostCusError'] = 'Veuillez renseigner soit un client, soit un hébergeur';
+    }
+
+    return (empty($rep))? null : $rep;
     }
 }

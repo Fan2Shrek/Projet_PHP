@@ -26,10 +26,19 @@ RewriteRule ^Host/new Host/Insert.php [L,NC]
 RewriteRule ^Host/([0-9]+)  Host/Update.php?id=$1 [L,NC]
 
 #--------------------------------------------------
-# Répertoire : /PROJECT/
+# Répertoire : /Project/
 #--------------------------------------------------
 
 RewriteRule ^Project/all   Project/View.php [L,NC]
 RewriteRule ^Project/new Project/Insert.php [L,NC]
 
 RewriteRule ^Project/([0-9]+)  Project/Update.php?id=$1 [L,NC]
+
+#--------------------------------------------------
+# Répertoire : /Contact/
+#--------------------------------------------------
+
+RewriteRule ^Contact/all   Contact/View.php [L,NC]
+RewriteRule ^Contact/new Contact/Insert.php [L,NC]
+
+RewriteRule ^Contact/([0-9]+)  Contact/Update.php?id=$1 [L,NC]
