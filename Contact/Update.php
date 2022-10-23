@@ -75,7 +75,7 @@ if (isset($_POST['submit_delete'])){
                         <div class="col-lg-12 col-md-12 col-sm-12">
                             <h3 class="nouv"><?php echo $host->getName();?></h3>
                             <div class="infoGenerale">
-                                <p><strong>INFORMATIONS GÉNÉRALES</strong></p>
+                                <a href='Host/<?php echo $_GET['id']?>'><strong>INFORMATIONS GÉNÉRALES</strong></p>
                             </div>
                             <div class='contactBtn'>
                                 <a href='Contact/<?php echo $_GET['id']?>'><strong>Contact</strong></a>
