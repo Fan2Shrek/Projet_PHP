@@ -46,6 +46,7 @@ $contacts = ContactRepository::getContact();
                                 <table class="table table-bordered" id="tabClient">
                                     <tr class="trTableau">
                                         <th>NOM</th>
+                                        <th>CONTACT</th>
                                         <th>CODE</th>
                                         <th>ROLE</th>
                                         <th>CLIENT</th>
@@ -55,6 +56,7 @@ $contacts = ContactRepository::getContact();
                                     <?php
                                         foreach ($contacts as $contact){
                                             echo "<tr class='tr2Tableau'>
+                                                <td>". $contact->getName() ."</td>
                                                 <td>". $contact->getEmail() ."</td>
                                                 <td>". $contact->getPhone() ."</td>
                                                 <td>". $contact->getRole() ."</td>
