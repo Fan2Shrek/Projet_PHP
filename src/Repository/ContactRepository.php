@@ -65,4 +65,16 @@ class ContactRepository{
         $statement->execute(array($contact->getId()));
         $database = Connection::disconnect();
     }
+
+    public static function getContactByHost(int $id): ?array{
+        $rep = array();
+        $database = Connection::connect();
+        $statement = $database->prepare('SELECT * FROM contact WHERE host_id = ?');
+        $statement->execute(array($id));
+        while ($con = $statement->fetch()){
+            $rep[] = new Contact($con['id'], $con['name'], $con['email'], $con['phone_number'], $con['role'], host : HostRepository::getHostById($id));
+        }
+        $database = Connection::disconnect();
+        return $rep;
+    }
 }

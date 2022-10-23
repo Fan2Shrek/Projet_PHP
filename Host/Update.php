@@ -75,6 +75,9 @@ if (isset($_POST['submit_delete'])){
                             <div class="infoGenerale">
                                 <p><strong>INFORMATIONS GÉNÉRALES</strong></p>
                             </div>
+                            <div class='contactBtn'>
+                                <a href='Contact/<?php echo $_GET['id']?>'><strong>Contact</strong></a>
+                            </div>
                         </div>
 
                         <!-- debut carré -->

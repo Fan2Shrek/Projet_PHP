@@ -391,9 +391,24 @@ footer h4{
 }
 
 
+/* CONTACT */
 
+.contactBtn{
+    background-color: grey;
+    position: relative;
+    padding: 10px 10px;
+    text-align: center;
+    width: 273px;
+    height: 50px;
+    left: 273px;
+    bottom: 50px;
+    color: white !important;
+    text-decoration: none;
+}
 
-
+.contactBtn:hover{
+    text-decoration: none;
+}
 
 
 /* INDEX */
