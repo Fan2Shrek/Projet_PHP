@@ -20,7 +20,7 @@ if (isset($_POST['submit'])){
     $code = 'HOST_' . s\slugify(verifyInput($_POST['name']), '_');
     $host = new Host(0,
     verifyInput($_POST['name']),
-    $code,
+    strtoupper($code),
     verifyInput($_POST['notes']));
 
     $errors = Validator::checkHost($host);

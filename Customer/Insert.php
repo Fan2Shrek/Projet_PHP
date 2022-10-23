@@ -21,7 +21,7 @@ function verifyInput($var){
 if (isset($_POST['submit'])){
     $code = 'CUST_'. s\slugify(verifyInput($_POST['name']), '_');
     $customer = new Customer(0,
-    $code,
+    strtoupper($code),
     verifyInput($_POST['name']),
     verifyInput($_POST['notes']));
 

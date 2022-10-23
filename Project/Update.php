@@ -26,9 +26,10 @@ if (isset($_GET['id'])){
 
 /* update */
 if (isset($_POST['submit'])){
+    $code = 'PROJECT_'. s\slugify(verifyInput($_POST['name']), '_');
     $newProject = new Project(0,
     verifyInput($_POST['name']),
-    $code = s\slugify('PROJECT_'. verifyInput($_POST['name']), '_'),
+    $code = strtoupper($code),
     verifyInput($_POST['lastpass_folder']),
     verifyInput($_POST['link_mock_ups']),
     verifyInput($_POST['managed_server']),
