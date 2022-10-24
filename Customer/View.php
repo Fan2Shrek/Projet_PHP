@@ -70,7 +70,7 @@ else{
         
         <?php require '../layout/navbar.php' ?>
         
-        <section id="viewClient">
+        <section id="View">
 
             <div class="container-fluid">
                 <div class="row">
@@ -108,12 +108,12 @@ else{
                                             <!-- filtre -->
                                             
                                                 <tr>
-                                                    <td><input name='code' value='<?php echo (isset($_GET['code'])) ? $_GET['code'] : "" ?>'></td>
-                                                    <td><input name='name' value='<?php echo (isset($_GET['name'])) ? $_GET['name'] : "" ?>'></td>
-                                                    <td><input name='notes' value='<?php echo (isset($_GET['notes'])) ? $_GET['notes'] : "" ?>'></td>
+                                                    <td><input class="inputSearch" name='code' value='<?php echo (isset($_GET['code'])) ? $_GET['code'] : "" ?>'></td>
+                                                    <td><input class="inputSearch" name='name' value='<?php echo (isset($_GET['name'])) ? $_GET['name'] : "" ?>'></td>
+                                                    <td><input class="inputSearch" name='notes' value='<?php echo (isset($_GET['notes'])) ? $_GET['notes'] : "" ?>'></td>
                                                     <td>
                                                         <button type='submit' style='display:none'>Chercher</button>
-                                                        <a class='btn btn-secondary' href='customer/all'><span class='glyphicon glyphicon-repeat'></span></button>
+                                                        <a class='reset' href='customer/all'>&emsp;&emsp;X</button>
                                                     </td>
                                                 </tr>
                                             
@@ -139,39 +139,53 @@ else{
                                         </table>
 
                                         <!-- pagination choix affichage -->
-                                        <select name='nbPage' onchange="this.form.submit()">
-                                            <option value="5" <?php echo (isset($_GET['nbPage']) && $_GET['nbPage']== 5) ?'selected': '' ?>>5</option>
-                                            <option value="10" <?php echo (isset($_GET['nbPage']) && $_GET['nbPage']== 10) ?'selected': '' ?>>10</option>
-                                            <option value="15" <?php echo (!isset($_GET['nbPage'])) ?'selected': '' ?>>15</option>
-                                            <option value="20" <?php echo (isset($_GET['nbPage']) && $_GET['nbPage']== 20) ?'selected': '' ?>>20</option>
-                                        </select>
+                                        <div class="col-lg-3 col-md-3 sm-3"> 
+                                            <div class="paginationCSS">                                          
+                                                <label class="labelPagination">Résultats/pages&emsp;</label>
+                                                <select name='nbPage' onchange="this.form.submit()" class="selectPagination">
+                                                    <option value="5" <?php echo (isset($_GET['nbPage']) && $_GET['nbPage']== 5) ?'selected': '' ?>>5</option>
+                                                    <option value="10" <?php echo (isset($_GET['nbPage']) && $_GET['nbPage']== 10) ?'selected': '' ?>>10</option>
+                                                    <option value="15" <?php echo (!isset($_GET['nbPage'])) ?'selected': '' ?>>15</option>
+                                                    <option value="20" <?php echo (isset($_GET['nbPage']) && $_GET['nbPage']== 20) ?'selected': '' ?>>20</option>
+                                                </select>
+                                            </div>
+                                        </div>
 
                                         <!-- pagination boutons -->
-                                        <ul class="pagination">
-                                            <li class="page-item">
-                                                <a <?php echo ($currentPage == 1) ? "" : "href='".$uri."&page=".$currentPage - 1 ."'"?> class="page-link">Précédente</a>
-                                            </li>
-                                            <?php for($page = 1; $page <= $pages; $page++): ?>
-                                                <li class="page-item <?php echo ($currentPage == $page) ? "active" : "" ?>">
-                                                    <a href="<?php echo $uri.'&page='.$page?>" class="page-link"><?= $page ?></a>
-                                                </li>
-                                            <?php endfor ?>
+                                        <div class="col-lg-3 col-md-3 col-sm-3">                                                                
+                                            <ul class="pagination">
                                                 <li class="page-item">
-                                                <a <?php echo ($currentPage == $pages) ? "" : "href='".$uri."&page=".$currentPage + 1 ."'"?> class="page-link">Suivante</a>
-                                            </li>
-                                        </ul>
+                                                    <a <?php echo ($currentPage == 1) ? "" : "href='".$uri."&page=".$currentPage - 1 ."'"?> class="page-link"><span class="glyphicon glyphicon-chevron-left"></span></a>
+                                                </li>
+                                                <?php for($page = 1; $page <= $pages; $page++): ?>
+                                                    <li class="page-item <?php echo ($currentPage == $page) ? "active" : "" ?>">
+                                                        <a href="<?php echo $uri.'&page='.$page?>" class="page-link"><?= $page ?></a>
+                                                    </li>
+                                                <?php endfor ?>
+                                                    <li class="page-item" >
+                                                    <a <?php echo ($currentPage == $pages) ? "" : "href='".$uri."&page=".$currentPage + 1 ."'"?> class="page-link"><span class="glyphicon glyphicon-chevron-right"></span></a>
+                                                </li>
+                                            </ul>                                            
+                                        </div>
+                                        
+                                        <!-- liens -->
+                                        <div class="col-lg-3 col-lg-offset-1 col-md-3 col-sm-3">
+                                            <div class="tableauBouton">                                          
+                                                <a href='' class="btnBlanc"><span class="glyphicon glyphicon-file"></span>&emsp;EXPORTER</a>&emsp;
+                                            </div>                                           
+                                        </div>                                                
+                                    
+                                        <!-- liens -->
+                                        <div class="col-lg-2 col-md-3 col-sm-3">
+                                            <div class="tableauBouton">
+                                                <a href='Customer/Insert.php' class="btnOrange">+ AJOUTER</a>
+                                            </div>                                           
+                                        </div>
 
                                     </form>
-
+                                
                                 </div>
-
-                                <!-- lien -->
-                                <div class="btnAdd2">
-                                    <a href='Customer/Insert.php' class="btnInsertLien">+ Ajouter</a>&emsp;
-                                </div>
-
-                                <br>
-
+                            
                             </div>
                         </div>
 
