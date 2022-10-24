@@ -27,6 +27,8 @@ if (isset($_GET['id'])){
 /* update */
 if (isset($_POST['submit'])){
     $code = 'PROJECT_'. s\slugify(verifyInput($_POST['name']), '_');
+    $host = (isset($_POST['host'])) ? HostRepository::getHostById($_POST['host']) : new Host(0,0,0,0);
+    $customer = (isset($_POST['customer'])) ? CustomerRepository::getCustomerById($_POST['customer']) : new Customer(0,0,0,0);
     $newProject = new Project(0,
     verifyInput($_POST['name']),
     $code = strtoupper($code),
@@ -111,14 +113,19 @@ if (isset($_POST['submit_delete'])){
                                         <label class="lab" for='customer'>Client <span style="color:red">*</span></label>
                                         <select type="text" name='customer' class="select"> 
                                         
-                                            <option>EN COURS</option>
+                                            <option disabled>EN COURS</option>
                                             <?php 
 
                                             $customers = CustomerRepository::getCustomer();                                            
 
                                             foreach ($customers as $customer) 
                                             {
-                                                echo '<option value="'. $customer->getId() . '">'. $customer->getName() . '</option>';
+                                                if ($customer == $project->getCustomer()){
+                                                    echo '<option value="'. $customer->getId() . '" selected>'. $customer->getName() . '</option>';
+                                                }
+                                                else{
+                                                    echo '<option value="'. $customer->getId() . '">'. $customer->getName() . '</option>';
+                                                }
                                             }
 
                                             ?>
@@ -128,14 +135,19 @@ if (isset($_POST['submit_delete'])){
                                         <!-- hebergeur -->
                                         <label class="lab" for='host'>Herbergeur <span style="color:red">*</span></label>
                                         <select type="text" name='host' class="select1">
-                                            <option disabled selected>EN COURS</option>
+                                            <option disabled>EN COURS</option>
                                             <?php 
 
                                             $host = HostRepository::getHost();
 
                                             foreach ($host as $host) 
                                             {
-                                                echo '<option value="'. $host->getId() . '">'. $host->getName() . '</option>';
+                                                if ($host == $project->getHost()){
+                                                    echo '<option value="'. $host->getId() . '" selected>'. $host->getName() . '</option>';
+                                                }
+                                                else{
+                                                    echo '<option value="'. $host->getId() . '">'. $host->getName() . '</option>';
+                                                }
                                             }
 
                                             ?>
@@ -144,7 +156,15 @@ if (isset($_POST['submit_delete'])){
                                         
                                         <!-- serveur infogéré -->  
                                         <label class="labCheck" for='managed_server'>
-                                        <input name='managed_server' type='checkbox' value="<?php echo $project->getManaged_server(); ?>"></label> Serveur infogéré<br><br>
+                                        <?php
+                                            if (0 === $project->getManaged_server()){
+                                                echo "<input name='managed_server' type='checkbox' value=".$project->getManaged_server()."></label> Serveur infogéré<br><br>";
+                                            }
+                                            else{
+                                                echo "<input name='managed_server' type='checkbox' value=".$project->getManaged_server()." checked></label> Serveur infogéré<br><br>";
+                                            }
+                                        ?>
+                                        
                                         
                                         <!-- notes -->
                                         <label class="lab2">Notes / remarques</label>
