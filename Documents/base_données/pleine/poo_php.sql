@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le : mar. 18 oct. 2022 à 16:42
+-- Généré le : lun. 24 oct. 2022 à 11:08
 -- Version du serveur : 10.4.24-MariaDB
 -- Version de PHP : 8.1.6
 
@@ -43,7 +43,7 @@ CREATE TABLE `contact` (
 
 INSERT INTO `contact` (`id`, `name`, `email`, `phone_number`, `role`, `host_id`, `customer_id`) VALUES
 (1, 'John Codeur', 'dyson@contact.fr', '0344853614', 'Client', NULL, 1),
-(2, 'Hugo Dupont', 'ca@contact.fr', '0344812514', 'Client', NULL, 2),
+(2, 'Hugo Dupont', 'ca@contact.fr', '0344812514', 'Client', NULL, 1),
 (3, 'John Doe', 'citroen@contact.fr', '0344813614', 'Client', NULL, 3),
 (4, 'Josuke Higashikata', 'philips@contact.fr', '0344818414', 'Client', NULL, 4),
 (5, 'Nabil Ferry', 'orpi@contact.fr', '0344812314', 'Client', NULL, 5),
@@ -56,7 +56,7 @@ INSERT INTO `contact` (`id`, `name`, `email`, `phone_number`, `role`, `host_id`,
 (12, 'Theodort Grasset', 'corporate@hotelbb.com', '0892788115', 'Client', NULL, 12),
 (13, 'Jesus de Nazareth', 'marketing@assystem.com', '0341252900', 'Client', NULL, 13),
 (14, 'Christofer Palado', 'contact@ionos.fr', '0970808911', 'Hébergeur web', 1, NULL),
-(15, 'Alex Tiso', 'fr@hostinger.com', '0892977093', 'Hébergeur web', 2, NULL),
+(15, 'Alex Tiso', 'fr@hostinger.com', '0892977093', 'Hébergeur web', 1, NULL),
 (16, 'Ismaelle Venouillie', 'investors@godaddy.com', '0975187039', 'Gestion nom de domaine', 3, NULL),
 (17, 'Julia Blaze', 'support@gator.com', '0891150447', 'Hébergeur web', 4, NULL),
 (18, 'Oscar Koichi', 'contact@com-network.fr', '03825745692', 'Gestion nom de domaine', 5, NULL),
