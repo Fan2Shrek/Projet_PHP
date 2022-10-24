@@ -83,6 +83,7 @@ class ProjectRepository{
         $database = Connection::disconnect();
     }
 
+    //filtre name
     public static function getByName(string $name): ?array{
         $tab=array();
 
@@ -109,6 +110,7 @@ class ProjectRepository{
         return $tab;
     }
 
+    //filtre host
     public static function getProjectByHost(string $name): ?array{
         $tab = array();
         $database = Connection::connect();
@@ -135,6 +137,7 @@ class ProjectRepository{
         return $tab;
     }
 
+    //filtre customer
     public static function getProjectByCustomer(string $name): ?array{
         $tab = array();
         $database = Connection::connect();
