@@ -75,10 +75,12 @@ else{
             <div class="container-fluid">
                 <div class="row">
 
+                    <!-- menu -->
                     <div class="col-lg-3 col-md-3 col-sm-12">
                         <?php require '../layout/menu.php' ?>
                     </div>
 
+                    <!-- section -->
                     <div class="col-lg-9 col-md-9 col-sm-12">
                         <h3 class="nouv">&emsp;Clients</h3>
 
@@ -87,73 +89,89 @@ else{
                             
                             <div class="fondTableau">
 
-                            <div class="table-responsive">
+                                <!-- début tableau -->
+                                <div class="table-responsive">
 
-                                <table class="table table-bordered" id="tabClient">
-                                    <tr class="trTableau">
-                                        <th>CODE</th>
-                                        <th>NOM</th>
-                                        <th>NOTES</th>
-                                        <th>MODIFIER</th>
+                                    <!-- form -->
                                     <form>
-                                        <tr>
-                                            <td><input name='code' value='<?php echo (isset($_GET['code'])) ? $_GET['code'] : "" ?>'></td>
-                                            <td><input name='name' value='<?php echo (isset($_GET['name'])) ? $_GET['name'] : "" ?>'></td>
-                                            <td><input name='notes' value='<?php echo (isset($_GET['notes'])) ? $_GET['notes'] : "" ?>'></td>
-                                            <td>
-                                                <button type='submit' style='display:none'>Chercher</button>
-                                                <a class='btn btn-secondary' href='customer/all'><span class='glyphicon glyphicon-repeat'></span></button>
-                                            </td>
-                                        </tr>
-                                    
-                                    <?php
-                                        if (empty($customers)){
-                                            echo '<tr><td colspan="4" style="text-align:center">Aucun client ne corespond à votre recherche</td></tr>';
-                                        }
-                                        else{
-                                            foreach ($customers as $customers){
-                                                echo "<tr class='tr2Tableau'>
-                                                    <td>". $customers->getCode() ."</td>
-                                                    <td>". $customers->getName() ."</td>
-                                                    <td>". $customers->getNotes() ."</td>
+
+                                        <table class="table table-bordered" id="tabClient">
+
+                                            <!-- titre -->
+                                            <tr class="trTableau">
+                                                <th>CODE</th>
+                                                <th>NOM</th>
+                                                <th>NOTES</th>
+                                                <th>MODIFIER</th>
+                                            </tr>
+
+                                            <!-- filtre -->
+                                            
+                                                <tr>
+                                                    <td><input name='code' value='<?php echo (isset($_GET['code'])) ? $_GET['code'] : "" ?>'></td>
+                                                    <td><input name='name' value='<?php echo (isset($_GET['name'])) ? $_GET['name'] : "" ?>'></td>
+                                                    <td><input name='notes' value='<?php echo (isset($_GET['notes'])) ? $_GET['notes'] : "" ?>'></td>
                                                     <td>
-                                                        <a class='aTabl' href='Customer/". $customers->getId() ."'>Modifier</a>
+                                                        <button type='submit' style='display:none'>Chercher</button>
+                                                        <a class='btn btn-secondary' href='customer/all'><span class='glyphicon glyphicon-repeat'></span></button>
                                                     </td>
-                                                </tr>";
-                                            }  
-                                        } 
-                                    ?>
-                                </table>
+                                                </tr>
+                                            
+                                            <!-- affichage -->
+                                            <?php
+                                                if (empty($customers)){
+                                                    echo '<tr><td colspan="4" style="text-align:center">Aucun client ne corespond à votre recherche</td></tr>';
+                                                }
+                                                else{
+                                                    foreach ($customers as $customers){
+                                                        echo "<tr class='tr2Tableau'>
+                                                            <td>". $customers->getCode() ."</td>
+                                                            <td>". $customers->getName() ."</td>
+                                                            <td>". $customers->getNotes() ."</td>
+                                                            <td>
+                                                                <a class='aTabl' href='Customer/". $customers->getId() ."'>Modifier</a>
+                                                            </td>
+                                                        </tr>";
+                                                    }  
+                                                } 
+                                            ?>
 
-                                <select name='nbPage' onchange="this.form.submit()">
-                                    <option value="5" <?php echo (isset($_GET['nbPage']) && $_GET['nbPage']== 5) ?'selected': '' ?>>5</option>
-                                    <option value="10" <?php echo (isset($_GET['nbPage']) && $_GET['nbPage']== 10) ?'selected': '' ?>>10</option>
-                                    <option value="15" <?php echo (!isset($_GET['nbPage'])) ?'selected': '' ?>>15</option>
-                                    <option value="20" <?php echo (isset($_GET['nbPage']) && $_GET['nbPage']== 20) ?'selected': '' ?>>20</option>
-                                </select>
+                                        </table>
 
-                                <ul class="pagination">
-                                    <li class="page-item">
-                                        <a <?php echo ($currentPage == 1) ? "" : "href='".$uri."&page=".$currentPage - 1 ."'"?> class="page-link">Précédente</a>
-                                    </li>
-                                    <?php for($page = 1; $page <= $pages; $page++): ?>
-                                        <li class="page-item <?php echo ($currentPage == $page) ? "active" : "" ?>">
-                                            <a href="<?php echo $uri.'&page='.$page?>" class="page-link"><?= $page ?></a>
-                                        </li>
-                                    <?php endfor ?>
-                                        <li class="page-item">
-                                        <a <?php echo ($currentPage == $pages) ? "" : "href='".$uri."&page=".$currentPage + 1 ."'"?> class="page-link">Suivante</a>
-                                    </li>
-                                </ul>
+                                        <!-- pagination choix affichage -->
+                                        <select name='nbPage' onchange="this.form.submit()">
+                                            <option value="5" <?php echo (isset($_GET['nbPage']) && $_GET['nbPage']== 5) ?'selected': '' ?>>5</option>
+                                            <option value="10" <?php echo (isset($_GET['nbPage']) && $_GET['nbPage']== 10) ?'selected': '' ?>>10</option>
+                                            <option value="15" <?php echo (!isset($_GET['nbPage'])) ?'selected': '' ?>>15</option>
+                                            <option value="20" <?php echo (isset($_GET['nbPage']) && $_GET['nbPage']== 20) ?'selected': '' ?>>20</option>
+                                        </select>
 
-                                </form>
+                                        <!-- pagination boutons -->
+                                        <ul class="pagination">
+                                            <li class="page-item">
+                                                <a <?php echo ($currentPage == 1) ? "" : "href='".$uri."&page=".$currentPage - 1 ."'"?> class="page-link">Précédente</a>
+                                            </li>
+                                            <?php for($page = 1; $page <= $pages; $page++): ?>
+                                                <li class="page-item <?php echo ($currentPage == $page) ? "active" : "" ?>">
+                                                    <a href="<?php echo $uri.'&page='.$page?>" class="page-link"><?= $page ?></a>
+                                                </li>
+                                            <?php endfor ?>
+                                                <li class="page-item">
+                                                <a <?php echo ($currentPage == $pages) ? "" : "href='".$uri."&page=".$currentPage + 1 ."'"?> class="page-link">Suivante</a>
+                                            </li>
+                                        </ul>
 
-                            </div>
+                                    </form>
 
+                                </div>
+
+                                <!-- lien -->
                                 <div class="btnAdd2">
                                     <a href='Customer/Insert.php' class="btnInsertLien">+ Ajouter</a>&emsp;
                                 </div>
+
                                 <br>
+
                             </div>
                         </div>
 
@@ -164,6 +182,7 @@ else{
 
         </section>
 
+        <!-- footer -->
         <?php require '../layout/footer.php' ?>
         
     </body>
