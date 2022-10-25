@@ -42,19 +42,23 @@
     text-decoration: none;
 }
 
-/* nouveau h2 */
+/* h2 */
 
 .nouv{
     padding-top: 25px;
     padding-bottom: 25px;
+    font-weight: normal!important;
 }
 
 
 
 
 
-
 /* LAYOUT */
+
+
+
+
 
 /* NAVBAR */
 
@@ -73,6 +77,8 @@
 #gly1{
     padding-top: 40px;
 }
+
+
 
 
 
@@ -116,6 +122,8 @@ ul a:hover:not(.active) {
 
 
 
+
+
 /* FOOTER */
 
 footer{
@@ -132,7 +140,11 @@ footer h4{
 
 
 
+
+
 /* VIEW */
+
+
 
 #View{
     background-color: #ccc;
@@ -238,18 +250,138 @@ footer h4{
 
 
 
+/* INSERT CUSTOMER - HOST */
+
+#insert{
+    background-color: #ccc;
+    padding-bottom: 0px;
+}
+
+/* lien */
+.listContact{
+    text-align: center;
+    display: flex;
+    margin: 0%;
+ }
+ 
+.infoGenerale{
+    font-weight: bold;
+    background-color: white;
+    padding-top: 18px;    
+    width: 28%;
+    height: 50%;
+} 
+
+.infoGenerale:hover{
+    color: white;
+    background-color: #cb7857;
+    text-decoration: none;
+}
+
+.contactLien{
+    color: #8a8a8a;
+    background-color: #f1f1f1;
+    padding-top: 18px;    
+    width: 19%;
+    height: 50%;
+}
+
+.contactLien:hover{
+    color: white;
+    background-color: #cb7857;
+    text-decoration: none;
+}
+
+/* carré blanc */
+.add{
+    background-color: white;
+    width: 100%;
+    height: 727px;
+}
+
+/* erreur */
+.error{
+    text-align: left;
+    color: red;
+    font-style: italic;
+    padding-left: 4.5%;
+    padding-top: 15px;
+}
+
+/* label */
+
+.lab{
+    padding-top: 2%;
+    padding-left: 4.5%;
+}
+
+.lab2{
+    padding-left: 4.5%;
+    padding-top: 5%;
+    vertical-align: top;
+}
+
+/* input */
+
+.input0{
+    margin-top: 4%;
+    margin-left: 15%;
+    padding: 7px;
+    padding-right: 125px;
+    border-radius: #ccc 5px;
+    border: 2px solid #ededed;
+}
+
+.input1{
+    margin-bottom: 1%;
+    margin-left: 10.5%;
+    padding: 7px;
+    padding-right: 82px;
+    border-radius: #ccc 5px;
+    border: 2px solid #ededed;
+}
+
+.textarea{
+    margin-top: 3%;
+    margin-left: 7%;
+    padding: 7px;
+    padding-right: 142px;
+    padding-bottom: 100px;
+    border-radius: #ccc 5px;
+    border: 2px solid #ededed;
+}
+
+.btnPlace{
+    display: flex;
+    justify-content: right;
+    margin-top: 20%;
+}
 
 
 
-/* CLIENTS */
-
-
-/* VIEW CLIENT */
 
 
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+.AddClient{
+    margin-top: 4%;
+    margin-left: 15%;
+    padding: 7px;
+    padding-right: 125px;
+    border-radius: #ccc 5px;
+}
 
 .btnAdd2{
     display: flex;
@@ -273,34 +405,8 @@ footer h4{
     text-decoration: none;
 }
 
-/* INSERT */
 
-#insert{
-    background-color: #ccc;
-    padding-bottom: 0px;
-}
 
-/* bouton info */
-.infoGenerale{
-    font-weight: bold;
-    background-color: white;
-    padding-top: 18px;
-    padding-left: 30px;
-    width: 273px;
-    height: 50px;
-}
-
-/* label */
-.lab{
-    padding-top: 2%;
-    padding-left: 2.7%;
-}
-
-.lab2{
-    padding-left: 2.7%;
-    padding-top: 5%;
-    vertical-align: top;
-}
 
 .lab3{
     padding-top: 11.5%;
@@ -338,12 +444,7 @@ footer h4{
     border-radius: #ccc 5px;
 }
 
-/* fond */
-.addClient{
-    background-color: white;
-    width: 100%;
-    height: 1039px;
-}
+
 
 /* boutons */
 .btnInsert1{
@@ -393,14 +494,7 @@ footer h4{
     justify-content: right; 
 }
 
-/* erreur */
-.error{
-    text-align: left;
-    color: red;
-    font-style: italic;
-    padding-left: 2.7%;
-    padding-top: 5px;
-}
+
 
 
 
