@@ -180,6 +180,8 @@ footer h4{
 .reset{
     color: #000;
     text-decoration: none;
+    margin-left: 50%;
+    margin-right: 50%;
 }
 
 .reset:hover{

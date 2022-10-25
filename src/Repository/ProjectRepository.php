@@ -110,6 +110,33 @@ class ProjectRepository{
         return $tab;
     }
 
+    //filtre customer
+    public static function getProjectByCustomer(string $name): ?array{
+        $tab = array();
+        $database = Connection::connect();
+        $statement = $database->prepare('SELECT * FROM project WHERE customer_id in 
+            (SELECT id FROM customer WHERE name LIKE ?)');
+        $statement->execute(array('%'.$name.'%'));
+
+        try{
+            while($pro = $statement->fetch()){
+                $host = HostRepository::getHostById($pro['host_id']);
+                $customer = CustomerRepository::getCustomerById($pro['customer_id']);
+                $temp = new Project($pro['id'], $pro['name'], $pro['code'], 
+                    $pro['lastpass_folder'], $pro['link_mock_ups'], 
+                    $pro['managed_server'], $pro['notes'], 
+                    $host, $customer);
+                $tab[] = $temp;
+            }
+        }
+        catch(int $i){
+            return null;
+        }
+
+        $database = Connection::disconnect();
+        return $tab;
+    }
+
     //filtre host
     public static function getProjectByHost(string $name): ?array{
         $tab = array();
@@ -137,30 +164,4 @@ class ProjectRepository{
         return $tab;
     }
 
-    //filtre customer
-    public static function getProjectByCustomer(string $name): ?array{
-        $tab = array();
-        $database = Connection::connect();
-        $statement = $database->prepare('SELECT * FROM project WHERE customer_id in 
-            (SELECT id FROM customer WHERE name LIKE ?)');
-        $statement->execute(array('%'.$name.'%'));
-
-        try{
-            while($pro = $statement->fetch()){
-                $host = HostRepository::getHostById($pro['host_id']);
-                $customer = CustomerRepository::getCustomerById($pro['customer_id']);
-                $temp = new Project($pro['id'], $pro['name'], $pro['code'], 
-                    $pro['lastpass_folder'], $pro['link_mock_ups'], 
-                    $pro['managed_server'], $pro['notes'], 
-                    $host, $customer);
-                $tab[] = $temp;
-            }
-        }
-        catch(int $i){
-            return null;
-        }
-
-        $database = Connection::disconnect();
-        return $tab;
-    }
 }

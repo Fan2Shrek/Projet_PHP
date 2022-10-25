@@ -113,7 +113,7 @@ else{
                                                     <td><input class="inputSearch" name='notes' value='<?php echo (isset($_GET['notes'])) ? $_GET['notes'] : "" ?>'></td>
                                                     <td>
                                                         <button type='submit' style='display:none'>Chercher</button>
-                                                        <a class='reset' href='customer/all'>&emsp;&emsp;X</button>
+                                                        <a class='reset' href='customer/all'>X</button>
                                                     </td>
                                                 </tr>
                                             
@@ -171,7 +171,7 @@ else{
                                         <!-- liens -->
                                         <div class="col-lg-3 col-lg-offset-1 col-md-3 col-sm-3">
                                             <div class="tableauBouton">                                          
-                                                <a href='' class="btnBlanc"><span class="glyphicon glyphicon-file"></span>&emsp;EXPORTER</a>&emsp;
+                                                <a href='customer/view.php' class="btnBlanc"><span class="glyphicon glyphicon-file"></span>&emsp;EXPORTER</a>&emsp;
                                             </div>                                           
                                         </div>                                                
                                     

@@ -4,20 +4,22 @@ require '../vendor/autoload.php';
 
 use App\Repository\ProjectRepository;
 
+//filtre
 $filtre = array();
 if (isset($_GET['name']) && $_GET['name'] != ''){
     $filtre[] = ProjectRepository::getByName($_GET['name']);
 }
-if (isset($_GET['host']) && $_GET['host'] != ''){
-    $filtre[] = ProjectRepository::getProjectByHost($_GET['host']);
-}
 if (isset($_GET['customer']) && $_GET['customer'] != ''){
     $filtre[] = ProjectRepository::getProjectByCustomer($_GET['customer']);
+}
+if (isset($_GET['host']) && $_GET['host'] != ''){
+    $filtre[] = ProjectRepository::getProjectByHost($_GET['host']);
 }
 else{
     $projects = ProjectRepository::getProject();
 }
 
+//affichage filtre
 if (!empty($filtre)){
     if (count($filtre) == 1){
         $projects = $filtre[0];
@@ -30,6 +32,7 @@ if (!empty($filtre)){
     }
 }
 
+//pagination
 $nbPerPage = isset($_GET['nbPage']) ? $_GET['nbPage']: 15;
 $currentPage = isset($_GET['page']) ? $_GET['page']: 1;
 
@@ -49,7 +52,6 @@ else{
     $uri = $_SERVER['REQUEST_URI'];
 }
 
-
 ?>
 
 <!DOCTYPE html>
@@ -62,24 +64,23 @@ else{
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
         <script src="public/js/script.js"></script>
         <link rel="stylesheet" href="public/css/styles.css">
-        <script>
-
-        </script>
     </head>
     
     <body>
         
         <?php require '../layout/navbar.php' ?>
         
-        <section id="viewClient">
+        <section id="View">
 
             <div class="container-fluid">
                 <div class="row">
 
+                    <!-- menu -->
                     <div class="col-lg-3 col-md-3 col-sm-12">
                         <?php require '../layout/menu.php' ?>
                     </div>
 
+                    <!-- section -->
                     <div class="col-lg-9 col-md-9 col-sm-12">
                         <h3 class="nouv">&emsp;Projets</h3>
 
@@ -88,74 +89,103 @@ else{
                             
                             <div class="fondTableau">
 
-                            <div class="table-responsive">
+                                <!-- début tableau -->
+                                <div class="table-responsive">
 
-                                <table class="table table-bordered" id="tabClient">
-                                    <tr class="trTableau">
-                                        <th>NOM</th>
-                                        <th>CLIENT</th>
-                                        <th>HÉBERGEURS</th>
-                                        <th>Modifier</th>
-                                    </tr>
+                                    <!-- form -->
                                     <form>
-                                        <tr>
-                                            <td><input name='name' value='<?php echo (isset($_GET['name'])) ? $_GET['name'] : "" ?>'></td>
-                                            <td><input name='customer' value='<?php echo (isset($_GET['customer'])) ? $_GET['customer'] : "" ?>'></td>
-                                            <td><input name='host' value='<?php echo (isset($_GET['host'])) ? $_GET['host'] : "" ?>'></td>
-                                            <td>
-                                                <button type='submit' style='display:none'>Chercher</button>
-                                                <a class='btn btn-secondary' href='project/all'><span class='glyphicon glyphicon-repeat'></span></button>
-                                            </td>
-                                        </tr>
-                                    
-                                    <?php
-                                        if (empty($projects)){
-                                            echo '<tr><td colspan="4" style="text-align:center">Aucun projet ne corespond à votre recherche</td></tr>';
-                                        }
-                                        else{
-                                            foreach ($projects as $project){
-                                                echo "<tr class='tr2Tableau'>
-                                                    <td>". $project->getName() ."</td>
-                                                    <td>". $project->getCustomer()->getName() ."</td>
-                                                    <td>". $project->getHost()->getName() ."</td>
+
+                                        <table class="table table-bordered" id="tabClient">
+
+                                            <!-- titre -->
+                                            <tr class="trTableau">
+                                                <th>NOM</th>                                                
+                                                <th>CLIENT</th>
+                                                <th>HEBERGEUR</th>
+                                                <th>MODIFIER</th>
+                                            </tr>
+
+                                            <!-- filtre -->
+                                            
+                                                <tr>
+                                                    <td><input class="inputSearch" name='name' value='<?php echo (isset($_GET['name'])) ? $_GET['name'] : "" ?>'></td>
+                                                    <td><input class="inputSearch" name='customer' value='<?php echo (isset($_GET['customer'])) ? $_GET['customer'] : "" ?>'></td>
+                                                    <td><input class="inputSearch" name='host' value='<?php echo (isset($_GET['host'])) ? $_GET['host'] : "" ?>'></td>
                                                     <td>
-                                                        <a class='aTabl' href='Project/". $project->getId() ."'>Modifier</a>
+                                                        <button type='submit' style='display:none'>Chercher</button>
+                                                        <a class='reset' href='project/all'>X</button>
                                                     </td>
-                                                </tr>";
-                                            }  
-                                        } 
-                                    ?>
-                                </table>
+                                                </tr>
+                                            
+                                            <!-- affichage -->
+                                            <?php
+                                                if (empty($projects)){
+                                                    echo '<tr><td colspan="4" style="text-align:center">Aucun projet ne corespond à votre recherche</td></tr>';
+                                                }
+                                                else{
+                                                    foreach ($projects as $projects){
+                                                        echo "<tr class='tr2Tableau'>
+                                                            <td>". $projects->getName() ."</td>
+                                                            <td>". $projects->getCustomer()->getName() ."</td>
+                                                            <td>". $projects->getHost()->getName() ."</td>
+                                                            <td>
+                                                                <a class='aTabl' href='Customer/". $projects->getId() ."'>Modifier</a>
+                                                            </td>
+                                                        </tr>";
+                                                    }  
+                                                } 
+                                            ?>
 
-                                <select name='nbPage' onchange="this.form.submit()">
-                                    <option value="5" <?php echo (isset($_GET['nbPage']) && $_GET['nbPage']== 5) ?'selected': '' ?>>5</option>
-                                    <option value="10" <?php echo (isset($_GET['nbPage']) && $_GET['nbPage']== 10) ?'selected': '' ?>>10</option>
-                                    <option value="15" <?php echo (!isset($_GET['nbPage'])) ?'selected': '' ?>>15</option>
-                                    <option value="20" <?php echo (isset($_GET['nbPage']) && $_GET['nbPage']== 20) ?'selected': '' ?>>20</option>
-                                </select>
+                                        </table>
 
-                                <ul class="pagination">
-                                    <li class="page-item">
-                                        <a <?php echo ($currentPage == 1) ? "" : "href='".$uri."&page=".$currentPage - 1 ."'"?> class="page-link">Précédente</a>
-                                    </li>
-                                    <?php for($page = 1; $page <= $pages; $page++): ?>
-                                        <li class="page-item <?php echo ($currentPage == $page) ? "active" : "" ?>">
-                                            <a href="<?php echo $uri.'&page='.$page?>" class="page-link"><?= $page ?></a>
-                                        </li>
-                                    <?php endfor ?>
-                                        <li class="page-item">
-                                        <a <?php echo ($currentPage == $pages) ? "" : "href='".$uri."&page=".$currentPage + 1 ."'"?> class="page-link">Suivante</a>
-                                    </li>
-                                </ul>
+                                        <!-- pagination choix affichage -->
+                                        <div class="col-lg-3 col-md-3 sm-3"> 
+                                            <div class="paginationCSS">                                          
+                                                <label class="labelPagination">Résultats/pages&emsp;</label>
+                                                <select name='nbPage' onchange="this.form.submit()" class="selectPagination">
+                                                    <option value="5" <?php echo (isset($_GET['nbPage']) && $_GET['nbPage']== 5) ?'selected': '' ?>>5</option>
+                                                    <option value="10" <?php echo (isset($_GET['nbPage']) && $_GET['nbPage']== 10) ?'selected': '' ?>>10</option>
+                                                    <option value="15" <?php echo (!isset($_GET['nbPage'])) ?'selected': '' ?>>15</option>
+                                                    <option value="20" <?php echo (isset($_GET['nbPage']) && $_GET['nbPage']== 20) ?'selected': '' ?>>20</option>
+                                                </select>
+                                            </div>
+                                        </div>
 
-                                </form>
+                                        <!-- pagination boutons -->
+                                        <div class="col-lg-3 col-md-3 col-sm-3">                                                                
+                                            <ul class="pagination">
+                                                <li class="page-item">
+                                                    <a <?php echo ($currentPage == 1) ? "" : "href='".$uri."&page=".$currentPage - 1 ."'"?> class="page-link"><span class="glyphicon glyphicon-chevron-left"></span></a>
+                                                </li>
+                                                <?php for($page = 1; $page <= $pages; $page++): ?>
+                                                    <li class="page-item <?php echo ($currentPage == $page) ? "active" : "" ?>">
+                                                        <a href="<?php echo $uri.'&page='.$page?>" class="page-link"><?= $page ?></a>
+                                                    </li>
+                                                <?php endfor ?>
+                                                    <li class="page-item" >
+                                                    <a <?php echo ($currentPage == $pages) ? "" : "href='".$uri."&page=".$currentPage + 1 ."'"?> class="page-link"><span class="glyphicon glyphicon-chevron-right"></span></a>
+                                                </li>
+                                            </ul>                                            
+                                        </div>
+                                        
+                                        <!-- liens -->
+                                        <div class="col-lg-3 col-lg-offset-1 col-md-3 col-sm-3">
+                                            <div class="tableauBouton">                                          
+                                                <a href='project/view.php' class="btnBlanc"><span class="glyphicon glyphicon-file"></span>&emsp;EXPORTER</a>&emsp;
+                                            </div>                                           
+                                        </div>                                                
+                                    
+                                        <!-- liens -->
+                                        <div class="col-lg-2 col-md-3 col-sm-3">
+                                            <div class="tableauBouton">
+                                                <a href='Project/Insert.php' class="btnOrange">+ AJOUTER</a>
+                                            </div>                                           
+                                        </div>
 
-                            </div>
-
-                                <div class="btnAdd2">
-                                    <a href='Project/Insert.php' class="btnInsertLien">+ Ajouter</a>&emsp;
+                                    </form>
+                                
                                 </div>
-                                <br>
+                            
                             </div>
                         </div>
 
@@ -166,6 +196,7 @@ else{
 
         </section>
 
+        <!-- footer -->
         <?php require '../layout/footer.php' ?>
         
     </body>
