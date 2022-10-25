@@ -70,7 +70,7 @@ if (isset($_POST['submit'])){
                         <div class="col-lg-12 col-md-12 col-sm-12">
                             <h2 class="nouv">Nouveau client</h2>
                             <ul class="listContact">
-                                <a href="Customer/view.php" class="infoGenerale">INFORMATIONS GÉNÉRALES</a>&emsp;
+                                <a href="Customer/insert.php" class="infoGenerale">INFORMATIONS GÉNÉRALES</a>&emsp;
                                 <a href="Contact/view.php" class="contactLien">CONTACTS CLIENT</a>
                             </ul>
                         </div>
