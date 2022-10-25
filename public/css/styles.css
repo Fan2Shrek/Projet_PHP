@@ -351,17 +351,37 @@ footer h4{
     border: 2px solid #ededed;
 }
 
+/* place boutons */
+
 .btnPlace{
     display: flex;
     justify-content: right;
     margin-top: 20%;
 }
 
+.btnPlace1{
+    display: flex;
+    justify-content: right;
+}
 
 
 
+/* UPDATE CUSTOMER - HOST */
 
+#update{
+    background-color: #ccc;
+    padding-bottom: 0px;
+}
 
+.textarea2{
+    margin-top: 3%;
+    margin-left: 7%;
+    padding: 7px;
+    padding-right: 142px;
+    padding-bottom: 60px;
+    border-radius: #ccc 5px;
+    border: 2px solid #ededed;
+}
 
 
 
@@ -598,13 +618,6 @@ footer h4{
     padding: 7px;
     padding-right: 125.5px;
     border-radius: #ccc 5px;
-}
-
-/* UPDATE PROJECT */
-
-#update{
-    background-color: #ccc;
-    padding-bottom: 0px;
 }
 
 

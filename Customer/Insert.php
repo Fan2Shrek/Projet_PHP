@@ -11,6 +11,7 @@ use function slugifier\slugify;
 
 $errors = array();
 
+//sécurité
 function verifyInput($var){
     $var = trim($var);
     $var = stripslashes($var);
@@ -18,6 +19,7 @@ function verifyInput($var){
     return $var;
 }
 
+//insert
 if (isset($_POST['submit'])){
     $code = 'CUST_'. s\slugify(verifyInput($_POST['name']), '_');
     $customer = new Customer(0,
