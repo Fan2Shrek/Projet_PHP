@@ -7,6 +7,7 @@ use App\Repository\HostRepository;
 use App\Forms\Validator;
 use slugifier as s;
 
+//sécurité
 function verifyInput($var){
     $var = trim($var);
     $var = stripslashes($var);
@@ -14,10 +15,12 @@ function verifyInput($var){
     return $var;
 }
 
+//id
 if (isset($_GET['id'])){
     $host = HostRepository::getHostById($_GET['id']);
 }
 
+//update
 if (isset($_POST['submit'])){
     $code = 'HOST_' . s\slugify(verifyInput($_POST['name']), '_');
     $newHost = new Host(0,
@@ -31,6 +34,7 @@ if (isset($_POST['submit'])){
     }
 }
 
+//delete
 if (isset($_POST['submit_delete'])){
     $host = HostRepository::getHostById($_GET['id']);
     HostRepository::deleteHost($host);
@@ -61,7 +65,7 @@ if (isset($_POST['submit_delete'])){
             <div class="container-fluid">
                 <div class="row">
 
-                    
+                    <!-- menu -->                 
                     <div class="col-lg-3 col-md-3 col-sm-12">
                         <?php require '../layout/menu.php' ?>
                     </div>
@@ -69,48 +73,46 @@ if (isset($_POST['submit_delete'])){
                     <!-- titre -->
                     <div class="col-lg-9 col-md-9 col-sm-12">
 
-                        <!-- section -->
+                        <!-- lien -->
                         <div class="col-lg-12 col-md-12 col-sm-12">
-                            <h3 class="nouv"><?php echo $host->getName();?></h3>
-                            <div class="infoGenerale">
-                                <p><strong>INFORMATIONS GÉNÉRALES</strong></p>
-                            </div>
-                            <div class='contactBtn'>
-                                <a href='Contact/<?php echo $_GET['id']?>'><strong>Contact</strong></a>
-                            </div>
+                            <h2 class="nouv"><?php echo $host->getName(); ?></h2>
+                            <ul class="listContact">
+                                <a href="Host/view.php" class="infoGenerale">INFORMATIONS GÉNÉRALES</a>&emsp;
+                                <a href="Contact/view.php" class="contactLien2">CONTACTS HEBERGEUR</a>
+                            </ul>
                         </div>
 
                         <!-- debut carré -->
                         <div class="col-lg-12 col-md-12 col-sm-12">
-                            <div class="addClient">
+                            <div class="add">
 
                                 <!-- début form -->
                                 <form method='Post'>
 
                                     <label class="lab">Nom <span style="color:red">*</span></label>
-                                    <input name='name' class="AddClient" value="<?php echo $host->getName(); ?>">
+                                    <input name='name' class="input0" value="<?php echo $host->getName(); ?>">
                                     <p class="error"><?php echo (!isset($errors['nameError']))? '' : $errors['nameError'] ?></p>
 
                                     <br>
 
                                     <label class="lab">Code interne</label>
-                                    <input size="30" disabled="disabled" class="UpClient" value="<?php echo $host->getCode(); ?>">
+                                    <button disabled="disabled" class="input1" value="<?php echo $host->getCode(); ?>">Champs généré automatiquement</button>
 
                                     <br>
 
                                     <label class="lab2">Notes / remarques</label>
-                                    <textarea name='notes' class="AddClient2"><?php echo $host->getNotes(); ?></textarea>
+                                    <textarea name='notes' class="textarea2"><?php echo $host->getNotes(); ?></textarea>
                                     <p class="error"><?php echo (!isset($errors['notesError']))? '' : $errors['notesError'] ?></p>
 
                                     <!-- bouton form -->
                                     <div class="col-lg-12 col-md-12 col-sm-12">
-                                        <div class="btnAdd6">    
-                                            <button type='submit' name='submit' class="btnInsertSave"><span class="glyphicon glyphicon-ok"></span> Sauvegarder</button>&emsp;
-                                            <a href="#" data-toggle='modal' data-target='#modal'class="btnInsertSave"><span class="glyphicon glyphicon-trash"></span> Supprimer</a>
+                                        <div class="btnPlace">   
+                                            <button type='submit' name='submit' class="btnOrange"><span class="glyphicon glyphicon-ok"></span> SAUVEGARDER</button>&emsp;
+                                            <a href="#" data-toggle='modal' data-target='#modal'class="btnOrange"><span class="glyphicon glyphicon-trash"></span> SUPPRIMER</a>
                                         </div>
                                         <br>
-                                        <div class="btnAdd2">
-                                            <a href="Customer/View.php" class="btnInsert1">Annuler</a> 
+                                        <div class="btnPlace1">
+                                            <a href="Host/View.php" class="btnBlanc">Annuler</a> 
                                         </div>
 
                                         <!-- modal suppression -->
@@ -127,16 +129,18 @@ if (isset($_POST['submit_delete'])){
                                                     <div class='modal-footer'>
                                                         <form method="post">
                                                             <input type='hidden' value="<?php echo $_GET['id']?>">
-                                                            <button type='submit' name='submit_delete' class="btnInsertSave">Supprimer</button>&emsp;
+                                                            <button type='submit' name='submit_delete' class="btnOrange">Supprimer</button>&emsp;
                                                         </form>
-                                                        <button type='button' class='modalFermer1' data-dismiss='modal'>Fermer</button>
+                                                        <button type='button' class='btnBlanc' data-dismiss='modal'>Fermer</button>
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
+                                        </div> 
+                                          
                                     </div>
+
                                 </form>
-                                                              
+                                
                             </div>
                         </div>
 
