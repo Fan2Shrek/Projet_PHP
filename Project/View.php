@@ -113,7 +113,7 @@ else{
                                                     <td><input class="inputSearch" name='host' value='<?php echo (isset($_GET['host'])) ? $_GET['host'] : "" ?>'></td>
                                                     <td>
                                                         <button type='submit' style='display:none'>Chercher</button>
-                                                        <a class='reset' href='project/all'>X</button>
+                                                        <a class='reset' href='Project/all'>X</button>
                                                     </td>
                                                 </tr>
                                             
@@ -129,7 +129,7 @@ else{
                                                             <td>". $projects->getCustomer()->getName() ."</td>
                                                             <td>". $projects->getHost()->getName() ."</td>
                                                             <td>
-                                                                <a class='aTabl' href='Customer/". $projects->getId() ."'>Modifier</a>
+                                                                <a class='aTabl' href='Project/". $projects->getId() ."'>Modifier</a>
                                                             </td>
                                                         </tr>";
                                                     }  
@@ -171,7 +171,7 @@ else{
                                         <!-- liens -->
                                         <div class="col-lg-3 col-lg-offset-1 col-md-3 col-sm-3">
                                             <div class="tableauBouton">                                          
-                                                <a href='project/view.php' class="btnBlanc"><span class="glyphicon glyphicon-file"></span>&emsp;EXPORTER</a>&emsp;
+                                                <a href='Project/view.php' class="btnBlanc"><span class="glyphicon glyphicon-file"></span>&emsp;EXPORTER</a>&emsp;
                                             </div>                                           
                                         </div>                                                
                                     
