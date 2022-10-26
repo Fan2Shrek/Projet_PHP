@@ -29,12 +29,13 @@ if (isset($_POST['submit'])){
     $code = 'PROJECT_'. s\slugify(verifyInput($_POST['name']), '_');
     $host = (isset($_POST['host'])) ? HostRepository::getHostById($_POST['host']) : new Host(0,0,0,0);
     $customer = (isset($_POST['customer'])) ? CustomerRepository::getCustomerById($_POST['customer']) : new Customer(0,0,0,0);
+    $server = (isset($_POST['managed_server'])) ? 1 : 0;
     $newProject = new Project(0,
     verifyInput($_POST['name']),
     $code = strtoupper($code),
     verifyInput($_POST['lastpass_folder']),
     verifyInput($_POST['link_mock_ups']),
-    verifyInput($_POST['managed_server']),
+    $server,
     verifyInput($_POST['notes']),
     $host,
     $customer);
