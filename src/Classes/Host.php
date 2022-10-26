@@ -14,8 +14,8 @@ class Host implements IdInterface, nameInterface, codeNoteInterface{
     use IdTrait, NameTrait, CodeNotesTrait;
     public function __construct(
         private int $id,
-        private string $name,
         private string $code,
+        private string $name,
         private string $notes,
     )
     {
