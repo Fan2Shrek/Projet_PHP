@@ -52,6 +52,10 @@ else{
     $uri = $_SERVER['REQUEST_URI'];
 }
 
+if (empty($_GET)){
+    header('Location: all?name=&customer=&host=&nbPage=15');
+}
+
 ?>
 
 <!DOCTYPE html>
