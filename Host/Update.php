@@ -78,7 +78,7 @@ if (isset($_POST['submit_delete'])){
                             <h2 class="nouv"><?php echo $host->getName(); ?></h2>
                             <ul class="listContact">
                                 <a href="Host/view.php" class="infoGenerale">INFORMATIONS GÉNÉRALES</a>&emsp;
-                                <a href="Contact/<?php echo $_GET['id']?>" class="contactLien2">CONTACTS HEBERGEUR</a>
+                                <a href="Contact/<?php echo 'H-'.$_GET['id']?>" class="contactLien2">CONTACTS HEBERGEUR</a>
                             </ul>
                         </div>
 

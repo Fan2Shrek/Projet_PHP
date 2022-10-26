@@ -41,4 +41,4 @@ RewriteRule ^Project/([0-9]+)  Project/Update.php?id=$1 [L,NC]
 RewriteRule ^Contact/all   Contact/View.php [L,NC]
 RewriteRule ^Contact/new Contact/Insert.php [L,NC]
 
-RewriteRule ^Contact/([0-9]+)  Contact/Update.php?id=$1 [L,NC]
+RewriteRule ^Contact/([A-Z]+)-([0-9]+)  Contact/Update.php?id=$2&type=$1 [L,NC]

@@ -6,6 +6,7 @@ use App\Classes\Contact;
 use App\Repository\ContactRepository;
 Use App\Repository\HostRepository;
 use App\Forms\Validator;
+use App\Repository\CustomerRepository;
 use slugifier as s;
 
 function verifyInput($var){
@@ -15,10 +16,17 @@ function verifyInput($var){
     return $var;
 }
 
-if (isset($_GET['id'])){
-    $contacts = ContactRepository::getContactByHost($_GET['id']);
-    $host = HostRepository::getHostById($_GET["id"]);
+if (isset($_GET['type'])){
+    if (isset($_GET['id']) &&  $_GET['type'] == 'H'){
+        $contacts = ContactRepository::getContactByHost($_GET['id']);
+        $host = HostRepository::getHostById($_GET["id"]);
+    }
+    else if (isset($_GET['id']) &&  $_GET['type'] == 'C'){
+        $contacts = ContactRepository::getContactByCustomer($_GET['id']);
+        $customer = CustomerRepository::getCustomerById($_GET["id"]);
+    }
 }
+
 
 if (isset($_POST['submit'])){
     $code = 'HOST_' . s\slugify(verifyInput($_POST['name']), '_');
@@ -73,7 +81,7 @@ if (isset($_POST['submit_delete'])){
 
                         <!-- section -->
                         <div class="col-lg-12 col-md-12 col-sm-12">
-                            <h3 class="nouv"><?php echo $host->getName();?></h3>
+                            <h3 class="nouv"><?php echo isset($host) ? $host->getName() : $customer->getName()?></h3>
                             <div class="infoGenerale">
                                 <a href='Host/<?php echo $_GET['id']?>'><strong>INFORMATIONS GÉNÉRALES</strong></p>
                             </div>

@@ -78,7 +78,7 @@ if (isset($_POST['submit_delete'])){
                             <h2 class="nouv"><?php echo $customer->getName(); ?></h2>
                             <ul class="listContact">
                                 <a href="Customer/view.php" class="infoGenerale">INFORMATIONS GÉNÉRALES</a>&emsp;
-                                <a href="Contact/view.php" class="contactLien">CONTACTS CLIENT</a>
+                                <a href="Contact/<?php echo 'C-'.$_GET['id'] ?>" class="contactLien">CONTACTS CLIENT</a>
                             </ul>
                         </div>
 

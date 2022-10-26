@@ -77,4 +77,16 @@ class ContactRepository{
         $database = Connection::disconnect();
         return $rep;
     }
+
+    public static function getContactByCustomer(int $id): ?array{
+        $rep = array();
+        $database = Connection::connect();
+        $statement = $database->prepare('SELECT * FROM contact WHERE customer_id = ?');
+        $statement->execute(array($id));
+        while ($con = $statement->fetch()){
+            $rep[] = new Contact($con['id'], $con['name'], $con['email'], $con['phone_number'], $con['role'], host : HostRepository::getHostById($id));
+        }
+        $database = Connection::disconnect();
+        return $rep;
+    }
 }
