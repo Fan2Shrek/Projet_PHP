@@ -70,132 +70,145 @@ if (isset($_POST['submit_delete'])){
     
     <body>
         
+        <!-- navbar -->
         <?php require '../layout/navbar.php' ?>
         
-        <section id="update">
+        <section id="insert">
 
             <div class="container-fluid">
                 <div class="row">
-                    
+
+                    <!-- menu -->
                     <div class="col-lg-3 col-md-3 col-sm-6">
                         <?php require '../layout/menu.php' ?>
                     </div>
 
-                    <!-- titre -->
+                    <!-- page -->
                     <div class="col-lg-9 col-md-9 col-sm-12">
 
-                        <!-- section -->
+                        <!-- lien -->
                         <div class="col-lg-12 col-md-12 col-sm-12">
-                            <h3 class="nouv"><?php echo $project->getName();?></h3>
-                            <div class="infoGenerale">
-                                <p><strong>INFORMATIONS GÉNÉRALES</strong></p>
-                            </div>
+                            <h2 class="nouv">Nouveau projet</h2>
+                            <ul class="listContact">
+                                <a href="Customer/insert.php" class="infoGenerale">INFORMATIONS GÉNÉRALES</a>&emsp;
+                                <a href="Environment/view.php" class="contactLien1">ENVIRONNEMENT PROJET</a>
+                            </ul>
                         </div>
 
                         <!-- debut carré -->
                         <div class="col-lg-12 col-md-12 col-sm-12">
-                            <div class="addClient">
+                            <div class="add2">
 
                                 <!-- début form -->
                                 <form method='Post'>
 
                                     <div class="col-lg-6 col-md-12 col-sm-12">
 
+                                        <br><br>
+
                                         <!-- nom -->
-                                        <label class="lab" for='name'>Nom <span style="color:red">*</span></label>
-                                        <input name='name' class="AddProject" value="<?php echo $project->getName()?>">
-                                        <p class="error"><?php echo (!isset($errors['nameError']))? '' : $errors['nameError'] ?></p><br>
+                                        <div class="nom">
+                                            <label class="lab" for='name'>Nom <span style="color:red">*&emsp;&emsp;&emsp;</span></label>
+                                            <input name='name' class="input2" value="<?php echo $project->getName()?>">
+                                            <p class="error"><?php echo (!isset($errors['nameError']))? '' : $errors['nameError'] ?></p>
+                                        </div><br>
 
                                         <!-- code -->
-                                        <label class="lab">Code interne</label>
-                                        <button disabled="disabled" class="AddClient1">Champs généré automatiquement</button><br><br>
+                                        <div class="code">
+                                            <label class="lab">Code interne</label>
+                                            <button disabled="disabled" class="input3">Champs généré automatiquement</button>
+                                        </div><br><br>
                                         
                                         <!-- client -->
-                                        <label class="lab" for='customer'>Client <span style="color:red">*</span></label>
-                                        <select type="text" name='customer' class="select"> 
-                                        
-                                            <option disabled>EN COURS</option>
-                                            <?php 
+                                        <div class="customer">
+                                            <label class="lab" for='customer'>Client <span style="color:red">*&emsp;&emsp;&emsp;</span></label>
+                                            <select type="text" name='customer' class="select0">  
+                                                <option disabled>EN COURS</option>
+                                                <?php 
 
-                                            $customers = CustomerRepository::getCustomer();                                            
+                                                $customers = CustomerRepository::getCustomer();                                            
 
-                                            foreach ($customers as $customer) 
-                                            {
-                                                if ($customer == $project->getCustomer()){
-                                                    echo '<option value="'. $customer->getId() . '" selected>'. $customer->getName() . '</option>';
+                                                foreach ($customers as $customer) 
+                                                {
+                                                    if ($customer == $project->getCustomer()){
+                                                        echo '<option value="'. $customer->getId() . '" selected>'. $customer->getName() . '</option>';
+                                                    }
+                                                    else{
+                                                        echo '<option value="'. $customer->getId() . '">'. $customer->getName() . '</option>';
+                                                    }
                                                 }
-                                                else{
-                                                    echo '<option value="'. $customer->getId() . '">'. $customer->getName() . '</option>';
-                                                }
-                                            }
 
-                                            ?>
-                                        </select>
-                                        <p class="error"><?php echo (!isset($errors['customerError']))? '' : $errors['customerError'] ?></p><br>
+                                                ?>
+                                            </select>
+                                            <p class="error"><?php echo (!isset($errors['customerError']))? '' : $errors['customerError'] ?></p>
+                                        </div><br>
 
                                         <!-- hebergeur -->
-                                        <label class="lab" for='host'>Herbergeur <span style="color:red">*</span></label>
-                                        <select type="text" name='host' class="select1">
-                                            <option disabled>EN COURS</option>
-                                            <?php 
+                                        <div class="host">
+                                            <label class="lab" for='host'>Hébergeur <span style="color:red">*&emsp;</span></label>
+                                            <select type="text" name='host' class="select1">
+                                                <option disabled>EN COURS</option>
+                                                <?php 
 
-                                            $host = HostRepository::getHost();
+                                                $host = HostRepository::getHost();
 
-                                            foreach ($host as $host) 
-                                            {
-                                                if ($host == $project->getHost()){
-                                                    echo '<option value="'. $host->getId() . '" selected>'. $host->getName() . '</option>';
+                                                foreach ($host as $host) 
+                                                {
+                                                    if ($host == $project->getHost()){
+                                                        echo '<option value="'. $host->getId() . '" selected>'. $host->getName() . '</option>';
+                                                    }
+                                                    else{
+                                                        echo '<option value="'. $host->getId() . '">'. $host->getName() . '</option>';
+                                                    }
                                                 }
-                                                else{
-                                                    echo '<option value="'. $host->getId() . '">'. $host->getName() . '</option>';
-                                                }
-                                            }
 
-                                            ?>
-                                        </select>
-                                        <p class="error"><?php echo (!isset($errors['hostError']))? '' : $errors['hostError'] ?></p><br>
+                                                ?>
+                                            </select>
+                                            <p class="error"><?php echo (!isset($errors['hostError']))? '' : $errors['hostError'] ?></p>
+                                        </div><br>
                                         
-                                        <!-- serveur infogéré -->  
-                                        <label class="labCheck" for='managed_server'>
-                                        <?php
-                                            if (0 === $project->getManaged_server()){
-                                                echo "<input name='managed_server' type='checkbox' value=".$project->getManaged_server()."></label> Serveur infogéré<br><br>";
-                                            }
-                                            else{
-                                                echo "<input name='managed_server' type='checkbox' value=".$project->getManaged_server()." checked></label> Serveur infogéré<br><br>";
-                                            }
-                                        ?>
-                                        
-                                        
+                                        <!-- serveur infogéré --> 
+                                        <div class="serveur"> 
+                                            <label class="labCheck" for='managed_server'>
+                                            <input name='managed_server' type='checkbox'></label> Serveur infogéré
+                                        </div><br><br>
+
                                         <!-- notes -->
-                                        <label class="lab2">Notes / remarques</label>
-                                        <textarea name='notes' class="AddProject2"><?php echo $project->getNotes();?></textarea>
-                                        <p class="error"><?php echo (!isset($errors['notesError']))? '' : $errors['notesError'] ?></p>
+                                        <div class="notes">
+                                            <label class="lab2">Notes / remarques</label>
+                                            <textarea name='notes' class="textarea1"><?php echo $project->getNotes();?></textarea>
+                                            <p class="error"><?php echo (!isset($errors['notesError']))? '' : $errors['notesError'] ?></p>
+                                        </div>
 
                                     </div>
 
                                     <div class="col-lg-6 col-md-12 col-sm-12">
                                     
+                                        <br><br>
+
                                         <!-- dossier lastpass-->
-                                        <label class="lab3">Dossier Lastpass</label>
-                                        <input name='lastpass_folder' class="AddProject3" value="<?php echo $project->getLastpast_folder() ;?>"><br>
-                                        
+                                        <div class="dossier">
+                                            <label class="lab">Dossier Lastpass</label>
+                                            <input name='lastpass_folder' class="input4" value="<?php echo $project->getLastpast_folder() ;?>"><br>
+                                        </div><br><br>
+
                                         <!-- lien maquettes-->
-                                        <label class="lab4">Lien</label>
-                                        <input name='link_mock_ups' class="AddProject4" value="<?php echo $project->getLink_mock_ups() ;?>">
-                                    
+                                        <div class="maquettes">
+                                            <label class="lab">Lien&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;</label>
+                                            <input name='link_mock_ups' class="input5" value="<?php echo $project->getLink_mock_ups() ;?>">
+                                        </div>
+                                        
                                     </div>
-                                
-                                
+                                                                        
                                     <!-- bouton form -->
                                     <div class="col-lg-12 col-md-12 col-sm-12">
-                                        <div class="btnAdd3">   
-                                            <button type='submit' name='submit' class="btnInsertSave"><span class="glyphicon glyphicon-ok"></span> Sauvegarder</button>&emsp;
-                                            <a href="#" data-toggle='modal' data-target='#modal'class="btnInsertSave"><span class="glyphicon glyphicon-trash"></span> Supprimer</a>
+                                        <div class="btnPlace">   
+                                            <button type='submit' name='submit' class="btnOrange"><span class="glyphicon glyphicon-ok"></span> SAUVEGARDER</button>&emsp;
+                                            <a href="#" data-toggle='modal' data-target='#modal'class="btnOrange"><span class="glyphicon glyphicon-trash"></span> SUPPRIMER</a>
                                         </div>
                                         <br>
-                                        <div class="btnAdd2">
-                                            <a href="Project/View.php" class="btnInsert1">Annuler</a> 
+                                        <div class="btnPlace1">
+                                            <a href="Project/View.php" class="btnBlanc">Annuler</a> 
                                         </div>
 
                                         <!-- modal suppression -->
@@ -212,23 +225,23 @@ if (isset($_POST['submit_delete'])){
                                                     <div class='modal-footer'>
                                                         <form method="post">
                                                             <input type='hidden' value="<?php echo $_GET['id']?>">
-                                                            <button type='submit' name='submit_delete' class="btnInsertSave">Supprimer</button>&emsp;
+                                                            <button type='submit' name='submit_delete' class="btnOrange">Supprimer</button>&emsp;
                                                         </form>
-                                                        <button type='button' class='modalFermer1' data-dismiss='modal'>Fermer</button>
+                                                        <button type='button' class='btnBlanc' data-dismiss='modal'>Fermer</button>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div> 
-                                        
+                                          
                                     </div>
 
                                 </form>
-                        
+                                
                             </div>
-
                         </div>
 
                     </div>
+
                 </div>
             </div>
 
