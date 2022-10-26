@@ -401,236 +401,111 @@ footer h4{
 
 
 
+/* INSERT PROJECT */
 
+/* lien environnement */
 
-
-
-
-
-.AddClient{
-    margin-top: 4%;
-    margin-left: 15%;
-    padding: 7px;
-    padding-right: 125px;
-    border-radius: #ccc 5px;
+.contactLien1{
+    color: #8a8a8a;
+    background-color: #f1f1f1;
+    padding-top: 18px;    
+    width: 28%;
+    height: 50%;
 }
 
-.btnAdd2{
-    display: flex;
-    justify-content: right; 
-}
-
-.btnInsertLien{
-    color: #cb7857;
-    background-color: white;
-    border: solid #cb7857 1px;
-    margin-top: 6%;
-    padding-left: 40px;
-    padding-right: 40px;
-    padding-top: 10px;
-    padding-bottom: 10px;
-}
-
-.btnInsertLien:hover{
-    color: #fff;
-    background-color: #cb7857;
-    text-decoration: none;
-}
-
-
-
-
-.lab3{
-    padding-top: 11.5%;
-}
-
-.lab4{
-    padding-top: 9.4%;
-}
-
-/*nom */
-.AddClient{
-    margin-top: 4%;
-    margin-left: 15%;
-    padding: 7px;
-    padding-right: 125px;
-    border-radius: #ccc 5px;
-}
-
-/* code */
-.AddClient1{
-    margin-bottom: 1%;
-    margin-left: 10.5%;
-    padding: 7px;
-    padding-right: 82px;
-    border-radius: #ccc 5px;
-}
-
-/* notes */
-.AddClient2{
-    margin-top: 3%;
-    margin-left: 7%;
-    padding: 7px;
-    padding-right: 142px;
-    padding-bottom: 100px;
-    border-radius: #ccc 5px;
-}
-
-
-
-/* boutons */
-.btnInsert1{
-    color: #cb7857;
-    background-color: white;
-    border: solid #cb7857 1px;
-    padding-left: 40px;
-    padding-right: 40px;
-    padding-top: 10px;
-    padding-bottom: 10px;
-}
-
-.btnInsert1:hover{
-    color: #fff;
-    background-color: #cb7857;
-    text-decoration: none;
-}
-
-.btnInsertSave{
-    color: #fff;
-    border: solid #cb7857 1px;
-    background-color: #cb7857;
-    padding-left: 26px;
-    padding-right: 26px;
-    padding-top: 8px;
-    padding-bottom: 8px;
-}
-
-.btnInsertSave:hover{
-    color: #cb7857;
-    background-color: #fff;
-    text-decoration: none;
-    border: solid #cb7857 1px;
-}
-
-.btnAdd{
-    position: relative;
-    margin-top: 8%;
-    display: flex;
-    justify-content: right; 
-}
-
-.btnAdd5{
-    position: relative;
-    margin-top: 52%;
-    display: flex;
-    justify-content: right; 
-}
-
-
-
-
-
-/* UPDATE CLIENT */
-
-.UpClient{
-    margin-bottom: 2%;
-    margin-left: 10.6%;
-    padding: 7px;
-    padding-right: 4.6%;
-    border-radius: #ccc 5px;
-}
-
-.btnAdd3{
-    position: relative;
-    margin-top: 3%;
-    display: flex;
-    justify-content: right; 
-}
-
-.btnAdd6{
-    position: relative;
-    margin-top: 42%;
-    display: flex;
-    justify-content: right; 
-}
-
-.btnAdd4{
-    position: relative;
-    margin-top: 2%;
-    display: flex;
-    justify-content: right; 
-}
-
-.modalFermer1{
-    color: #cb7857;
-    border: solid #cb7857 1px;
-    background-color: white;
-    padding-left: 26px;
-    padding-right: 26px;
-    padding-top: 8px;
-    padding-bottom: 8px;
-}
-
-.modalFermer1:hover{
+.contactLien1:hover{
     color: white;
     background-color: #cb7857;
     text-decoration: none;
-    border: solid #cb7857 1px;
 }
 
-/* INSERT PROJECT */
-
-.AddProject{
-    margin-top: 10%;
-    margin-left: 20%;
-    padding: 7px;
-    padding-right: 126px;
-    border-radius: #ccc 5px;
+/* fond blanc */
+.add2{
+    background-color: white;
+    width: 100%;
+    height: 1210px; 
 }
 
-.select{
-    margin-left: 18.29%;
+/* input */
+.nom, .code, .customer, .host, .serveur, .notes, .dossiers, .maquettes{
+    position: relative;
+}
+
+.input2{
+    margin-left: 15.4%;
     padding: 7px;
-    padding-right: 122.5px;
+    padding-right: 83px;
     border-radius: #ccc 5px;
+    border: 2px solid #ededed;
+}
+
+.input3{
+    margin-bottom: 1%;
+    margin-left: 14.9%;
+    padding: 7px;
+    padding-right: 39px;
+    border-radius: #ccc 5px;
+    border: 2px solid #ededed;
+}
+
+.input4{
+    margin-bottom: 1%;
+    margin-left: 10.2%;
+    padding: 7px;
+    padding-right: 83px;
+    border-radius: #ccc 5px;
+    border: 2px solid #ededed;
+}
+
+.input5{
+    margin-bottom: 1%;
+    margin-left: 10.6%;
+    padding: 7px;
+    padding-right: 82px;
+    border-radius: #ccc 5px;
+    border: 2px solid #ededed;
+}
+
+/* select */
+
+.select0{
+    margin-bottom: 1%;
+    margin-left: 14%;
+    padding: 7px;
+    padding-right: 77.1px;
+    border-radius: #ccc 5px;
+    border: 2px solid #ededed;
 }
 
 .select1{
-    margin-left: 10.6%;
+    margin-bottom: 1%;
+    margin-left: 13.2%;
     padding: 7px;
-    padding-right: 67px;
+    padding-right: 68px;
     border-radius: #ccc 5px;
+    border: 2px solid #ededed;
 }
+
+/* checkbox */
 
 .labCheck{
     font-weight: normal;
-    margin-left: 32%;
-    font-weight: bold;
+    margin-left: 38.1%!important;
 }
 
-.AddProject2{
+/* textarea */
+
+.textarea1{
     margin-top: 3%;
-    margin-left: 2.9%;
+    margin-left: 7%;
     padding: 7px;
-    padding-right: 143.5px;
-    padding-bottom: 100px;
+    padding-right: 100px;
+    padding-bottom: 60px;
     border-radius: #ccc 5px;
+    border: 2px solid #ededed;
 }
 
-.AddProject3{
-    margin-top: 10%;
-    margin-left: 5%;
-    padding: 7px;
-    padding-right: 126px;
-    border-radius: #ccc 5px;
-}
 
-.AddProject4{
-    margin-left: 23.4%;
-    padding: 7px;
-    padding-right: 125.5px;
-    border-radius: #ccc 5px;
-}
 
 
 /* CONTACT */

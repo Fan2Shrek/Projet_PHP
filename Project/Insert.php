@@ -13,6 +13,7 @@ use slugifier as s;
 
 $errors = array();
 
+//sécurité
 function verifyInput($var){
     $var = trim($var);
     $var = stripslashes($var);
@@ -20,6 +21,7 @@ function verifyInput($var){
     return $var;
 }
 
+//insert
 if (isset($_POST['submit'])){
     $code = s\slugify('CUST_'. verifyInput($_POST['name']), '_');
     $code = strtoupper($code);
@@ -62,111 +64,134 @@ if (isset($_POST['submit'])){
     
     <body>
         
+        <!-- navbar -->
         <?php require '../layout/navbar.php' ?>
         
         <section id="insert">
 
             <div class="container-fluid">
                 <div class="row">
-                    
+
+                    <!-- menu -->
                     <div class="col-lg-3 col-md-3 col-sm-6">
                         <?php require '../layout/menu.php' ?>
                     </div>
 
-                    <!-- titre -->
+                    <!-- page -->
                     <div class="col-lg-9 col-md-9 col-sm-12">
 
-                        <!-- section -->
+                        <!-- lien -->
                         <div class="col-lg-12 col-md-12 col-sm-12">
+                            <h2 class="nouv">Nouveau projet</h2>
+                            <ul class="listContact">
+                                <a href="Customer/insert.php" class="infoGenerale">INFORMATIONS GÉNÉRALES</a>&emsp;
+                                <a href="Environment/view.php" class="contactLien1">ENVIRONNEMENT PROJET</a>
+                            </ul>
+                        </div>
 
-                            <h3 class="nouv">Nouveau projet</h3>
+                        <!-- debut carré -->
+                        <div class="col-lg-12 col-md-12 col-sm-12">
+                            <div class="add2">
 
-                                <div class="infoGenerale">
-                                    <p><strong>INFORMATIONS GÉNÉRALES</strong></p>
-                                </div>
-                            </div>
+                                <!-- début form -->
+                                <form method='Post'>
 
-                            <!-- debut carré -->
-                            <div class="col-lg-12 col-md-12 col-sm-12">
-                                <div class="addClient">
+                                    <div class="col-lg-6 col-md-12 col-sm-12">
 
-                                    <!-- début form -->
-                                    <form method='Post'>
-
-                                        <div class="col-lg-6 col-md-12 col-sm-12">
+                                        <br><br>
 
                                         <!-- nom -->
-                                        <label class="lab" for='name'>Nom <span style="color:red">*</span></label>
-                                        <input name='name' class="AddProject" value="<?php echo (!isset($_POST['name']))? '' : $_POST['name'] ?>">
-                                        <p class="error"><?php echo (!isset($errors['nameError']))? '' : $errors['nameError'] ?></p><br>
+                                        <div class="nom">
+                                            <label class="lab" for='name'>Nom <span style="color:red">*&emsp;&emsp;&emsp;</span></label>
+                                            <input name='name' class="input2" value="<?php echo (!isset($_POST['name']))? '' : $_POST['name'] ?>">
+                                            <p class="error"><?php echo (!isset($errors['nameError']))? '' : $errors['nameError'] ?></p>
+                                        </div><br>
 
                                         <!-- code -->
-                                        <label class="lab">Code interne</label>
-                                        <button disabled="disabled" class="AddClient1">Champs généré automatiquement</button><br><br>
+                                        <div class="code">
+                                            <label class="lab">Code interne</label>
+                                            <button disabled="disabled" class="input3">Champs généré automatiquement</button>
+                                        </div><br><br>
                                         
                                         <!-- client -->
-                                        <label class="lab" for='customer'>Client <span style="color:red">*</span></label>
-                                        <select type="text" name='customer' class="select">  
-                                            <option disabled selected>Sélectionner un client</option>
-                                            <?php 
+                                        <div class="customer">
+                                            <label class="lab" for='customer'>Client <span style="color:red">*&emsp;&emsp;&emsp;</span></label>
+                                            <select type="text" name='customer' class="select0">  
+                                                <option disabled selected>Sélectionner un client</option>
+                                                <?php 
 
-                                            $customers = CustomerRepository::getCustomer();
+                                                $customers = CustomerRepository::getCustomer();
 
-                                            foreach ($customers as $customer) 
-                                            {
-                                                echo '<option value="'. $customer->getId() . '">'. $customer->getName() . '</option>';
-                                            }
+                                                foreach ($customers as $customer) 
+                                                {
+                                                    echo '<option value="'. $customer->getId() . '">'. $customer->getName() . '</option>';
+                                                }
 
-                                            ?>
-                                        </select>
-                                        <p class="error"><?php echo (!isset($errors['customerError']))? '' : $errors['customerError'] ?></p><br>
+                                                ?>
+                                            </select>
+                                            <p class="error"><?php echo (!isset($errors['customerError']))? '' : $errors['customerError'] ?></p>
+                                        </div><br>
 
                                         <!-- hebergeur -->
-                                        <label class="lab" for='host'>Herbergeur <span style="color:red">*</span></label>
-                                        <select type="text" name='host' class="select1">
-                                            <option disabled selected>Sélectionner un hébergeur</option>
-                                            <?php 
+                                        <div class="host">
+                                            <label class="lab" for='host'>Hébergeur <span style="color:red">*&emsp;</span></label>
+                                            <select type="text" name='host' class="select1">
+                                                <option disabled selected>Sélectionner un hébergeur</option>
+                                                <?php 
 
-                                            $host = HostRepository::getHost();
+                                                $host = HostRepository::getHost();
 
-                                            foreach ($host as $host) 
-                                            {
-                                                echo '<option value="'. $host->getId() . '">'. $host->getName() . '</option>';
-                                            }
+                                                foreach ($host as $host) 
+                                                {
+                                                    echo '<option value="'. $host->getId() . '">'. $host->getName() . '</option>';
+                                                }
 
-                                            ?>
-                                        </select>
-                                        <p class="error"><?php echo (!isset($errors['hostError']))? '' : $errors['hostError'] ?></p><br>
+                                                ?>
+                                            </select>
+                                            <p class="error"><?php echo (!isset($errors['hostError']))? '' : $errors['hostError'] ?></p>
+                                        </div><br>
                                         
-                                        <!-- serveur infogéré -->  
-                                        <label class="labCheck" for='managed_server'>
-                                        <input name='managed_server' type='checkbox'></label> Serveur infogéré<br><br>
-                                        
+                                        <!-- serveur infogéré --> 
+                                        <div class="serveur"> 
+                                            <label class="labCheck" for='managed_server'>
+                                            <input name='managed_server' type='checkbox'></label> Serveur infogéré
+                                        </div><br><br>
+
                                         <!-- notes -->
-                                        <label class="lab2">Notes / remarques</label>
-                                        <textarea name='notes' class="AddProject2"><?php echo (!isset($_POST['notes']))? '' : $_POST['notes'] ?></textarea>
-                                        <p class="error"><?php echo (!isset($errors['notesError']))? '' : $errors['notesError'] ?></p>
+                                        <div class="notes">
+                                            <label class="lab2">Notes / remarques</label>
+                                            <textarea name='notes' class="textarea1"><?php echo (!isset($_POST['notes']))? '' : $_POST['notes'] ?></textarea>
+                                            <p class="error"><?php echo (!isset($errors['notesError']))? '' : $errors['notesError'] ?></p>
+                                        </div>
 
                                     </div>
 
                                     <div class="col-lg-6 col-md-12 col-sm-12">
                                     
+                                        <br><br>
+
                                         <!-- dossier lastpass-->
-                                        <label class="lab3">Dossier Lastpass</label>
-                                        <input name='lastpass_folder' class="AddProject3" value="<?php echo (!isset($_POST['lastpass_folder']))? '' : $_POST['lastpass_folder'] ?>"><br>
-                                        
+                                        <div class="dossier">
+                                            <label class="lab">Dossier Lastpass</label>
+                                            <input name='lastpass_folder' class="input4" value="<?php echo (!isset($_POST['lastpass_folder']))? '' : $_POST['lastpass_folder'] ?>"><br>
+                                        </div><br><br>
+
                                         <!-- lien maquettes-->
-                                        <label class="lab4">Lien</label>
-                                        <input name='link_mock_ups' class="AddProject4" value="<?php echo (!isset($_POST['link_mock_ups']))? '' : $_POST['link_mock_ups'] ?>">
-                                     
+                                        <div class="maquettes">
+                                            <label class="lab">Lien&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;</label>
+                                            <input name='link_mock_ups' class="input5" value="<?php echo (!isset($_POST['link_mock_ups']))? '' : $_POST['link_mock_ups'] ?>">
+                                        </div>
+                                        
                                     </div>
-                                    
+                                                                        
                                     <!-- bouton form -->
                                     <div class="col-lg-12 col-md-12 col-sm-12">
-                                        <div class="btnAdd">
-                                            <a href="Project/View.php" class="btnInsert1">Annuler</a>&emsp;
-                                            <button type='submit' name='submit' class="btnInsertSave"><span class="glyphicon glyphicon-ok"></span> Sauvegarder</button>
+                                        <br><br>
+                                        <div class="btnPlace1">
+                                            <a href="Project/View.php" class="btnBlanc">ANNULER</a>&emsp;
+                                            <button type='submit' name='submit' class="btnOrange"><span class="glyphicon glyphicon-ok"></span> SAUVEGARDER</button>
                                         </div>
+                                        <br><br><br><br>
                                     </div>
 
                                 </form>
@@ -181,6 +206,7 @@ if (isset($_POST['submit'])){
 
         </section>
         
+        <!-- footer -->
         <?php require '../layout/footer.php' ?>
         
     </body>
