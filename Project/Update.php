@@ -123,7 +123,7 @@ if (isset($_POST['submit_delete'])){
                                         <div class="customer">
                                             <label class="lab" for='customer'>Client <span style="color:red">*&emsp;&emsp;&emsp;</span></label>
                                             <select type="text" name='customer' class="select0">  
-                                                <option disabled>EN COURS</option>
+                                                <option disabled></option>
                                                 <?php 
 
                                                 $customers = CustomerRepository::getCustomer();                                            
@@ -147,7 +147,7 @@ if (isset($_POST['submit_delete'])){
                                         <div class="host">
                                             <label class="lab" for='host'>Hébergeur <span style="color:red">*&emsp;</span></label>
                                             <select type="text" name='host' class="select1">
-                                                <option disabled>EN COURS</option>
+                                                <option disabled></option>
                                                 <?php 
 
                                                 $host = HostRepository::getHost();
