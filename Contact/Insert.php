@@ -97,26 +97,37 @@ if (isset($_POST['submit'])){
                                         <div class="contactAffichage">
                                             <h3 class="nomContact">Nouveau contact</h3>
 
-                                            <label for='name'>Nom : </label>
-                                            <input name="name" class="AddClient" value="<?php echo $_POST['name'] ?? '' ?>">
-                                            <p class="error"><?php echo $errors['nameError'] ?? '' ?></p>
-
+                                            <div class='group-form'>
+                                                <label for='name'>Nom : </label>
+                                                <input name="name" class="AddClient" value="<?php echo $_POST['name'] ?? '' ?>">
+                                                <p class="error"><?php echo $errors['nameError'] ?? '' ?></p>
+                                            </div>
                                             <br>
 
-                                            <label class="lab">Email</label>
-                                            <input name='email' size="30" class="UpClient" value="<?php echo $_POST['email'] ?? '' ?>">
+                                            <div class='group-form'>
+                                                <label class="lab">Email : </label>
+                                                <input name='email' size="30" class="UpClient" value="<?php echo $_POST['email'] ?? '' ?>">
+                                            </div>
 
                                             <br>                                                
 
                                             <br> <br>
-                                            <label class="lab2">Role</label>
-                                            <input type='text' name="role" class="AddClient2"><?php echo $_POST['role'] ?? '' ?></textarea>
+                                            <div class='form-right'>
 
-                                            <label class="lab">Telephone</label>
-                                            <input size="30" name='phone_number' class="UpClient" value="<?php echo $_POST['phone_number'] ?? '' ?>"> 
-                                            <button type="submit" name="submit" class=""><span class="glyphicon glyphicon-ok"></span> Ajouter</button>&emsp;
+                                                <div class='group-form' id='role-form'>
+                                                    <label class="lab2">Role : </label>
+                                                    <input type='text' name="role" class="AddClient2"><?php echo $_POST['role'] ?? '' ?></textarea>
+                                                </div>
+
+                                                <div class='group-form'>
+                                                    <label class="lab">Telephone : </label>
+                                                    <input size="30" name='phone_number' class="UpClient" value="<?php echo $_POST['phone_number'] ?? '' ?>"> 
+                                                </div>
+                                            </div>
 
                                         </div>
+                                        <button type="submit" name="submit" class="btnOrange" style='margin-top: 10px'><span class="glyphicon glyphicon-ok"></span> Ajouter</button>&emsp;
+
                                     </form>
                                 </div>
                             </div>

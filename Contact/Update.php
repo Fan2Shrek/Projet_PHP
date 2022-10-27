@@ -123,34 +123,43 @@ if (isset($_POST['submit_delete'])){
                                                     <a href="#" data-toggle="modal" data-target="#modal"class="btnRouge"><span class="glyphicon glyphicon-trash"></span> Supprimer</a>
                                                 </div>   
                                                 
-                                                <div class="nom">                                       
-                                                    <label class="labContact">Nom du contact <span style="color:red">*</span></label>
-                                                    <input name="name" class="inputContact0" value="'.$contact->getName().'">
-                                                    <p class="error">';
-                                                    echo (!isset($errors['nameError']))? '' : $errors['nameError'];
-                                                    echo'</p>
+                                                <div class="group-form">
+                                                    <div class="nom">                                       
+                                                        <label class="labContact">Nom du contact <span style="color:red">*</span></label>
+                                                        <input name="name" class="inputContact0" value="'.$contact->getName().'">
+                                                        <p class="error">';
+                                                        echo (!isset($errors['nameError']))? '' : $errors['nameError'];
+                                                        echo'</p>
+                                                    </div>
                                                 </div>
 
-                                                <div class="email">
-                                                    <label class="labContact">Email&emsp;&emsp;&emsp;&emsp;&emsp;</label>
-                                                    <input class="inputContact1" value="'.$contact->getEmail().'">
-                                                </div>                                              
+                                                <div class="group-form">
+                                                    <div class="email">
+                                                        <label class="labContact">Email&emsp;&emsp;&emsp;&emsp;&emsp;</label>
+                                                        <input class="inputContact1" value="'.$contact->getEmail().'">
+                                                    </div>    
+                                                </div>                                            
 
                                                 <br> <br>
 
-                                                <div class="role">
-                                                    <label class="labContact">Role</label>
-                                                    <input name="notes" class="" value="'.$contact->getRole().'">
-                                                    <p class="error">';
-                                                    echo (!isset($errors['notesError']))? '' : $errors['notesError'];
-                                                    echo '</p>
-                                                </div>
+                                                <div class="form-right">
+                                                    <div class="group-form">
+                                                        <div class="role">
+                                                            <label class="labContact">Role</label>
+                                                            <input name="notes" class="" value="'.$contact->getRole().'">
+                                                            <p class="error">';
+                                                            echo (!isset($errors['notesError']))? '' : $errors['notesError'];
+                                                            echo '</p>
+                                                        </div>
+                                                    </div>
 
-                                                <div class="telephone">
-                                                    <label class="labContact">Telephone</label>
-                                                    <input class="" value="'.$contact->getPhone().'">   
-                                                </div>                                       
-                                                 
+                                                    <div class="group-form">
+                                                        <div class="telephone">
+                                                            <label class="labContact">Telephone</label>
+                                                            <input class="" value="'.$contact->getPhone().'">   
+                                                        </div>    
+                                                    </div>
+                                                </div>
 
                                                 <!-- bouton form -->
                                                 <div class="col-lg-12 col-md-12 col-sm-12">
@@ -185,8 +194,8 @@ if (isset($_POST['submit_delete'])){
                                 
                                 
 
-                                    <button type="submit" name="submit" class=""><span class="glyphicon glyphicon-ok"></span> Sauvegarder</button>&emsp;
-                                    <a href="Contact/View.php" class="">Annuler</a>
+                                    <button type="submit" name="submit" class="btnOrange" style='margin-top: 10px'><span class="glyphicon glyphicon-ok"></span> Sauvegarder</button>&emsp;
+                                    <a href="Contact/View.php" class="btnBlanc">Annuler</a>
 
                                 </form>
 

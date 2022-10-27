@@ -543,6 +543,44 @@ footer h4{
     padding-left: 2.3%;
     padding-bottom: 2.3%;
     border: 2px solid #cb7857;
+    column-count: 2;
+}
+
+.contactAffichage input{
+    width: 200px;
+    height: 30px;
+    padding: 7px;
+    padding-right: 90px;
+    border-radius: #ccc 5px;
+    border: 2px solid #ededed;
+}
+
+.contactAffichage label{
+    margin: none;
+    padding: 0 !important;
+}
+
+.contactAffichage .form-right .group-form{
+    margin: 15px 0;
+    padding: 18px 0 ;
+}
+
+.contactAffichage .form-right input:nth-child(3n){
+    position: relative;
+    left: 30px;
+}
+
+.group-form{
+    margin-top: 30px;
+}
+
+.group-form .role{
+    margin-top: 100px;
+}
+
+#role-form{
+    position: relative;
+    bottom: 20px;
 }
 
 /* nom contact */
