@@ -18,7 +18,7 @@
     padding-bottom: 10px;
 }
 
-/*blanche*/
+/*blanc*/
 .btnBlanc{
     color: #cb7857;
     background-color: white;
@@ -27,6 +27,17 @@
     padding-right: 25px;
     padding-top: 10px;
     padding-bottom: 10px;
+}
+
+/*rouge*/
+.btnRouge{
+    color: white;
+    background-color: #d13f05;
+    border: solid #cb7857 1px;
+    padding-left: 18px;
+    padding-right: 18px;
+    padding-top: 9px;
+    padding-bottom: 9px;
 }
 
 /*hover*/
@@ -40,6 +51,13 @@
     color: white;
     background-color: #cb7857;
     text-decoration: none;
+}
+
+.btnRouge:hover{
+    color: #d13f05;
+    background-color: white;
+    text-decoration: none;
+    border: 1px solid #d13f05;
 }
 
 /* h2 */
@@ -510,23 +528,28 @@ footer h4{
 
 /* CONTACT */
 
-.contactBtn{
-    background-color: grey;
-    position: relative;
-    padding: 10px 10px;
-    text-align: center;
-    width: 273px;
-    height: 50px;
-    left: 273px;
-    bottom: 50px;
-    color: white !important;
-    text-decoration: none;
+/* fond blanc */
+
+.addContact{
+    background-color: white;
+    width: 100%;
+    height: 2000px; 
 }
 
-.contactBtn:hover{
-    text-decoration: none;
+/* affichage contact */
+
+.contactAffichage{
+    margin-top: 30px;
+    padding-left: 2.3%;
+    border: 2px solid #cb7857;
 }
 
+/* nom contact */
+
+.nomContact{
+    color: #cb7857;
+    font-weight: bold;
+}
 
 /* INDEX */
 
