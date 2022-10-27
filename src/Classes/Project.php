@@ -11,9 +11,15 @@ use App\Traits\NameTrait;
 use App\Classes\Customer;
 use App\Classes\Host;
 
-class Project implements IdInterface, nameInterface, codeNoteInterface
+class Project implements 
+    IdInterface, 
+    nameInterface, 
+    codeNoteInterface
 {
-    use idTrait, NameTrait, codeNotesTrait;
+    use idTrait;
+    use NameTrait;
+    use codeNotesTrait;
+    
     public function __construct
     (
         private int $id,

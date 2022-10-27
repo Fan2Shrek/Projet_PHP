@@ -23,7 +23,7 @@ if (isset($_GET['type'])){
         $contacts = ContactRepository::getContactByHost($_GET['id']);
         $host = HostRepository::getHostById($_GET["id"]);
     }
-    else if (isset($_GET['id']) &&  $_GET['type'] == 'C'){
+    elseif (isset($_GET['id']) &&  $_GET['type'] == 'C'){
         $contacts = ContactRepository::getContactByCustomer($_GET['id']);
         $customer = CustomerRepository::getCustomerById($_GET["id"]);
     }

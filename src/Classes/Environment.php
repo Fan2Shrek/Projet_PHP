@@ -8,9 +8,13 @@ use App\Traits\IdTrait;
 use App\Traits\NameTrait;
 use App\Classes\Project;
 
-class Environment implements IdInterface, nameInterface
+class Environment implements 
+    IdInterface,
+    nameInterface
 {
-    use idTrait, NameTrait;
+    use idTrait;
+    use NameTrait;
+    
     public function __construct
     (
         private int $id,

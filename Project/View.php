@@ -24,10 +24,10 @@ if (!empty($filtre)){
     if (count($filtre) == 1){
         $projects = $filtre[0];
     }
-    else if (count($filtre) ==2){
+    elseif (count($filtre) ==2){
         $projects = array_intersect($filtre[0], $filtre[1]);
     }
-    else if (count($filtre) ==3){
+    elseif (count($filtre) ==3){
         $projects = array_intersect($filtre[0], $filtre[1], $filtre[2]);
     }
 }
