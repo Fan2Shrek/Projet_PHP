@@ -43,8 +43,13 @@ class ContactRepository{
     //insert
     public static function addContact(Contact $contact): void{
         $database = Connection::connect();
-        $statement = $database->prepare('INSERT INTO contact (name, email, phone_number, role) VALUES (?, ?, ?)');
-        $statement->execute(array($contact->getName(), $contact->getEmail(), $contact->getPhone(), $contact->getRole()));
+        $statement = $database->prepare('INSERT INTO contact (name, email, phone_number, role, host_id, customer_id) VALUES (?, ?, ?, ?, ?, ?)');
+        if (null === $contact->getCustomer()){
+            $statement->execute(array($contact->getName(), $contact->getEmail(), $contact->getPhone(), $contact->getRole(), $contact->getHost()->getId(), null));
+        }
+        else{
+            $statement->execute(array($contact->getName(), $contact->getEmail(), $contact->getPhone(), $contact->getRole(), null, $contact->getCustomer()->getId()));
+        }
         $database = Connection::disconnect();
     }
 

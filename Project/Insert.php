@@ -103,8 +103,8 @@ if (isset($_POST['submit'])){
                                         <!-- nom -->
                                         <div class="nom">
                                             <label class="lab" for='name'>Nom <span style="color:red">*&emsp;&emsp;&emsp;</span></label>
-                                            <input name='name' class="input2" value="<?php echo (!isset($_POST['name']))? '' : $_POST['name'] ?>">
-                                            <p class="error"><?php echo (!isset($errors['nameError']))? '' : $errors['nameError'] ?></p>
+                                            <input name='name' class="input2" value="<?php echo $_POST['name'] ?? ''?>">
+                                            <p class="error"><?php echo $errors['nameError'] ?? '' ?></p>
                                         </div><br>
 
                                         <!-- code -->
