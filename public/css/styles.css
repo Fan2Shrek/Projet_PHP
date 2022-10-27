@@ -538,6 +538,8 @@ footer h4{
     background-color: white;
 }
 
+/* liens */
+ 
 .infoGenerale2{
     color: #8a8a8a;
     background-color: #f1f1f1;
@@ -552,7 +554,7 @@ footer h4{
     text-decoration: none;
 }
 
-.contactLien2{
+.contactLien3{
     font-weight: bold;
     background-color: white;
     color: #000;
@@ -561,7 +563,7 @@ footer h4{
     height: 50%;
 }
 
-.contactLien2:hover{
+.contactLien3:hover{
     color: white;
     background-color: #cb7857;
     text-decoration: none;
@@ -576,6 +578,8 @@ footer h4{
     border: 2px solid #cb7857;
     column-count: 2;
 }
+
+/* inputs et label */
 
 .contactAffichage input{
     width: 50%;
@@ -600,6 +604,8 @@ footer h4{
     position: relative;
     left: 30px;
 }
+
+ /* group - inputs */
 
 .group-form{
     margin-top: 30px;
@@ -632,9 +638,13 @@ footer h4{
     font-weight: bold;
 }
 
+/* label */
+
 .labContact{
     padding-top: 2%;
 }
+
+/* input */
 
 .inputContact0{
     margin-top: 4%;
@@ -653,6 +663,9 @@ footer h4{
     border-radius: #ccc 5px;
     border: 2px solid #ededed;
 }
+
+
+
 
 /* INDEX */
 

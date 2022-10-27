@@ -77,7 +77,7 @@ $contacts = ContactRepository::getContact();
                             </div>
 
                                 <div class="btnAdd2">
-                                    <a href='Customer/Insert.php' class="btnInsertLien">+ Ajouter</a>&emsp;
+                                    <a href='Contact/Insert.php' class="btnInsertLien">+ Ajouter</a>&emsp;
                                 </div>
                                 <br>
                             </div>

@@ -113,7 +113,7 @@ if (empty($_GET)){
                             <h2 class="nouv"><?php echo isset($host) ? $host->getName() : $customer->getName()?></h2>
                             <ul class="listContact">
                                 <a href='Host/<?php echo $_GET['id']?>' class="infoGenerale2">INFORMATIONS GÉNÉRALES</a>&emsp;
-                                <a href="Contact//<?php echo $_GET['id']?>'>" class="contactLien2">CONTACTS CLIENT</a>
+                                <a href="Contact//<?php echo $_GET['id']?>'>" class="contactLien3">CONTACTS CLIENT</a>
                             </ul>
                         </div>
 
