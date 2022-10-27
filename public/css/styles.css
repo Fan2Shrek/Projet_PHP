@@ -445,7 +445,7 @@ footer h4{
 }
 
 /* input */
-.nom, .code, .customer, .host, .serveur, .notes, .dossiers, .maquettes{
+.nom, .code, .customer, .host, .serveur, .notes, .dossiers, .maquettes, .email, .role, .telephone{
     position: relative;
 }
 
@@ -541,6 +541,7 @@ footer h4{
 .contactAffichage{
     margin-top: 30px;
     padding-left: 2.3%;
+    padding-bottom: 2.3%;
     border: 2px solid #cb7857;
 }
 
@@ -549,6 +550,32 @@ footer h4{
 .nomContact{
     color: #cb7857;
     font-weight: bold;
+}
+
+.btnPlaceSupprimer{
+    margin-right: 105px;
+}
+
+.labContact{
+    padding-top: 2%;
+}
+
+.inputContact0{
+    margin-top: 4%;
+    margin-left: 3%;
+    padding: 7px;
+    padding-right: 90px;
+    border-radius: #ccc 5px;
+    border: 2px solid #ededed;
+}
+
+.inputContact1{
+    margin-top: 4%;
+    margin-left: 3.7%;
+    padding: 7px;
+    padding-right: 90px;
+    border-radius: #ccc 5px;
+    border: 2px solid #ededed;
 }
 
 /* INDEX */

@@ -119,33 +119,37 @@ if (isset($_POST['submit_delete'])){
                                                 
                                                 <?php echo'                                                
 
-                                                <a href="#" data-toggle="modal" data-target="#modal"class="btnRouge"><span class="glyphicon glyphicon-trash"></span> Supprimer</a>
-                                                             
-                                                <br><br>
+                                                <div class="btnPlaceSupprimer">
+                                                    <a href="#" data-toggle="modal" data-target="#modal"class="btnRouge"><span class="glyphicon glyphicon-trash"></span> Supprimer</a>
+                                                </div>   
                                                 
-                                                <label class="lab">Nom <span style="color:red">*</span></label>
-                                                <input name="name" class="AddClient" value="'.$contact->getName().'">
-                                                <p class="error">';
-                                                echo (!isset($errors['nameError']))? '' : $errors['nameError'];
-                                                echo'</p>
+                                                <div class="nom">                                       
+                                                    <label class="labContact">Nom du contact <span style="color:red">*</span></label>
+                                                    <input name="name" class="inputContact0" value="'.$contact->getName().'">
+                                                    <p class="error">';
+                                                    echo (!isset($errors['nameError']))? '' : $errors['nameError'];
+                                                    echo'</p>
+                                                </div>
 
-                                                <br>
-
-                                                <label class="lab">Email</label>
-                                                <input size="30" class="UpClient" value="'.$contact->getEmail().'">
-
-                                                <br>                                                
+                                                <div class="email">
+                                                    <label class="labContact">Email&emsp;&emsp;&emsp;&emsp;&emsp;</label>
+                                                    <input class="inputContact1" value="'.$contact->getEmail().'">
+                                                </div>                                              
 
                                                 <br> <br>
-                                                <label class="lab2">Role</label>
-                                                <textarea name="notes" class="AddClient2">'.$contact->getRole().'</textarea>
-                                                <p class="error">';
-                                                echo (!isset($errors['notesError']))? '' : $errors['notesError'];
-                                                echo '</p>
 
+                                                <div class="role">
+                                                    <label class="labContact">Role</label>
+                                                    <input name="notes" class="" value="'.$contact->getRole().'">
+                                                    <p class="error">';
+                                                    echo (!isset($errors['notesError']))? '' : $errors['notesError'];
+                                                    echo '</p>
+                                                </div>
 
-                                                <label class="lab">Telephone</label>
-                                                <input size="30" class="UpClient" value="'.$contact->getPhone().'">                                          
+                                                <div class="telephone">
+                                                    <label class="labContact">Telephone</label>
+                                                    <input class="" value="'.$contact->getPhone().'">   
+                                                </div>                                       
                                                  
 
                                                 <!-- bouton form -->
