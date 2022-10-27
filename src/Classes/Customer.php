@@ -11,8 +11,15 @@ use App\Interfaces\IdInterface;
 use App\Database\Connection;
 use FFI\Exception;
 
-class Customer implements IdInterface, nameInterface, codeNoteInterface{
-    use idTrait, NameTrait, codeNotesTrait;
+class Customer implements 
+    IdInterface, 
+    nameInterface, 
+    codeNoteInterface
+{
+    use idTrait;
+    use NameTrait;
+    use codeNotesTrait;
+
     public function __construct(
         private int $id,
         private string $code,

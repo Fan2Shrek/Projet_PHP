@@ -24,10 +24,10 @@ if (!empty($filtre)){
     if (count($filtre) == 1){
         $host = $filtre[0];
     }
-    else if (count($filtre) ==2){
+    elseif (count($filtre) ==2){
         $host = array_intersect($filtre[0], $filtre[1]);
     }
-    else if (count($filtre) ==3){
+    elseif (count($filtre) ==3){
         $host = array_intersect($filtre[0], $filtre[1], $filtre[2]);
     }
 }

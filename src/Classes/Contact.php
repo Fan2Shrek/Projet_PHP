@@ -9,9 +9,13 @@ use App\Traits\NameTrait;
 use App\Classes\Customer;
 use App\Classes\Host;
 
-class Contact implements IdInterface, NameInterface
+class Contact implements 
+	IdInterface,
+	NameInterface
 {
-	use idTrait, NameTrait;
+	use idTrait;
+	use NameTrait;
+	
 	private ?Customer $customer;
 	private ?Host $host;
 
