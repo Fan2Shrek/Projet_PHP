@@ -196,9 +196,9 @@ if (empty($_GET)){
                                                                 <div class="modal-footer">
                                                                     <form method="post">
                                                                         <input type="hidden" value="'.$_GET['id'].'">
-                                                                        <button type="submit" name="submit_delete" class="btnInsertSave">Supprimer</button>&emsp;
+                                                                        <button type="submit" name="submit_delete" class="btnOrange">Supprimer</button>&emsp;
                                                                     </form>
-                                                                    <button type="button" class="modalFermer1" data-dismiss="modal">Fermer</button>
+                                                                    <button type="button" class="btnBlanc" data-dismiss="modal">Fermer</button>
                                                                 </div>
                                                             </div>
                                                         </div>
