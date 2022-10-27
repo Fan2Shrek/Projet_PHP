@@ -31,6 +31,8 @@
 
 /*rouge*/
 .btnRouge{
+    float: right;
+    margin-right: 3%;
     color: white;
     background-color: #d13f05;
     border: solid #cb7857 1px;
@@ -531,9 +533,38 @@ footer h4{
 /* fond blanc */
 
 .addContact{
-    background-color: white;
     width: 100%;
-    height: 2000px; 
+    height: 1000px;
+    background-color: white;
+}
+
+.infoGenerale2{
+    color: #8a8a8a;
+    background-color: #f1f1f1;
+    padding-top: 18px;    
+    width: 28%;
+    height: 50%;
+} 
+
+.infoGenerale2:hover{
+    color: white;
+    background-color: #cb7857;
+    text-decoration: none;
+}
+
+.contactLien2{
+    font-weight: bold;
+    background-color: white;
+    color: #000;
+    padding-top: 18px;    
+    width: 19%;
+    height: 50%;
+}
+
+.contactLien2:hover{
+    color: white;
+    background-color: #cb7857;
+    text-decoration: none;
 }
 
 /* affichage contact */
@@ -547,8 +578,8 @@ footer h4{
 }
 
 .contactAffichage input{
-    width: 200px;
-    height: 30px;
+    width: 50%;
+    height: 50%;
     padding: 7px;
     padding-right: 90px;
     border-radius: #ccc 5px;
@@ -574,13 +605,24 @@ footer h4{
     margin-top: 30px;
 }
 
-.group-form .role{
-    margin-top: 105px;
+.group-form .email{
+    margin-left: 5px;
 }
 
-#role-form{
-    position: relative;
-    bottom: 20px;
+.group-form .role{
+    margin-top: 78px;
+}
+
+.group-form .telephone{
+    margin-top: -10.5px;
+}
+
+.inputRole{
+    margin-left: 56.5px;
+}
+
+.inputTel{
+    margin-left: 15px;
 }
 
 /* nom contact */
@@ -588,10 +630,6 @@ footer h4{
 .nomContact{
     color: #cb7857;
     font-weight: bold;
-}
-
-.btnPlaceSupprimer{
-    margin-right: 105px;
 }
 
 .labContact{

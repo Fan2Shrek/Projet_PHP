@@ -50,6 +50,30 @@ if (isset($_POST['submit_delete'])){
     header('Location: View.php');
 }
 
+//pagination
+$nbPerPage = isset($_GET['nbPage']) ? $_GET['nbPage']: 2;
+$currentPage = isset($_GET['page']) ? $_GET['page']: 1;
+
+$pages = ceil(count($contacts)/$nbPerPage);
+$allContact = array();
+
+for ($i=($currentPage-1)*$nbPerPage; $i<$currentPage*$nbPerPage; $i++){
+    if (isset($contacts[$i])) $allContact[] = $contacts[$i];
+}
+
+$contacts = $allContact;
+
+if(isset($_GET['page'])){
+    $uri = substr($_SERVER['REQUEST_URI'], 0, strpos($_SERVER['REQUEST_URI'], "&page="));
+}
+else{
+    $uri = $_SERVER['REQUEST_URI'];
+}
+
+if (empty($_GET)){
+    header('Location: all?name=&email=&phone_number=&role=&nbPage=2');
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -88,8 +112,8 @@ if (isset($_POST['submit_delete'])){
                         <div class="col-lg-12 col-md-12 col-sm-12">
                             <h2 class="nouv"><?php echo isset($host) ? $host->getName() : $customer->getName()?></h2>
                             <ul class="listContact">
-                                <a href='Host/<?php echo $_GET['id']?>' class="infoGenerale">INFORMATIONS GÉNÉRALES</a>&emsp;
-                                <a href="Contact//<?php echo $_GET['id']?>'>" class="contactLien">CONTACTS CLIENT</a>
+                                <a href='Host/<?php echo $_GET['id']?>' class="infoGenerale2">INFORMATIONS GÉNÉRALES</a>&emsp;
+                                <a href="Contact//<?php echo $_GET['id']?>'>" class="contactLien2">CONTACTS CLIENT</a>
                             </ul>
                         </div>
 
@@ -114,14 +138,10 @@ if (isset($_POST['submit_delete'])){
                                             <div class="contactAffichage">'                                                
 
                                                 ?>
-
+                                                                                                
                                                 <h3 class="nomContact"><?php echo $contact->getName();?></h3>
                                                 
-                                                <?php echo'                                                
-
-                                                <div class="btnPlaceSupprimer">
-                                                    <a href="#" data-toggle="modal" data-target="#modal"class="btnRouge"><span class="glyphicon glyphicon-trash"></span> Supprimer</a>
-                                                </div>   
+                                                <?php echo'  
                                                 
                                                 <div class="group-form">
                                                     <div class="nom">                                       
@@ -135,28 +155,27 @@ if (isset($_POST['submit_delete'])){
 
                                                 <div class="group-form">
                                                     <div class="email">
-                                                        <label class="labContact">Email&emsp;&emsp;&emsp;&emsp;&emsp;</label>
-                                                        <input class="inputContact1" value="'.$contact->getEmail().'">
+                                                        <label class="labContact" for="email">Email&emsp;&emsp;&emsp;&emsp;&emsp;</label>
+                                                        <input class="inputContact1" name="email" value="'.$contact->getEmail().'">
                                                     </div>    
                                                 </div>                                            
-
-                                                <br> <br>
-
+                                                
                                                 <div class="form-right">
                                                     <div class="group-form">
+
+                                                    <a href="#" data-toggle="modal" data-target="#modal"class="btnRouge"><span class="glyphicon glyphicon-trash"></span> SUPPRIMER</a>
+
                                                         <div class="role">
-                                                            <label class="labContact">Role</label>
-                                                            <input name="notes" class="" value="'.$contact->getRole().'">
-                                                            <p class="error">';
-                                                            echo (!isset($errors['notesError']))? '' : $errors['notesError'];
-                                                            echo '</p>
+                                                            <label class="labContact" for="role">Rôle</label>
+                                                            <input name="role" class="inputRole" value="'.$contact->getRole().'">
+                                                            <br><br>
                                                         </div>
                                                     </div>
 
                                                     <div class="group-form">
                                                         <div class="telephone">
-                                                            <label class="labContact">Telephone</label>
-                                                            <input class="" value="'.$contact->getPhone().'">   
+                                                            <label class="labContact" for="phone">Telephone</label>
+                                                            <input class="inputTel" name="phone_number" value="'.$contact->getPhone().'">   
                                                         </div>    
                                                     </div>
                                                 </div>
@@ -193,11 +212,34 @@ if (isset($_POST['submit_delete'])){
                                 ?> 
                                 
                                 
+                                    <br><br>
+                                     <a href="Contact/Insert.php" class="btnOrange">+ AJOUTER UN CONTACT</a>
 
-                                    <button type="submit" name="submit" class="btnOrange" style='margin-top: 10px'><span class="glyphicon glyphicon-ok"></span> Sauvegarder</button>&emsp;
-                                    <a href="Contact/View.php" class="btnBlanc">Annuler</a>
+                                     <br><br>
+                                     <!-- pagination boutons -->
+                                    <div class="col-lg-3 col-md-3 col-sm-3">                                                                
+                                        <ul class="pagination">
+                                            <li class="page-item">
+                                                <a <?php echo ($currentPage == 1) ? "" : "href='".$uri."&page=".$currentPage - 1 ."'"?> class="page-link"><span class="glyphicon glyphicon-chevron-left"></span></a>
+                                            </li>
+                                            <?php for($page = 1; $page <= $pages; $page++): ?>
+                                                <li class="page-item <?php echo ($currentPage == $page) ? "active" : "" ?>">
+                                                    <a href="<?php echo $uri.'&page='.$page?>" class="page-link"><?= $page ?></a>
+                                                </li>
+                                            <?php endfor ?>
+                                                <li class="page-item" >
+                                                <a <?php echo ($currentPage == $pages) ? "" : "href='".$uri."&page=".$currentPage + 1 ."'"?> class="page-link"><span class="glyphicon glyphicon-chevron-right"></span></a>
+                                            </li>
+                                        </ul>                                            
+                                    </div>
 
-                                </form>
+                                     <div class="btnPlace">
+                                        <a href="Contact/View.php" class="btnBlanc">ANNULER</a>&emsp;
+                                        <button type="submit" name="submit" class="btnOrange"><span class="glyphicon glyphicon-ok"></span> SAUVEGARDER</button>&emsp;
+                                     </div>
+                                     <br><br>
+
+                                </form>                                
 
                             </div>
                         </div>
