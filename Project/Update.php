@@ -170,7 +170,7 @@ if (isset($_POST['submit_delete'])){
                                         <!-- serveur infogéré --> 
                                         <div class="serveur"> 
                                             <label class="labCheck" for='managed_server'>
-                                            <input name='managed_server' type='checkbox'></label> Serveur infogéré
+                                            <input name='managed_server' type='checkbox' <?php echo $project->getManaged_server()==0 ? '': 'checked' ?>></label> Serveur infogéré
                                         </div><br><br>
 
                                         <!-- notes -->
