@@ -147,10 +147,10 @@ if (empty($_GET)){
                                             <div class="paginationCSS">                                          
                                                 <label class="labelPagination">Résultats/pages&emsp;</label>
                                                 <select name='nbPage' onchange="this.form.submit()" class="selectPagination">
-                                                    <option value="5" <?php echo (isset($_GET['nbPage']) && $_GET['nbPage']== 5) ?'selected': '' ?>>5</option>
-                                                    <option value="10" <?php echo (isset($_GET['nbPage']) && $_GET['nbPage']== 10) ?'selected': '' ?>>10</option>
-                                                    <option value="15" <?php echo (!isset($_GET['nbPage'])) ?'selected': '' ?>>15</option>
-                                                    <option value="20" <?php echo (isset($_GET['nbPage']) && $_GET['nbPage']== 20) ?'selected': '' ?>>20</option>
+                                                    <option value="5" <?php echo (isset($_GET['nbPage']) && $_GET['nbPage'] == 5) ? 'selected': '' ?>>5</option>
+                                                    <option value="10" <?php echo (isset($_GET['nbPage']) && $_GET['nbPage'] == 10) ? 'selected': '' ?>>10</option>
+                                                    <option value="15" <?php echo (isset($_GET['nbPage']) && $_GET['nbPage'] == 15) ? 'selected': '' ?>>15</option>
+                                                    <option value="20" <?php echo (isset($_GET['nbPage']) && $_GET['nbPage'] == 20) ? 'selected': '' ?>>20</option>
                                                 </select>
                                             </div>
                                         </div>
