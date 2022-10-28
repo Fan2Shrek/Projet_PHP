@@ -56,7 +56,7 @@ class ContactRepository{
     //update
     public static function updateContact(Contact $oldCon, Contact $newCon): void{
         $database = Connection::connect();
-        $statement = $database->prepare ('UPDATE customer set name = ?, email = ?, phone_number = ?, 
+        $statement = $database->prepare ('UPDATE contact set name = ?, email = ?, phone_number = ?, 
         role = ? WHERE id= ?');
         $statement->execute(array($newCon->getName(), $newCon->getEmail(), $newCon->getPhone(), 
         $newCon->getRole(), $oldCon->getId()));

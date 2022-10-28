@@ -17,6 +17,8 @@ function verifyInput($var){
     return $var;
 }
 
+$customer = $host = null;
+
 //host ou customer
 if (isset($_GET['type'])){
     if (isset($_GET['id']) &&  $_GET['type'] == 'H'){
@@ -31,23 +33,28 @@ if (isset($_GET['type'])){
 
 //update
 if (isset($_POST['submit'])){
-    $code = 'HOST_' . s\slugify(verifyInput($_POST['name']), '_');
-    $newContact = new Contact(0, 0,
-    verifyInput($_POST['name']),
-    strtoupper($code),
-    verifyInput($_POST['notes']));
+    $oldCus = ContactRepository::getContactById($_POST["idContact"]);
+    $newContact = new Contact(
+        0,
+        verifyInput($_POST['name']),
+        verifyInput($_POST['email']),
+        verifyInput($_POST['phone_number']),
+        verifyInput($_POST['role']),
+        $customer,
+        $host,
+    );
     $errors = Validator::checkContact($newContact);
     if (null === $errors){
-        ContactRepository::updateContact($contact, $newContact);
-        header("Location: View.php");
+        ContactRepository::updateContact($oldCus, $newContact);
+        header("Location: ".$_GET['type']."-".$_GET['id'].'-1');
     }
 }
 
 //delete
 if (isset($_POST['submit_delete'])){
-    $contact = ContactRepository::getContactById($_GET['id']);
+    $contact = ContactRepository::getContactById($_POST['id_con']);
     ContactRepository::deleteContact($contact);
-    header('Location: View.php');
+    header("Location: ".$_GET['type']."-".$_GET['id'].'-1');
 }
 
 //pagination
@@ -143,6 +150,8 @@ if (empty($_GET)){
                                                 
                                                 <?php echo'  
                                                 
+                                                <input type="hidden" name="idContact" value='.$contact->getId().'>
+
                                                 <div class="group-form">
                                                     <div class="nom">                                       
                                                         <label class="labContact">Nom du contact <span style="color:red">*</span></label>
@@ -195,7 +204,7 @@ if (empty($_GET)){
                                                                 </div>
                                                                 <div class="modal-footer">
                                                                     <form method="post">
-                                                                        <input type="hidden" value="'.$_GET['id'].'">
+                                                                        <input type="hidden" name="id_con" value="'.$contact->getId().'">
                                                                         <button type="submit" name="submit_delete" class="btnOrange">Supprimer</button>&emsp;
                                                                     </form>
                                                                     <button type="button" class="btnBlanc" data-dismiss="modal">Fermer</button>
@@ -204,7 +213,9 @@ if (empty($_GET)){
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div>';
+                                            <button type="submit" name="submit" class="btnOrange"><span class="glyphicon glyphicon-ok"></span> SAUVEGARDER</button>&emsp;
+                                            </div>
+                                        </form>';
                                             
                                     }
                                 }
@@ -213,7 +224,7 @@ if (empty($_GET)){
                                 
                                 
                                     <br><br>
-                                     <a href="Contact/Insert.php" class="btnOrange">+ AJOUTER UN CONTACT</a>
+                                     <a href="<?php echo $uri."-new" ?>" class="btnOrange">+ AJOUTER UN CONTACT</a>
 
                                      <br><br>
                                      <!-- pagination boutons -->
@@ -235,7 +246,7 @@ if (empty($_GET)){
 
                                      <div class="btnPlace">
                                         <a href="Contact/View.php" class="btnBlanc">ANNULER</a>&emsp;
-                                        <button type="submit" name="submit" class="btnOrange"><span class="glyphicon glyphicon-ok"></span> SAUVEGARDER</button>&emsp;
+                                        
                                      </div>
                                      <br><br>
 

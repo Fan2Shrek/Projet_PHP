@@ -41,7 +41,7 @@ if (isset($_POST['submit'])){
     $errors = Validator::checkContact($contact);
     if (null === $errors){
         ContactRepository::addContact($contact);
-        header("Location: ".$_GET['type']."-".$_GET['id'].".php");
+        header("Location: ".$_GET['type']."-".$_GET['id'].'-1');
     }
 }
 
