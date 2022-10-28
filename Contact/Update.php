@@ -64,7 +64,7 @@ for ($i=($currentPage-1)*$nbPerPage; $i<$currentPage*$nbPerPage; $i++){
 $contacts = $allContact;
 
 if(isset($_GET['page'])){
-    $uri = substr($_SERVER['REQUEST_URI'], 0, strpos($_SERVER['REQUEST_URI'], "&page="));
+    $uri = substr($_SERVER['REQUEST_URI'], 0, -2);
 }
 else{
     $uri = $_SERVER['REQUEST_URI'];
@@ -220,15 +220,15 @@ if (empty($_GET)){
                                     <div class="col-lg-3 col-md-3 col-sm-3">                                                                
                                         <ul class="pagination">
                                             <li class="page-item">
-                                                <a <?php echo ($currentPage == 1) ? "" : "href='".$uri."&page=".$currentPage - 1 ."'"?> class="page-link"><span class="glyphicon glyphicon-chevron-left"></span></a>
+                                                <a <?php echo ($currentPage == 1) ? "" : "href='".$uri."-".$currentPage - 1 ."'"?> class="page-link"><span class="glyphicon glyphicon-chevron-left"></span></a>
                                             </li>
                                             <?php for($page = 1; $page <= $pages; $page++): ?>
                                                 <li class="page-item <?php echo ($currentPage == $page) ? "active" : "" ?>">
-                                                    <a href="<?php echo $uri.'&page='.$page?>" class="page-link"><?= $page ?></a>
+                                                    <a href="<?php echo $uri.'-'.$page?>" class="page-link"><?= $page ?></a>
                                                 </li>
                                             <?php endfor ?>
                                                 <li class="page-item" >
-                                                <a <?php echo ($currentPage == $pages) ? "" : "href='".$uri."&page=".$currentPage + 1 ."'"?> class="page-link"><span class="glyphicon glyphicon-chevron-right"></span></a>
+                                                <a <?php echo ($currentPage == $pages) ? "" : "href='".$uri."-".$currentPage + 1 ."'"?> class="page-link"><span class="glyphicon glyphicon-chevron-right"></span></a>
                                             </li>
                                         </ul>                                            
                                     </div>
