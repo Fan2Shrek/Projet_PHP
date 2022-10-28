@@ -167,7 +167,8 @@ if (empty($_GET)){
                                                         <label class="labContact" for="email">Email&emsp;&emsp;&emsp;&emsp;&emsp;</label>
                                                         <input class="inputContact1" name="email" value="'.$contact->getEmail().'">
                                                     </div>    
-                                                </div>                                            
+                                                </div><br><br>
+                                                <button type="submit" name="submit" class="btnOrange"><span class="glyphicon glyphicon-ok"></span> SAUVEGARDER</button>&emsp;                                            
                                                 
                                                 <div class="form-right">
                                                     <div class="group-form">
@@ -213,7 +214,6 @@ if (empty($_GET)){
                                                         </div>
                                                     </div>
                                                 </div>
-                                            <button type="submit" name="submit" class="btnOrange"><span class="glyphicon glyphicon-ok"></span> SAUVEGARDER</button>&emsp;
                                             </div>
                                         </form>';
                                             
@@ -244,11 +244,11 @@ if (empty($_GET)){
                                         </ul>                                            
                                     </div>
 
-                                     <div class="btnPlace">
-                                        <a href="Contact/View.php" class="btnBlanc">ANNULER</a>&emsp;
-                                        
-                                     </div>
-                                     <br><br>
+                                    <br><br><br><br>
+                                    <div class="btnPlace1">
+                                        <a href="Contact/View.php" class="btnBlanc">ANNULER</a>&emsp;                                        
+                                    </div>
+                                    <br><br>
 
                                 </form>                                
 
