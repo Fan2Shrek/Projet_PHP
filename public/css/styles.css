@@ -667,6 +667,55 @@ footer h4{
 
 
 
+/* ENVIRONNEMENT */
+
+/* boutons */
+.contactLien4{
+    font-weight: bold;
+    background-color: white;
+    color: #000;
+    padding-top: 18px;    
+    width: 27%;
+    height: 50%;
+}
+
+.contactLien4:hover{
+    color: white;
+    background-color: #cb7857;
+    text-decoration: none;
+}
+
+/* inputs */
+
+.inputEnv0{
+    margin-left: 8%;
+}
+
+.inputEnv1{
+    margin-left: 9.5%;
+}
+
+.selectEnv{
+    margin-left: 7.8%;
+    padding: 7px;
+    padding-right: 217px;
+    border-radius: #ccc 5px;
+    border: 2px solid #ededed;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /* INDEX */
 
 #sec1{

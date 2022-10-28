@@ -85,7 +85,7 @@ if (isset($_POST['submit'])){
                             <h2 class="nouv">Nouveau projet</h2>
                             <ul class="listContact">
                                 <a href="Customer/insert.php" class="infoGenerale">INFORMATIONS GÉNÉRALES</a>&emsp;
-                                <a href="Environment/view.php" class="contactLien1">ENVIRONNEMENT PROJET</a>
+                                <a href="Environment/insert.php" class="contactLien1">ENVIRONNEMENT PROJET</a>
                             </ul>
                         </div>
 

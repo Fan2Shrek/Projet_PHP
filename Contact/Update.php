@@ -95,8 +95,6 @@ if (empty($_GET)){
         <script src="public/js/script.js"></script>
         <link rel="stylesheet" href="public/css/styles.css">
     </head>
-    
-    <body>
 
     <body>
         
@@ -173,7 +171,7 @@ if (empty($_GET)){
                                                 <div class="form-right">
                                                     <div class="group-form">
 
-                                                    <a href="#" data-toggle="modal" data-target="#modal'.$contact->getId().'" class="btnRouge"><span class="glyphicon glyphicon-trash"></span> SUPPRIMER</a>
+                                                    <a href="#" data-toggle="modal" data-target="#modal"class="btnRouge"><span class="glyphicon glyphicon-trash"></span> SUPPRIMER</a>
 
                                                         <div class="role">
                                                             <label class="labContact" for="role">Rôle</label>
@@ -193,7 +191,7 @@ if (empty($_GET)){
                                                 <!-- bouton form -->
                                                 <div class="col-lg-12 col-md-12 col-sm-12">
                                                     <!-- modal suppression -->
-                                                    <div class="modal fade" id="modal'.$contact->getId().'"> 
+                                                    <div class="modal fade" id="modal"> 
                                                         <div class="modal-dialog">
                                                             <div class="modal-content">
                                                                 <div class="modal-header">
@@ -244,7 +242,7 @@ if (empty($_GET)){
                                         </ul>                                            
                                     </div>
 
-                                    <br><br><br><br>
+                                    <br><br><br>
                                     <div class="btnPlace1">
                                         <a href="Contact/View.php" class="btnBlanc">ANNULER</a>&emsp;                                        
                                     </div>
