@@ -41,7 +41,7 @@ if (isset($_POST['submit'])){
     $host,
     $customer);
 
-    $errors = Validator::checkProjet($project);
+    $errors = Validator::checkProject($project);
     if (null === $errors){
         ProjectRepository::addProject($project);
         header("Location: View.php");

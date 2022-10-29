@@ -40,7 +40,7 @@ if (isset($_POST['submit'])){
     $host,
     $customer);
 
-    $errors = Validator::checkProjet($newProject);
+    $errors = Validator::checkProject($newProject);
     if (null === $errors){
         ProjectRepository::updateProject($project, $newProject);
         header("Location: View.php");

@@ -16,6 +16,27 @@ function verifyInput($var){
     return $var;
 }
 
+//insert
+
+if (isset($_POST['submit'])){
+    $environment = new Environment(
+        0,
+        verifyInput($_POST['name']),
+        verifyInput($_POST['link']),
+        verifyInput($_POST['ip_address']),
+        verifyInput($_POST['ssh_port']),
+        verifyInput($_POST['ssh_username']),
+        verifyInput($_POST['phpmyadmin_link']),
+        verifyInput($_POST['ip_restriction']),
+        $project,
+    );
+    $errors = Validator::checkEnvironment($project);
+    if (null === $errors){
+        EnvironmentRepository::addEnvironment($environment);
+        header("Location: ".$_GET['type']."-".$_GET['id'].'-1');
+    }
+}
+
 ?>
 
 <!DOCTYPE html>

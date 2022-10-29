@@ -3,6 +3,7 @@
 namespace App\Forms;
 
 use App\Classes\Customer;
+use App\Classes\Environment;
 use App\Classes\Host;
 use App\Classes\Project;
 use App\Classes\Contact;
@@ -40,7 +41,7 @@ class Validator{
     }
 
     //project
-    public static function checkProjet(Project $project): ?array{
+    public static function checkProject(Project $project): ?array{
         $rep = array();
 
         if (null == $project->getName()){
@@ -68,4 +69,19 @@ class Validator{
 
     return (empty($rep))? null : $rep;
     }
+
+    //Environment
+    public static function checkEnvironment(Environment $environment): ?array{
+        $rep = array();
+    
+        if (null == $environment->getName()){
+            $rep ["nameError"] = 'Veuillez renseigner un nom';
+        }
+
+        if (null === $environment->getProject_id()){
+            $rep['projectIdError'] = 'Veuillez renseigner un projet';
+        }
+    
+        return (empty($rep))? null : $rep;
+        }
 }
