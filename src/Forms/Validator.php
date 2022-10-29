@@ -2,6 +2,8 @@
 
 namespace App\Forms;
 
+use Egulias\EmailValidator\EmailValidator;
+use Egulias\EmailValidator\Validation\RFCValidation;
 use App\Classes\Customer;
 use App\Classes\Environment;
 use App\Classes\Host;
@@ -62,9 +64,16 @@ class Validator{
     //Contact
     public static function checkContact(Contact $contact): ?array{
         $rep = array();
+        $validator = new EmailValidator();
 
         if (null == $contact->getName()){
             $rep ["nameError"] = 'Veuillez renseigner un nom';
+        }
+
+        if (null !== $contact->getEmail()){
+            if(!$validator->isValid($contact->getEmail(), new RFCValidation())){
+                $rep['emailError'] = 'Veuillez renseigner une adresse mail correcte';
+            }
         }
 
         if (null === $contact->getHost() && null === $contact->getCustomer()){

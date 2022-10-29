@@ -19,7 +19,9 @@ function verifyInput($var){
 
 $host = $customer = null;
 
-if (isset($_GET['type'])){
+$new = false;
+
+if (isset($_GET['type']) && $_GET['id'] != 0){
     if (isset($_GET['id']) &&  $_GET['type'] == 'H'){
         $host = HostRepository::getHostById($_GET["id"]);
     }
@@ -29,6 +31,14 @@ if (isset($_GET['type'])){
 }
 
 if (isset($_POST['submit'])){
+    if (isset($_POST['list'])){
+        if  ($_GET['type'] == 'C'){
+            $customer = CustomerRepository::getCustomerById($_POST['list']);
+        }
+        elseif ($_GET['type'] == 'H'){
+            $host = HostRepository::getHostById($_POST['list']);
+        }
+    }
     $contact = new Contact(
         0,
         verifyInput($_POST['name']),
@@ -41,8 +51,18 @@ if (isset($_POST['submit'])){
     $errors = Validator::checkContact($contact);
     if (null === $errors){
         ContactRepository::addContact($contact);
-        header("Location: ".$_GET['type']."-".$_GET['id'].'-1');
+        if ($_GET['id'] != 0){
+            header("Location: ".$_GET['type']."-".$_GET['id'].'-1');
+        }
+        else{
+            header("Location: ".$_GET['type']."-".$_POST['list'].'-1');
+        }
     }
+}
+
+if ($_GET['id'] == 0){
+    $new = true;
+    $list = ($_GET['type'] == 'C') ? CustomerRepository::getCustomer():HostRepository::getHost();
 }
 
 ?>
@@ -81,10 +101,10 @@ if (isset($_POST['submit'])){
 
                         <!-- lien -->
                         <div class="col-lg-12 col-md-12 col-sm-12">
-                            <h2 class="nouv"><?php echo isset($host) ? $host->getName() : $customer->getName()?></h2>
+                            <h2 class="nouv"><?php  if (!$new)echo isset($host) ? $host->getName() : $customer->getName()?></h2>
                             <ul class="listContact">
                                 <a href='Host/<?php echo $_GET['id']?>' class="infoGenerale">INFORMATIONS GÉNÉRALES</a>&emsp;
-                                <a href="Contact//<?php echo $_GET['id']?>'>" class="contactLien">CONTACTS CLIENT</a>
+                                <a href="Contact/<?php echo $_GET['id']?>" class="contactLien">CONTACTS CLIENT</a>
                             </ul>
                         </div>
 
@@ -107,6 +127,7 @@ if (isset($_POST['submit'])){
                                             <div class='group-form'>
                                                 <label class="lab">Email : </label>
                                                 <input name='email' size="30" class="UpClient" value="<?php echo $_POST['email'] ?? '' ?>">
+                                                <p class="error"><?php echo $errors['emailError'] ?? '' ?></p>
                                             </div>
 
                                             <br>                                                
@@ -125,6 +146,17 @@ if (isset($_POST['submit'])){
                                                 </div>
                                             </div>
 
+                                            
+                                                <?php
+                                                    if (isset($list)){
+                                                        echo "<select name='list'>";
+                                                        foreach ($list as $obj){
+                                                            echo '<option value='.$obj->getId().'>'.$obj->getName().'</option>';
+                                                        }
+                                                        echo "</select>";
+                                                    }
+            
+                                                ?>
                                         </div>
                                         <button type="submit" name="submit" class="btnOrange" style='margin-top: 10px'><span class="glyphicon glyphicon-ok"></span> Ajouter</button>&emsp;
 

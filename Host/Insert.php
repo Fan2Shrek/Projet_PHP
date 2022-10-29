@@ -70,7 +70,7 @@ if (isset($_POST['submit'])){
                             <h2 class="nouv">Nouvel hébergeur</h2>
                             <ul class="listContact">
                                 <a href="Host/insert.php" class="infoGenerale">INFORMATIONS GÉNÉRALES</a>&emsp;
-                                <a href="Contact/view.php" class="contactLien2">CONTACTS HEBERGEUR</a>
+                                <a href="Contact/H-0-new" class="contactLien2">CONTACTS HEBERGEUR</a>
                             </ul>
                         </div>
 

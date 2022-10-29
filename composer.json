@@ -1,5 +1,4 @@
 {
-    "name": "projet_php",
     "description": "Projec de php",
     "type": "library",
     "autoload": {
@@ -9,6 +8,7 @@
     },
     "minimum-stability": "stable",
     "require": {
-        "keyvanakbary/slugifier": "^4.0"
+        "keyvanakbary/slugifier": "^4.0",
+        "egulias/email-validator": "^3.2"
     }
 }

@@ -71,7 +71,7 @@ if (isset($_POST['submit'])){
                             <h2 class="nouv">Nouveau client</h2>
                             <ul class="listContact">
                                 <a href="Customer/insert.php" class="infoGenerale">INFORMATIONS GÉNÉRALES</a>&emsp;
-                                <a href="Contact/view.php" class="contactLien">CONTACTS CLIENT</a>
+                                <a href="Contact/C-0-new" class="contactLien">CONTACTS CLIENT</a>
                             </ul>
                         </div>
 
