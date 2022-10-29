@@ -1,3 +1,23 @@
+<?php 
+
+require '../vendor/autoload.php';
+
+use App\Classes\Environment;
+use App\Repository\EnvironmentRepository;
+use App\Repository\ProjectRepository;
+use App\Forms\Validator;
+use slugifier as s;
+
+//sécurité
+function verifyInput($var){
+    $var = trim($var);
+    $var = stripslashes($var);
+    $var = htmlspecialchars($var);
+    return $var;
+}
+
+?>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -50,40 +70,42 @@
 
                                                 <div class="group-form">
                                                     <div class="nom">                                       
-                                                        <label class="labContact">Nom<span style="color: red"> *</span>&emsp;&emsp;&emsp;&emsp;</label>
+                                                        <label class="lab">Nom<span style="color: red"> *</span>&emsp;&emsp;&emsp;&emsp;</label>
                                                         <input name="name" class="inputEnv0" value="">
                                                     </div>                                                    
                                                 </div>
 
                                                 <div class="group-form">
                                                     <div class="email">
-                                                        <label class="labContact" for="email">Adresse IP&emsp; </label>
+                                                        <label class="lab" for="email">Adresse IP&emsp; </label>
                                                         <input class="inputEnv1" name="email" value="">
                                                     </div>    
                                                 </div>
                                                 
                                                 <div class="group-form">
                                                     <div class="email">
-                                                        <label class="labContact" for="email">Nom d'utilisateur&emsp;</label>
+                                                        <label class="lab" for="email">Nom d'utilisateur&emsp;</label>
                                                         <input class="inputEnv2" name="email" value="">
                                                     </div>    
                                                 </div> 
 
                                                 <div class="group-form">
                                                     <div class="email">
-                                                        <label>Projet<span style="color: red"> *</span>&emsp;&emsp;&emsp;</label>
+                                                        <label class="lab">Projet<span style="color: red"> *</span>&emsp;&emsp;&emsp;</label>
                                                         <select class="selectEnv">
                                                             <option></option>
                                                         </select>
+                                                        
                                                     </div>
                                                 </div>
 
                                                 
-                                                <div class="form-right">
+                                                <div class="form-right2">
+                                                    
                                                     <div class="group-form">
                                                         <div class="role">
                                                             <label class="labContact" for="role">Port SSH</label>
-                                                            <input name="role" class="inputRole" value="">
+                                                            <input name="role" class="inputEnv3" value="">
                                                             <br><br>
                                                         </div>
                                                         <input type="checkbox">Restriction IP

@@ -597,7 +597,7 @@ footer h4{
 
 .contactAffichage .form-right .group-form{
     margin: 15px 0;
-    padding: 18px 0 ;
+    padding: 18px 0;
 }
 
 .contactAffichage .form-right input:nth-child(3n){
@@ -702,6 +702,11 @@ footer h4{
     border-radius: #ccc 5px;
     border: 2px solid #ededed;
 }
+
+.form-right2{
+    padding-top: 10px;
+}
+
 
 
 
