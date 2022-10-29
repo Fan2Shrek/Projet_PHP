@@ -61,13 +61,17 @@ class Validator{
 
     //Contact
     public static function checkContact(Contact $contact): ?array{
-    $rep = array();
+        $rep = array();
 
-    if (null === $contact->getHost() && null === $contact->getCustomer()){
-        $rep['hostCusError'] = 'Veuillez renseigner soit un client, soit un hébergeur';
-    }
+        if (null == $contact->getName()){
+            $rep ["nameError"] = 'Veuillez renseigner un nom';
+        }
 
-    return (empty($rep))? null : $rep;
+        if (null === $contact->getHost() && null === $contact->getCustomer()){
+            $rep['hostCusError'] = 'Veuillez renseigner soit un client, soit un hébergeur';
+        }
+
+        return (empty($rep))? null : $rep;
     }
 
     //Environment
@@ -83,5 +87,5 @@ class Validator{
         }
     
         return (empty($rep))? null : $rep;
-        }
+    }
 }
