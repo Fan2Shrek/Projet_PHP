@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le : lun. 24 oct. 2022 à 11:08
+-- Généré le : sam. 29 oct. 2022 à 16:24
 -- Version du serveur : 10.4.24-MariaDB
 -- Version de PHP : 8.1.6
 
@@ -108,14 +108,14 @@ INSERT INTO `customer` (`id`, `code`, `name`, `notes`) VALUES
 
 CREATE TABLE `environment` (
   `id` int(11) NOT NULL,
-  `name` varchar(255) NOT NULL,
-  `link` varchar(255) NOT NULL,
-  `ip_address` varchar(255) NOT NULL,
-  `ssh_port` int(6) NOT NULL,
-  `ssh_username` varchar(255) NOT NULL,
-  `phpmyadmin_link` varchar(255) NOT NULL,
+  `name` varchar(255) DEFAULT NULL,
+  `link` varchar(255) DEFAULT NULL,
+  `ip_address` varchar(255) DEFAULT NULL,
+  `ssh_port` int(6) DEFAULT NULL,
+  `ssh_username` varchar(255) DEFAULT NULL,
+  `phpmyadmin_link` varchar(255) DEFAULT NULL,
   `ip_restriction` tinyint(1) NOT NULL,
-  `project_id` int(11) NOT NULL
+  `project_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
