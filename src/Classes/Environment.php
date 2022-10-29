@@ -29,9 +29,14 @@ class Environment implements
     )
     {
     }
+
+    public function __toString()
+    {
+        return $this->id;
+    }
     
     //link
-    public function getLink(): string
+    public function getLink(): ?string
     {
         return $this->link;
     }
@@ -42,7 +47,7 @@ class Environment implements
     }
 
     //ip_address
-    public function getIp_address(): string
+    public function getIp_address(): ?string
     {
         return $this->ip_address;
     }
@@ -53,7 +58,7 @@ class Environment implements
     }
 
     //ssh_port
-    public function getSsh_port(): int
+    public function getSsh_port(): ?int
     {
         return $this->ssh_port;
     }
@@ -64,7 +69,7 @@ class Environment implements
     }
 
     //ssh_username
-    public function getSsh_username(): string
+    public function getSsh_username(): ?string
     {
         return $this->ssh_username;
     }
@@ -75,7 +80,7 @@ class Environment implements
     }
 
     //phpmyadmin_link
-    public function getPhpmyadmin_link(): string
+    public function getPhpmyadmin_link(): ?string
     {
         return $this->phpmyadmin_link;
     }
@@ -97,7 +102,7 @@ class Environment implements
     }
 
     //project_id
-    public function getProject_id(): Project
+    public function getProject_id(): ?Project
     {
         return $this->project_id;
     }

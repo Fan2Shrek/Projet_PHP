@@ -3,6 +3,7 @@
 require '../vendor/autoload.php';
 
 use App\Classes\Environment;
+use App\Classes\Project;
 use App\Repository\EnvironmentRepository;
 use App\Repository\ProjectRepository;
 use App\Forms\Validator;
@@ -17,8 +18,18 @@ function verifyInput($var){
 }
 
 //insert
-
 if (isset($_POST['submit'])){
+
+    $name = (isset($_POST['name'])) ? $_POST['name'] : null ;
+    $link = (isset($_POST['link'])) ? $_POST['link'] : null ;
+    $ip_address = (isset($_POST['ip_address'])) ? $_POST['ip_address'] : null ;
+    $ssh_port = (isset($_POST['ssh_port'])) ? $_POST['ssh_port'] : null ;
+    $ssh_username = (isset($_POST['ssh_username'])) ? $_POST['ssh_username'] : null ;
+    $phpmyadmin_link = (isset($_POST['phpmyadmin_link'])) ? $_POST['phpmyadmin_link'] : null ;
+    $ip_restriction = (isset($_POST['ip_restriction'])) ? 1 : 0;
+
+    $project = (isset($_POST['project'])) ? ProjectRepository::getProjectById($_POST['project']) : new Project(0,0,0,0,0,0,0,0,0);
+
     $environment = new Environment(
         0,
         verifyInput($_POST['name']),
@@ -30,11 +41,10 @@ if (isset($_POST['submit'])){
         verifyInput($_POST['ip_restriction']),
         $project,
     );
-    $errors = Validator::checkEnvironment($project);
-    if (null === $errors){
-        EnvironmentRepository::addEnvironment($environment);
-        header("Location: ".$_GET['type']."-".$_GET['id'].'-1');
-    }
+    
+    EnvironmentRepository::addEnvironment($environment);
+    header("Location: Insert.php");
+    
 }
 
 ?>
@@ -91,33 +101,44 @@ if (isset($_POST['submit'])){
 
                                                 <div class="group-form">
                                                     <div class="nom">                                       
-                                                        <label class="lab">Nom<span style="color: red"> *</span>&emsp;&emsp;&emsp;&emsp;</label>
-                                                        <input name="name" class="inputEnv0" value="">
+                                                        <label class="lab" for="name">Nom<span style="color: red"> *</span>&emsp;&emsp;&emsp;&emsp;</label>
+                                                        <input name="name" class="inputEnv0" value="<?php echo $_POST['name'] ?? '' ?>">
                                                     </div>                                                    
                                                 </div>
 
                                                 <div class="group-form">
                                                     <div class="email">
-                                                        <label class="lab" for="email">Adresse IP&emsp; </label>
-                                                        <input class="inputEnv1" name="email" value="">
+                                                        <label class="lab" for="ip_address">Adresse IP&emsp; </label>
+                                                        <input class="inputEnv1" name="ip_address" value="<?php echo $_POST['ip_address'] ?? '' ?>">
                                                     </div>    
                                                 </div>
                                                 
                                                 <div class="group-form">
                                                     <div class="email">
-                                                        <label class="lab" for="email">Nom d'utilisateur&emsp;</label>
-                                                        <input class="inputEnv2" name="email" value="">
+                                                        <label class="lab" for="ssh_username">Nom d'utilisateur&emsp;</label>
+                                                        <input class="inputEnv2" name="ssh_username" value="<?php echo $_POST['ssh_username'] ?? '' ?>">
                                                     </div>    
                                                 </div> 
 
                                                 <div class="group-form">
+
                                                     <div class="email">
-                                                        <label class="lab">Projet<span style="color: red"> *</span>&emsp;&emsp;&emsp;</label>
-                                                        <select class="selectEnv">
-                                                            <option></option>
+                                                        <label class="lab" for='project'>Projet <span style="color:red">*&emsp;</span></label>
+                                                        <select type="text" name='project' class="select0">
+                                                            <option disabled selected>Sélectionner un projet</option>
+                                                            <?php 
+
+                                                            $project = ProjectRepository::getProject();
+
+                                                            foreach ($project as $project) 
+                                                            {
+                                                                echo '<option value="'. $project->getId() . '">'. $project->getName() . '</option>';
+                                                            }
+
+                                                            ?>
                                                         </select>
-                                                        
                                                     </div>
+
                                                 </div>
 
                                                 
@@ -125,40 +146,36 @@ if (isset($_POST['submit'])){
                                                     
                                                     <div class="group-form">
                                                         <div class="role">
-                                                            <label class="labContact" for="role">Port SSH</label>
-                                                            <input name="role" class="inputEnv3" value="">
+                                                            <label class="labContact" for="ssh_port">Port SSH</label>
+                                                            <input name="ssh_port" class="inputEnv3" value="<?php echo $_POST['ssh_port'] ?? '' ?>">
                                                             <br><br>
                                                         </div>
-                                                        <input type="checkbox">Restriction IP
+                                                        <label for="ip_restriction">
+                                                        <input type="checkbox" name="ip_restriction">Restriction IP</label>
                                                     </div>
 
                                                     <div class="group-form">
                                                         <div class="telephone">
-                                                            <label class="labContact" for="phone">Lien PHPMyAdmin</label>
-                                                            <input class="inputTel" name="phone_number" value="">   
+                                                            <label class="labContact" for="phpmyadmin_link">Lien PHPMyAdmin</label>
+                                                            <input class="inputTel" name="phpmyadmin_link" value="<?php echo $_POST['phpmyadmin_link'] ?? '' ?>">
                                                         </div>    
                                                     </div>
 
                                                     <div class="group-form">
                                                         <div class="telephone">
-                                                            <label class="labContact" for="phone">Lien</label>
-                                                            <input class="inputTel" name="phone_number" value="">   
+                                                            <label class="labContact" for="link">Lien</label>
+                                                            <input class="inputTel" name="link" value="<?php echo $_POST['link'] ?? '' ?>">   
                                                         </div>    
                                                     </div>
                                                 </div>
 
                                             </div>
+
+                                            <br><br>
+                                            <button type="submit" name="submit" class="btnOrange">+ AJOUTER</a>
+
                                         </form>
-                                            
-                                                                  
-                                
-                                    <br><br>
-                                    <a href="" class="btnOrange">+ AJOUTER</a>
-
-                                    
-                                    
-
-                                </form>                                
+                                                              
 
                             </div>
                         </div>
