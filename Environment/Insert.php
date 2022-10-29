@@ -28,17 +28,18 @@ if (isset($_POST['submit'])){
     $phpmyadmin_link = (isset($_POST['phpmyadmin_link'])) ? $_POST['phpmyadmin_link'] : null ;
     $ip_restriction = (isset($_POST['ip_restriction'])) ? 1 : 0;
 
-    $project = (isset($_POST['project'])) ? ProjectRepository::getProjectById($_POST['project']) : new Project(0,0,0,0,0,0,0,0,0);
+    $project = ProjectRepository::getProjectById($_POST['project']);
+
 
     $environment = new Environment(
         0,
-        verifyInput($_POST['name']),
-        verifyInput($_POST['link']),
-        verifyInput($_POST['ip_address']),
-        verifyInput($_POST['ssh_port']),
-        verifyInput($_POST['ssh_username']),
-        verifyInput($_POST['phpmyadmin_link']),
-        verifyInput($_POST['ip_restriction']),
+        verifyInput($name),
+        verifyInput($link),
+        verifyInput($ip_address),
+        verifyInput($ssh_port),
+        verifyInput($ssh_username),
+        verifyInput($phpmyadmin_link),
+        verifyInput($ip_restriction),
         $project,
     );
     

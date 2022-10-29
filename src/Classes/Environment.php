@@ -19,13 +19,13 @@ class Environment implements
     (
         private int $id,
         private string $name,
-        private string $link,
-        private string $ip_address,
-        private int $ssh_port,
-        private string $ssh_username,
-        private string $phpmyadmin_link,
+        private ?string $link,
+        private ?string $ip_address,
+        private ?int $ssh_port,
+        private ?string $ssh_username,
+        private ?string $phpmyadmin_link,
         private int $ip_restriction,
-        private Project $project_id
+        private ?Project $project_id
     )
     {
     }
