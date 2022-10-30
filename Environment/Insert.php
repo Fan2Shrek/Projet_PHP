@@ -39,7 +39,7 @@ if (isset($_POST['submit'])){
         EnvironmentRepository::addEnvironment($environment);
         header("Location: ../project/all");
     }
-        
+
 }
 
 ?>
@@ -115,28 +115,33 @@ if (isset($_POST['submit'])){
                                                     </div>    
                                                 </div> 
 
-                                                <div class="group-form">
+                                                <?php 
+                                                
+                                                if ($_GET['id'] == 0){
+                                                    echo'
+                                                    <div class="group-form">
 
-                                                    <div class="email">
-                                                        <label class="lab" for='project'>Projet <span style="color:red">*&emsp;</span></label>
-                                                        <select type="text" name='project' class="select0">
-                                                            <option require disabled selected value='0'>Sélectionner un projet</option>
-                                                            <?php 
+                                                        <div class="email">
+                                                            <label class="lab" for="project">Projet <span style="color:red">*&emsp;</span></label>
+                                                            <select type="text" name="project" class="select0">
+                                                                
+                                                                <option require disabled selected value="0">Sélectionner un projet</option>';
 
-                                                            $project = ProjectRepository::getProject();
+                                                                $project = ProjectRepository::getProject();
 
-                                                            foreach ($project as $project) 
-                                                            {
-                                                                echo '<option value="'. $project->getId() . '">'. $project->getName() . '</option>';
-                                                            }
+                                                                foreach ($project as $project) 
+                                                                {
+                                                                    echo '<option value="'. $project->getId() . '">'. $project->getName() . '</option>';
+                                                                }
 
-                                                            ?>
-                                                        </select>
-                                                        <p class="error"><?php echo (!isset($errors['projectError']))? '' : $errors['projectError'] ?></p>
-                                                    </div>
+                                                            echo"
+                                                            </select>
+                                                            <p class='error'> ". (!isset($errors['projectError']))? '' : $errors['projectError']."</p>
+                                                        </div>
 
-                                                </div>
-
+                                                    </div>";
+                                                }
+                                                ?>
                                                 
                                                 <div class="form-right2">
                                                     

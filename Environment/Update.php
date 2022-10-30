@@ -15,22 +15,25 @@ $environments = EnvironmentRepository::getEnvironmentByProject($_GET["id"]);
 
 //update
 if (isset($_POST['submit'])){
+    $ip_restriction = (isset($_POST['ip_restriction'])) ? 1 : 0;
+    $ip_address = (isset($_POST['ip_address'])) ? $_POST['ip_address'] : null ;
+
     $oldEnv = EnvironmentRepository::getEnvironmentById($_POST["idEnvironnement"]);
     $newEnv = new Environment(
         0,
         Validator::verifyInput($_POST['name']),
         Validator::verifyInput($_POST['link']),
-        Validator::verifyInput($_POST['ip_address']),
+        Validator::verifyInput($ip_address),
         Validator::verifyInput($_POST['ssh_port']),
         Validator::verifyInput($_POST['ssh_username']),
         Validator::verifyInput($_POST['phpmyadmin_link']),
-        Validator::verifyInput($_POST['ip_restriction']),
+        Validator::verifyInput($ip_restriction),
         $project,
     );
     $errors = Validator::checkEnvironment($newEnv);
     if (null === $errors){
         EnvironmentRepository::updateEnvironment($oldEnv, $newEnv);
-        header("Location: ".$project."-".$_GET['id'].'-1');
+        header("Location: E-".$_GET['id'].'-1');
     }
 }
 
@@ -52,7 +55,7 @@ for ($i=($currentPage-1)*$nbPerPage; $i<$currentPage*$nbPerPage; $i++){
     if (isset($environments[$i])) $allEnv[] = $environments[$i];
 }
 
-// $environments = $allEnv;
+$environments = $allEnv;
 
 if(isset($_GET['page'])){
     $uri = substr($_SERVER['REQUEST_URI'], 0, -2);
@@ -140,23 +143,23 @@ if (empty($_GET)){
                                                 <div class="group-form">
                                                     <div class="nom">                                       
                                                         <label class="labContact">Nom</label>
-                                                        <input name="name" class="inputContact0" value="'.$environments->getName().'">
+                                                        <input name="name" class="inputContact0" value="'.$environment->getName().'">
                                                     </div>
                                                 </div>
 
                                                 <!-- addresse ip -->
                                                 <div class="group-form">
                                                     <div class="ip_addresse">
-                                                        <label class="labContact" for="ip_addresse">Adresse IP</label>
-                                                        <input class="inputContact1" name="ip_addresse" value="'.$environments->getIp_address().'">
+                                                        <label class="labContact" for="ip_address">Adresse IP</label>
+                                                        <input class="inputContact1" name="ip_address" value="'.$environment->getIp_address().'">
                                                     </div>    
                                                 </div>
 
                                                 <!-- ssh_username -->
                                                 <div class="group-form">
                                                     <div class="ssh_username">
-                                                        <label class="labContact" for="ssh_username">Adresse IP</label>
-                                                        <input class="inputContact1" name="ssh_username" value="'.$environments->getSsh_username().'">
+                                                        <label class="labContact" for="ssh_username">Nom utilisateur ssh</label>
+                                                        <input class="inputContact1" name="ssh_username" value="'.$environment->getSsh_username().'">
                                                     </div>    
                                                 </div>
 
@@ -174,29 +177,30 @@ if (empty($_GET)){
                                                         <!-- port ssh -->
                                                         <div class="ssh_port">
                                                             <label class="labContact" for="ssh_port">Port SSH</label>
-                                                            <input name="ssh_port" class="inputRole" value="'.$environments->getSsh_port().'">
+                                                            <input name="ssh_port" class="inputRole" value="'.$environment->getSsh_port().'">
                                                             <br><br>
                                                         </div>
                                                         
                                                         
                                                         <label class="labCheck" for="ip_restriction">
-                                                        <input name="ip_restriction" type="checkbox"  if ($environnement->getIp_restriction == 1){ 'checked' }></label> Restriction IP
+                                                        <input name="ip_restriction" type="checkbox"'.(($environment->getIp_restriction() === 1)? 'checked' : "").'
+                                                        ></label> Restriction IP
 
                                                     </div>
 
                                                     <!-- lien phpmyadmin -->
                                                     <div class="group-form">
                                                         <div class="phpmyadmin_link">
-                                                            <label class="labContact" for="phpmyadmin_link">Téléphone</label>
-                                                            <input class="inputTel" name="phpmyadmin_link" value="'.$environments->getPhpmyadmin_link().'">   
+                                                            <label class="labContact" for="phpmyadmin_link">Lien phpmyadmin</label>
+                                                            <input class="inputTel" name="phpmyadmin_link" value="'.$environment->getPhpmyadmin_link().'">   
                                                         </div>    
                                                     </div>
 
                                                     <!-- link -->
                                                     <div class="group-form">
                                                         <div class="link">
-                                                            <label class="labContact" for="link">Téléphone</label>
-                                                            <input class="inputTel" name="link" value="'.$environments->getLink().'">   
+                                                            <label class="labContact" for="link">Lien</label>
+                                                            <input class="inputTel" name="link" value="'.$environment->getLink().'">   
                                                         </div>    
                                                     </div>
                                                 </div>

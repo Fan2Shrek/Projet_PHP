@@ -15,7 +15,7 @@ class EnvironmentRepository{
         $statement->execute(array($id));
         $rep = $statement->fetch();
         $env = ($rep) ? new Environment($id, $rep['name'], $rep['link'], $rep['ip_address'], $rep['ssh_port'],
-        $rep['ssh_username'], $rep['phpmyadmin_link'], $rep['ip_restriction'], $rep['project_id']) : null;
+        $rep['ssh_username'], $rep['phpmyadmin_link'], $rep['ip_restriction'], ProjectRepository::getProjectById($rep['project_id'])) : null;
         $database = Connection::disconnect();
         return $env;
     }
