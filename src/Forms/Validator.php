@@ -85,10 +85,6 @@ class Validator{
     //Environment
     public static function checkEnvironment(Environment $environment): ?array{
         $rep = array();
-        
-        if (null == $environment->getName()){
-            $rep['nameError'] = 'Veuillez renseignez un nom';
-        }
 
         if (null == $environment->getProject()){
             $rep['projectError'] = 'Veuillez sélectionner un projet';

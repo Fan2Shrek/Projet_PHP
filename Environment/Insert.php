@@ -50,8 +50,6 @@ if (isset($_POST['submit'])){
         
 }
 
-var_dump($_POST);
-
 ?>
 
 <!DOCTYPE html>
@@ -106,9 +104,8 @@ var_dump($_POST);
 
                                                 <div class="group-form">
                                                     <div class="nom">                                       
-                                                        <label class="lab" for="name">Nom<span style="color: red"> *</span>&emsp;&emsp;&emsp;&emsp;</label>
+                                                        <label class="lab" for="name">Nom&emsp;&emsp;&emsp;&emsp;</label>
                                                         <input name="name" class="inputEnv0" value="<?php echo $_POST['name'] ?? '' ?>">
-                                                        <p class="error"><?php echo (!isset($errors['nameError']))? '' : $errors['nameError'] ?></p>
                                                     </div>                                                    
                                                 </div>
 
@@ -179,6 +176,7 @@ var_dump($_POST);
                                             </div>
 
                                             <br><br>
+
                                             <button type="submit" name="submit" class="btnOrange">+ AJOUTER</a>
 
                                         </form>

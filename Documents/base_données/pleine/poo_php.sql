@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le : sam. 29 oct. 2022 à 16:24
+-- Généré le : dim. 30 oct. 2022 à 21:16
 -- Version du serveur : 10.4.24-MariaDB
 -- Version de PHP : 8.1.6
 
@@ -30,9 +30,9 @@ SET time_zone = "+00:00";
 CREATE TABLE `contact` (
   `id` int(11) NOT NULL,
   `name` varchar(255) NOT NULL,
-  `email` varchar(255) NOT NULL,
-  `phone_number` varchar(255) NOT NULL,
-  `role` varchar(255) NOT NULL,
+  `email` varchar(255) DEFAULT NULL,
+  `phone_number` varchar(255) DEFAULT NULL,
+  `role` varchar(255) DEFAULT NULL,
   `host_id` int(11) DEFAULT NULL,
   `customer_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -115,7 +115,7 @@ CREATE TABLE `environment` (
   `ssh_username` varchar(255) DEFAULT NULL,
   `phpmyadmin_link` varchar(255) DEFAULT NULL,
   `ip_restriction` tinyint(1) NOT NULL,
-  `project_id` int(11) DEFAULT NULL
+  `project_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
