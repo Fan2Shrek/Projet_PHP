@@ -162,23 +162,20 @@ if ($_GET['id'] == 0){
 
                                                     <?php
 
-                                                    if(($_GET['type'] == 'C')){
-                                                        echo'
-                                                        <label class="lab">Client <span style="color: red;">*</span>&emsp;&emsp;&emsp;&emsp;&emsp;</label>';
-                                                    }
-                                                    else
-                                                    {
-                                                        if(($_GET['type'] == 'H')){
-                                                            echo'
-                                                            <label class="lab">Hébergeur <span style="color: red;">*</span>&emsp;&emsp;&emsp;</label>';
+                                                    if (isset($list) && ($_GET['type'] == 'C')){
+                                                        echo"
+                                                        <label class='lab'>Client <span style='color: red;'>*</span>&emsp;&emsp;&emsp;&emsp;&emsp;</label>
+                                                        <select name='list' class='selectContact'>";
+                                                        foreach ($list as $obj){
+                                                            echo '<option value='.$obj->getId().'>'.$obj->getName().'</option>';
                                                         }
+                                                        echo "</select>";
                                                     }
-                                                    ?>
 
-                                                    <?php
-
-                                                    if (isset($list)){
-                                                        echo "<select name='list' class='selectContact'>";
+                                                    if (isset($list) && ($_GET['type'] == 'H')){
+                                                        echo"
+                                                        <label class='lab'>Hébergeur <span style='color: red;'>*</span>&emsp;&emsp;&emsp;</label>
+                                                        <select name='list' class='selectContact'>";
                                                         foreach ($list as $obj){
                                                             echo '<option value='.$obj->getId().'>'.$obj->getName().'</option>';
                                                         }

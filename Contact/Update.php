@@ -117,8 +117,21 @@ if (empty($_GET)){
                         <div class="col-lg-12 col-md-12 col-sm-12">
                             <h2 class="nouv"><?php echo isset($host) ? $host->getName() : $customer->getName()?></h2>
                             <ul class="listContact">
-                                <a href='Host/<?php echo $_GET['id']?>' class="infoGenerale2">INFORMATIONS GÉNÉRALES</a>&emsp;
-                                <a href="Contact//<?php echo $_GET['id']?>'>" class="contactLien3">CONTACTS CLIENT</a>
+                                <?php 
+                                    if(($_GET['type'] == 'C')){
+                                        echo'
+                                        <a href="Customer/View.php" class="infoGenerale2">INFORMATIONS GÉNÉRALES</a>&emsp;
+                                        <a href="Contact/C-' .$_GET['id'] .'-1" class="contactLien3">CONTACTS CLIENT</a>';
+                                    }
+                                    else
+                                    {
+                                        if(($_GET['type'] == 'H')){
+                                            echo'
+                                            <a href="Host/View.php" class="infoGenerale2">INFORMATIONS GÉNÉRALES</a>&emsp;
+                                            <a href="Contact/H-' .$_GET['id'] .'-1" class="contactLien4">CONTACTS HEBERGEUR</a>';
+                                        }
+                                    }
+                                ?>
                             </ul>
                         </div>
 
@@ -130,12 +143,14 @@ if (empty($_GET)){
 
                                 /* aucun contacts */
                                 if (empty($contacts)){
-                                    echo 'Aucun contact';
+                                    echo '<p style="text-align:center; padding-top:50px;">Aucun contact</p>';
                                 }
                                 else{
                                     
                                     echo'<div class="col-lg-12 col-md-12 col-sm-12">';
+
                                     /* affichage des contacts */
+
                                     foreach($contacts as $contact){
                                         echo '
                                         <form method="Post">  
@@ -150,29 +165,40 @@ if (empty($_GET)){
                                                 
                                                 <input type="hidden" name="idContact" value='.$contact->getId().'>
 
+                                                <!-- nom -->
                                                 <div class="group-form">
                                                     <div class="nom">                                       
                                                         <label class="labContact">Nom du contact <span style="color:red">*</span></label>
                                                         <input name="name" class="inputContact0" value="'.$contact->getName().'">
-                                                        <p class="error">';
+                                                        <p class="errorContact">';
                                                         echo (!isset($errors['nameError']))? '' : $errors['nameError'];
                                                         echo'</p>
                                                     </div>
                                                 </div>
 
+                                                <!-- email -->
                                                 <div class="group-form">
                                                     <div class="email">
                                                         <label class="labContact" for="email">Email&emsp;&emsp;&emsp;&emsp;&emsp;</label>
                                                         <input class="inputContact1" name="email" value="'.$contact->getEmail().'">
+                                                        <p class="errorContact">';
+                                                        echo (!isset($errors['emailError']))? '' : $errors['emailError'];
+                                                        echo'</p>
                                                     </div>    
-                                                </div><br><br>
-                                                <button type="submit" name="submit" class="btnOrange"><span class="glyphicon glyphicon-ok"></span> SAUVEGARDER</button>&emsp;                                            
-                                                
+                                                </div>
+
+                                                <!-- sauvegarder -->
+                                                <div class="group-form">
+                                                    <button type="submit" name="submit" class="btnOrange"><span class="glyphicon glyphicon-ok"></span> SAUVEGARDER</button>&emsp;                                            
+                                                </div>
+
                                                 <div class="form-right">
                                                     <div class="group-form">
 
+                                                    <!-- supprimer -->
                                                     <a href="#" data-toggle="modal" data-target="#modal"class="btnRouge"><span class="glyphicon glyphicon-trash"></span> SUPPRIMER</a>
 
+                                                        <!-- role -->
                                                         <div class="role">
                                                             <label class="labContact" for="role">Rôle</label>
                                                             <input name="role" class="inputRole" value="'.$contact->getRole().'">
@@ -180,6 +206,7 @@ if (empty($_GET)){
                                                         </div>
                                                     </div>
 
+                                                    <!-- telephone -->
                                                     <div class="group-form">
                                                         <div class="telephone">
                                                             <label class="labContact" for="phone">Téléphone</label>
@@ -213,40 +240,35 @@ if (empty($_GET)){
                                                     </div>
                                                 </div>
                                             </div>
-                                        </form>';
-                                            
+                                        </form>'; 
                                     }
                                 }
 
                                 ?> 
                                 
-                                
-                                    <br><br>
-                                     <a href="<?php echo $uri."-new" ?>" class="btnOrange">+ AJOUTER UN CONTACT</a>
+                                <!-- ajouter -->
+                                <br><br>
+                                <a href="<?php echo $uri."-new" ?>" class="btnOrange">+ AJOUTER UN CONTACT</a>
+                                <br><br>
 
-                                     <br><br>
-                                     <!-- pagination boutons -->
-                                    <div class="col-lg-3 col-md-3 col-sm-3">                                                                
-                                        <ul class="pagination">
-                                            <li class="page-item">
-                                                <a <?php echo ($currentPage == 1) ? "" : "href='".$uri."-".$currentPage - 1 ."'"?> class="page-link"><span class="glyphicon glyphicon-chevron-left"></span></a>
-                                            </li>
-                                            <?php for($page = 1; $page <= $pages; $page++): ?>
-                                                <li class="page-item <?php echo ($currentPage == $page) ? "active" : "" ?>">
-                                                    <a href="<?php echo $uri.'-'.$page?>" class="page-link"><?= $page ?></a>
-                                                </li>
-                                            <?php endfor ?>
-                                                <li class="page-item" >
-                                                <a <?php echo ($currentPage == $pages) ? "" : "href='".$uri."-".$currentPage + 1 ."'"?> class="page-link"><span class="glyphicon glyphicon-chevron-right"></span></a>
-                                            </li>
-                                        </ul>                                            
-                                    </div>
-
-                                    <br><br><br>
-                                    <div class="btnPlace1">
-                                        <a href="Contact/View.php" class="btnBlanc">ANNULER</a>&emsp;                                        
-                                    </div>
-                                    <br><br>
+                                <!-- pagination boutons -->
+                                <br><br><br>
+                                <div class="btnPlace1">
+                                    <ul class="pagination">
+                                        <li class="page-item">
+                                            <a <?php echo ($currentPage == 1) ? "" : "href='".$uri."-".$currentPage - 1 ."'"?> class="page-link"><span class="glyphicon glyphicon-chevron-left"></span></a>
+                                        </li>
+                                        <?php for($page = 1; $page <= $pages; $page++): ?>
+                                        <li class="page-item <?php echo ($currentPage == $page) ? "active" : "" ?>">
+                                            <a href="<?php echo $uri.'-'.$page?>" class="page-link"><?= $page ?></a>
+                                        </li>
+                                        <?php endfor ?>
+                                        <li class="page-item" >
+                                            <a <?php echo ($currentPage == $pages) ? "" : "href='".$uri."-".$currentPage + 1 ."'"?> class="page-link"><span class="glyphicon glyphicon-chevron-right"></span></a>
+                                        </li>
+                                    </ul>                                     
+                                </div>
+                                <br><br>
 
                                 </form>                                
 
@@ -260,8 +282,8 @@ if (empty($_GET)){
 
         </section>
         
+        <!-- footer -->
         <?php require '../layout/footer.php' ?>
         
     </body>
-
 </html>
