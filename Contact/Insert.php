@@ -108,17 +108,27 @@ if ($_GET['id'] == 0){
                             ?>
                         </h2>
                             <ul class="listContact">
-                                <a href='Host/H-<?php echo $_GET['id']?>' class="infoGenerale2">INFORMATIONS GÉNÉRALES</a>&emsp;
                                 <?php 
-                                    // if()
+                                    if(($_GET['type'] == 'C')){
+                                        echo'
+                                        <a href="Customer/Insert.php" class="infoGenerale2">INFORMATIONS GÉNÉRALES</a>&emsp;
+                                        <a href="Contact/C-' .$_GET['id'] .'-new" class="contactLien3">CONTACTS CLIENT</a>';
+                                    }
+                                    else
+                                    {
+                                        if(($_GET['type'] == 'H')){
+                                            echo'
+                                            <a href="Host/Insert.php" class="infoGenerale2">INFORMATIONS GÉNÉRALES</a>&emsp;
+                                            <a href="Contact/H-' .$_GET['id'] .'-new" class="contactLien3">CONTACTS HEBERGEUR</a>';
+                                        }
+                                    }
                                 ?>
-                                <a href="Contact/<?php echo $_GET['id']?>-new" class="contactLien3">CONTACTS CLIENT</a>
                             </ul>
                         </div>
 
                         <!-- debut carré -->
                         <div class="col-lg-12 col-md-12 col-sm-12">
-                            <div class="addContact">
+                            <div class="add">
                                 <div class="col-lg-12 col-md-12 col-sm-12">
                                     <form method="Post">  
 
