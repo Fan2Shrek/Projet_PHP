@@ -7,7 +7,6 @@ use App\Repository\CustomerRepository;
 use App\Forms\Validator;
 use slugifier as s;
 
-use function slugifier\slugify;
 
 $errors = array();
 

@@ -28,25 +28,29 @@ if (isset($_POST['submit'])){
     $phpmyadmin_link = (isset($_POST['phpmyadmin_link'])) ? $_POST['phpmyadmin_link'] : null ;
     $ip_restriction = (isset($_POST['ip_restriction'])) ? 1 : 0;
 
-    $project = ProjectRepository::getProjectById($_POST['project']);
-
+    $project = isset($_POST['project']) ?ProjectRepository::getProjectById($_POST['project']) : null;
 
     $environment = new Environment(
         0,
         verifyInput($name),
         verifyInput($link),
         verifyInput($ip_address),
-        verifyInput($ssh_port),
+        verifyInput(intval($ssh_port)),
         verifyInput($ssh_username),
         verifyInput($phpmyadmin_link),
         verifyInput($ip_restriction),
         $project,
     );
-    
-    EnvironmentRepository::addEnvironment($environment);
-    header("Location: Insert.php");
-    
+
+    $errors = Validator::checkEnvironment($environment);
+    if (null === $errors){
+        EnvironmentRepository::addEnvironment($environment);
+        header("Location: ../project/all");
+    }
+        
 }
+
+var_dump($_POST);
 
 ?>
 
@@ -104,6 +108,7 @@ if (isset($_POST['submit'])){
                                                     <div class="nom">                                       
                                                         <label class="lab" for="name">Nom<span style="color: red"> *</span>&emsp;&emsp;&emsp;&emsp;</label>
                                                         <input name="name" class="inputEnv0" value="<?php echo $_POST['name'] ?? '' ?>">
+                                                        <p class="error"><?php echo (!isset($errors['nameError']))? '' : $errors['nameError'] ?></p>
                                                     </div>                                                    
                                                 </div>
 
@@ -126,7 +131,7 @@ if (isset($_POST['submit'])){
                                                     <div class="email">
                                                         <label class="lab" for='project'>Projet <span style="color:red">*&emsp;</span></label>
                                                         <select type="text" name='project' class="select0">
-                                                            <option disabled selected>Sélectionner un projet</option>
+                                                            <option require disabled selected value='0'>Sélectionner un projet</option>
                                                             <?php 
 
                                                             $project = ProjectRepository::getProject();
@@ -138,6 +143,7 @@ if (isset($_POST['submit'])){
 
                                                             ?>
                                                         </select>
+                                                        <p class="error"><?php echo (!isset($errors['projectError']))? '' : $errors['projectError'] ?></p>
                                                     </div>
 
                                                 </div>

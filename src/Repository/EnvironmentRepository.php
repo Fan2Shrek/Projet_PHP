@@ -39,7 +39,10 @@ class EnvironmentRepository{
     public static function addEnvironment(Environment $environment): void{
         $database = Connection::connect();
         $statement = $database->prepare('INSERT INTO environment (name, link, ip_address, ssh_port, ssh_username, phpmyadmin_link, 
-        ip_restriction, project_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?)');       
+        ip_restriction, project_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?)');
+        $statement->execute(array($environment->getName(), $environment->getLink(), $environment->getIp_address(), 
+        $environment->getSsh_port(), $environment->getSsh_username(), $environment->getPhpmyadmin_link(),
+        $environment->getIp_restriction(), $environment->getProject()->getId()));
         $database = Connection::disconnect();
     }
 
@@ -47,9 +50,9 @@ class EnvironmentRepository{
     public static function updateEnvironment(Environment $oldEnv, Environment $newEnv): void{
         $database = Connection::connect();
         $statement = $database->prepare ('UPDATE environment set name = ?, link = ?, ip_address = ?, ssh_port = ?, ssh_username = ?, 
-        phpmyadmin_link = ?, ip_restriction = ?, project_id = ?');
+        phpmyadmin_link = ?, ip_restriction = ?, project_id = ? WHERE id = ?');
         $statement->execute(array($newEnv->getName(), $newEnv->getLink(), $newEnv->getIp_address(), $newEnv->getSsh_port(), $newEnv->getSsh_username(),
-        $newEnv->getPhpmyadmin_link(), $newEnv->getIp_restriction(), $newEnv->getProject_id()));
+        $newEnv->getPhpmyadmin_link(), $newEnv->getIp_restriction(), $newEnv->getProject()->getId(), $oldEnv->getId()));
         $database = Connection::disconnect();
     }
 
@@ -69,7 +72,7 @@ class EnvironmentRepository{
         $statement->execute(array($id));
         while ($env = $statement->fetch()){
             $rep[] = new Environment($env['id'], $env['name'], $env['link'], $env['ip_address'], $env['ssh_port'],
-            $env['ssh_username'], $env['phpmyadmin_link'], $env['ip_restriction'], project_id : ProjectRepository::getProjectById($id));
+            $env['ssh_username'], $env['phpmyadmin_link'], $env['ip_restriction'], project : ProjectRepository::getProjectById($id));
         }
         $database = Connection::disconnect();
         return $rep;

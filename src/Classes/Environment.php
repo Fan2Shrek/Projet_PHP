@@ -25,7 +25,7 @@ class Environment implements
         private ?string $ssh_username,
         private ?string $phpmyadmin_link,
         private int $ip_restriction,
-        private ?Project $project_id
+        private ?Project $project
     )
     {
     }
@@ -101,14 +101,14 @@ class Environment implements
         $this->link = $ip_restriction;
     }
 
-    //project_id
-    public function getProject_id(): ?Project
+    //project
+    public function getProject(): ?Project
     {
-        return $this->project_id;
+        return $this->project;
     }
     
-    public function setProject_id(int $project_id): void
+    public function setProject(int $project): void
     {
-        $this->link = $project_id;
+        $this->link = $project;
     }
 }
