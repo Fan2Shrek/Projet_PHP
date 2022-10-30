@@ -52,7 +52,7 @@ for ($i=($currentPage-1)*$nbPerPage; $i<$currentPage*$nbPerPage; $i++){
     if (isset($environments[$i])) $allEnv[] = $environments[$i];
 }
 
-$environments = $allEnv;
+// $environments = $allEnv;
 
 if(isset($_GET['page'])){
     $uri = substr($_SERVER['REQUEST_URI'], 0, -2);
@@ -139,16 +139,24 @@ if (empty($_GET)){
                                                 <!-- nom -->
                                                 <div class="group-form">
                                                     <div class="nom">                                       
-                                                        <label class="labContact">Nom du contact <span style="color:red">*</span></label>
+                                                        <label class="labContact">Nom</label>
                                                         <input name="name" class="inputContact0" value="'.$environments->getName().'">
                                                     </div>
                                                 </div>
 
-                                                <!-- email -->
+                                                <!-- addresse ip -->
                                                 <div class="group-form">
-                                                    <div class="email">
-                                                        <label class="labContact" for="email">Email&emsp;&emsp;&emsp;&emsp;&emsp;</label>
-                                                        <input class="inputContact1" name="email" value="'.$environments->getLink().'">
+                                                    <div class="ip_addresse">
+                                                        <label class="labContact" for="ip_addresse">Adresse IP</label>
+                                                        <input class="inputContact1" name="ip_addresse" value="'.$environments->getIp_address().'">
+                                                    </div>    
+                                                </div>
+
+                                                <!-- ssh_username -->
+                                                <div class="group-form">
+                                                    <div class="ssh_username">
+                                                        <label class="labContact" for="ssh_username">Adresse IP</label>
+                                                        <input class="inputContact1" name="ssh_username" value="'.$environments->getSsh_username().'">
                                                     </div>    
                                                 </div>
 
@@ -163,19 +171,32 @@ if (empty($_GET)){
                                                     <!-- supprimer -->
                                                     <a href="#" data-toggle="modal" data-target="#modal'.$environments->getId().'"class="btnRouge"><span class="glyphicon glyphicon-trash"></span> SUPPRIMER</a>
 
-                                                        <!-- role -->
-                                                        <div class="role">
-                                                            <label class="labContact" for="role">Rôle</label>
-                                                            <input name="role" class="inputRole" value="'.$environments->getRole().'">
+                                                        <!-- port ssh -->
+                                                        <div class="ssh_port">
+                                                            <label class="labContact" for="ssh_port">Port SSH</label>
+                                                            <input name="ssh_port" class="inputRole" value="'.$environments->getSsh_port().'">
                                                             <br><br>
                                                         </div>
+                                                        
+                                                        
+                                                        <label class="labCheck" for="ip_restriction">
+                                                        <input name="ip_restriction" type="checkbox"  if ($environnement->getIp_restriction == 1){ 'checked' }></label> Restriction IP
+
                                                     </div>
 
-                                                    <!-- telephone -->
+                                                    <!-- lien phpmyadmin -->
                                                     <div class="group-form">
-                                                        <div class="telephone">
-                                                            <label class="labContact" for="phone">Téléphone</label>
-                                                            <input class="inputTel" name="phone_number" value="'.$environments->getPhone().'">   
+                                                        <div class="phpmyadmin_link">
+                                                            <label class="labContact" for="phpmyadmin_link">Téléphone</label>
+                                                            <input class="inputTel" name="phpmyadmin_link" value="'.$environments->getPhpmyadmin_link().'">   
+                                                        </div>    
+                                                    </div>
+
+                                                    <!-- link -->
+                                                    <div class="group-form">
+                                                        <div class="link">
+                                                            <label class="labContact" for="link">Téléphone</label>
+                                                            <input class="inputTel" name="link" value="'.$environments->getLink().'">   
                                                         </div>    
                                                     </div>
                                                 </div>
