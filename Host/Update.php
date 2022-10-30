@@ -7,14 +7,6 @@ use App\Repository\HostRepository;
 use App\Forms\Validator;
 use slugifier as s;
 
-//sécurité
-function verifyInput($var){
-    $var = trim($var);
-    $var = stripslashes($var);
-    $var = htmlspecialchars($var);
-    return $var;
-}
-
 //id
 if (isset($_GET['id'])){
     $host = HostRepository::getHostById($_GET['id']);
@@ -22,11 +14,11 @@ if (isset($_GET['id'])){
 
 //update
 if (isset($_POST['submit'])){
-    $code = 'HOST_' . s\slugify(verifyInput($_POST['name']), '_');
+    $code = 'HOST_' . s\slugify(Validator::verifyInput($_POST['name']), '_');
     $newHost = new Host(0,
     strtoupper($code),
-    verifyInput($_POST['name']),
-    verifyInput($_POST['notes']));
+    Validator::verifyInput($_POST['name']),
+    Validator::verifyInput($_POST['notes']));
     $errors = Validator::checkHost($newHost);
     if (null === $errors){
         HostRepository::updateHost($host, $newHost);

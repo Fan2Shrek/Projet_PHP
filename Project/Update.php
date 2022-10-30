@@ -11,14 +11,6 @@ use App\Repository\HostRepository;
 use App\Forms\Validator;
 use slugifier as s;
 
-/* sécurité */
-function verifyInput($var){
-    $var = trim($var);
-    $var = stripslashes($var);
-    $var = htmlspecialchars($var);
-    return $var;
-}
-
 /* id */
 if (isset($_GET['id'])){
     $project = ProjectRepository::getProjectById($_GET['id']);
@@ -26,17 +18,17 @@ if (isset($_GET['id'])){
 
 /* update */
 if (isset($_POST['submit'])){
-    $code = 'PROJECT_'. s\slugify(verifyInput($_POST['name']), '_');
+    $code = 'PROJECT_'. s\slugify(Validator::verifyInput($_POST['name']), '_');
     $host = (isset($_POST['host'])) ? HostRepository::getHostById($_POST['host']) : new Host(0,0,0,0);
     $customer = (isset($_POST['customer'])) ? CustomerRepository::getCustomerById($_POST['customer']) : new Customer(0,0,0,0);
     $server = (isset($_POST['managed_server'])) ? 1 : 0;
     $newProject = new Project(0,
-    verifyInput($_POST['name']),
+    Validator::verifyInput($_POST['name']),
     $code = strtoupper($code),
-    verifyInput($_POST['lastpass_folder']),
-    verifyInput($_POST['link_mock_ups']),
+    Validator::verifyInput($_POST['lastpass_folder']),
+    Validator::verifyInput($_POST['link_mock_ups']),
     $server,
-    verifyInput($_POST['notes']),
+    Validator::verifyInput($_POST['notes']),
     $host,
     $customer);
 

@@ -12,14 +12,16 @@ use App\Classes\Contact;
 use App\Repository\CustomerRepository;
 use App\Repository\HostRepository;
 
-function verifyInput($var){
-    $var = trim($var);
-    $var = stripslashes($var);
-    $var = htmlspecialchars($var);
-    return $var;
-}
 
 class Validator{
+    // Verificaition des inputs
+    public static function verifyInput($var){
+        $var = trim($var);
+        $var = stripslashes($var);
+        $var = htmlspecialchars($var);
+        return $var;
+    }    
+
     //customer
     public static function checkCustomer(Customer $customer): ?array{
         $rep = array();
@@ -69,7 +71,7 @@ class Validator{
             $rep ["nameError"] = 'Veuillez renseigner un nom';
         }
 
-        if (null !== $contact->getEmail()){
+        if (null != $contact->getEmail()){
             if(!$validator->isValid($contact->getEmail(), new RFCValidation())){
                 $rep['emailError'] = 'Veuillez renseigner une adresse email correcte';
             }

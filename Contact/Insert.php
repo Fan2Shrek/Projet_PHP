@@ -9,13 +9,6 @@ use App\Repository\HostRepository;
 use App\Forms\Validator;
 use slugifier as s;
 
-//sécurité
-function verifyInput($var){
-    $var = trim($var);
-    $var = stripslashes($var);
-    $var = htmlspecialchars($var);
-    return $var;
-}
 
 $host = $customer = null;
 
@@ -43,10 +36,10 @@ if (isset($_POST['submit'])){
     }
     $contact = new Contact(
         0,
-        verifyInput($_POST['name']),
-        verifyInput($_POST['email']),
-        verifyInput($_POST['phone_number']),
-        verifyInput($_POST['role']),
+        Validator::verifyInput($_POST['name']),
+        Validator::verifyInput($_POST['email']),
+        Validator::verifyInput($_POST['phone_number']),
+        Validator::verifyInput($_POST['role']),
         $customer,
         $host,
     );

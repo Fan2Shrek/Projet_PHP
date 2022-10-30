@@ -9,13 +9,6 @@ use App\Forms\Validator;
 use App\Repository\CustomerRepository;
 use slugifier as s;
 
-//sécurité
-function verifyInput($var){
-    $var = trim($var);
-    $var = stripslashes($var);
-    $var = htmlspecialchars($var);
-    return $var;
-}
 
 $customer = $host = null;
 
@@ -36,10 +29,10 @@ if (isset($_POST['submit'])){
     $oldCus = ContactRepository::getContactById($_POST["idContact"]);
     $newContact = new Contact(
         0,
-        verifyInput($_POST['name']),
-        verifyInput($_POST['email']),
-        verifyInput($_POST['phone_number']),
-        verifyInput($_POST['role']),
+        Validator::verifyInput($_POST['name']),
+        Validator::verifyInput($_POST['email']),
+        Validator::verifyInput($_POST['phone_number']),
+        Validator::verifyInput($_POST['role']),
         $customer,
         $host,
     );
@@ -196,7 +189,7 @@ if (empty($_GET)){
                                                     <div class="group-form">
 
                                                     <!-- supprimer -->
-                                                    <a href="#" data-toggle="modal" data-target="#modal"class="btnRouge"><span class="glyphicon glyphicon-trash"></span> SUPPRIMER</a>
+                                                    <a href="#" data-toggle="modal" data-target="#modal'.$contact->getId().'"class="btnRouge"><span class="glyphicon glyphicon-trash"></span> SUPPRIMER</a>
 
                                                         <!-- role -->
                                                         <div class="role">
@@ -218,9 +211,9 @@ if (empty($_GET)){
                                                 <!-- bouton form -->
                                                 <div class="col-lg-12 col-md-12 col-sm-12">
                                                     <!-- modal suppression -->
-                                                    <div class="modal fade" id="modal"> 
+                                                    <div class="modal fade" id="modal'.$contact->getId().'"> 
                                                         <div class="modal-dialog">
-                                                            <div class="modal-content">
+                                                            <div class="modal-content"> 
                                                                 <div class="modal-header">
                                                                     <button type="button" class="close" data-dismiss="modal">x</button>
                                                                     <h5 class="modal-title" style="font-weight: bold;">Suppression d\'un hébergeur</h5>

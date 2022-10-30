@@ -7,14 +7,6 @@ use App\Repository\CustomerRepository;
 use App\Forms\Validator;
 use slugifier as s;
 
-//sécurité
-function verifyInput($var){
-    $var = trim($var);
-    $var = stripslashes($var);
-    $var = htmlspecialchars($var);
-    return $var;
-}
-
 //id
 if (isset($_GET['id'])){
     $customer = CustomerRepository::getCustomerById($_GET['id']);
@@ -22,11 +14,11 @@ if (isset($_GET['id'])){
 
 //update
 if (isset($_POST['submit'])){
-    $code = 'CUST_'. s\slugify(verifyInput($_POST['name']), '_');
+    $code = 'CUST_'. s\slugify(Validator::verifyInput($_POST['name']), '_');
     $newCustomer = new Customer(0,
     strtoupper($code),
-    verifyInput($_POST['name']),
-    verifyInput($_POST['notes']));
+    Validator::verifyInput($_POST['name']),
+    Validator::verifyInput($_POST['notes']));
     $errors = Validator::checkCustomer($newCustomer);
     if (null === $errors){
         CustomerRepository::updateCustomer($customer, $newCustomer);

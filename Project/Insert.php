@@ -13,17 +13,9 @@ use slugifier as s;
 
 $errors = array();
 
-//sécurité
-function verifyInput($var){
-    $var = trim($var);
-    $var = stripslashes($var);
-    $var = htmlspecialchars($var);
-    return $var;
-}
-
 //insert
 if (isset($_POST['submit'])){
-    $code = s\slugify('CUST_'. verifyInput($_POST['name']), '_');
+    $code = s\slugify('CUST_'. Validator::verifyInput($_POST['name']), '_');
     $code = strtoupper($code);
     $lastpass_folder = (isset($_POST['lastpass_folder'])) ? $_POST['lastpass_folder'] : null ;
     $link_mock_ups = (isset($_POST['link_mock_ups'])) ? $_POST['link_mock_ups'] : null ;
@@ -32,12 +24,12 @@ if (isset($_POST['submit'])){
     $customer = (isset($_POST['customer'])) ? CustomerRepository::getCustomerById($_POST['customer']) : new Customer(0,0,0,0);
 
     $project = new Project(0,
-    verifyInput($_POST['name']),
+    Validator::verifyInput($_POST['name']),
     $code,
-    verifyInput($lastpass_folder),
-    verifyInput($link_mock_ups),
-    verifyInput($managed_server),
-    verifyInput($_POST['notes']),
+    Validator::verifyInput($lastpass_folder),
+    Validator::verifyInput($link_mock_ups),
+    Validator::verifyInput($managed_server),
+    Validator::verifyInput($_POST['notes']),
     $host,
     $customer);
 
