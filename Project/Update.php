@@ -82,8 +82,8 @@ if (isset($_POST['submit_delete'])){
                         <div class="col-lg-12 col-md-12 col-sm-12">
                             <h2 class="nouv"><?php echo $project->getName(); ?></h2>
                             <ul class="listContact">
-                                <a href="Project/view.php" class="infoGenerale">INFORMATIONS GÉNÉRALES</a>&emsp;<?php echo'
-                                <a href="Environment/E-' .$_GET['id'] .'-2" class="contactLien1">ENVIRONNEMENTS PROJET</a>';?>
+                                <a href="Project/<?php echo $_GET['id'] ?>" class="infoGenerale">INFORMATIONS GÉNÉRALES</a>&emsp;<?php echo'
+                                <a href="Environment/E-' .$_GET['id'] .'-1" class="contactLien1">ENVIRONNEMENTS PROJET</a>';?>
                             </ul>
                         </div>
 
