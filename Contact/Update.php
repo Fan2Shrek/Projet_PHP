@@ -182,7 +182,7 @@ if (empty($_GET)){
 
                                                     <div class="group-form">
                                                         <div class="telephone">
-                                                            <label class="labContact" for="phone">Telephone</label>
+                                                            <label class="labContact" for="phone">Téléphone</label>
                                                             <input class="inputTel" name="phone_number" value="'.$contact->getPhone().'">   
                                                         </div>    
                                                     </div>

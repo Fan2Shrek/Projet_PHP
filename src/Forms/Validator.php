@@ -71,7 +71,7 @@ class Validator{
 
         if (null !== $contact->getEmail()){
             if(!$validator->isValid($contact->getEmail(), new RFCValidation())){
-                $rep['emailError'] = 'Veuillez renseigner une adresse mail correcte';
+                $rep['emailError'] = 'Veuillez renseigner une adresse email correcte';
             }
         }
 
@@ -91,7 +91,7 @@ class Validator{
         }
 
         if (null == $environment->getProject()){
-            $rep['projectError'] = 'Veuillez selectionner un projet';
+            $rep['projectError'] = 'Veuillez sélectionner un projet';
         }
 
         return (empty($rep))? null : $rep;

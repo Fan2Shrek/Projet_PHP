@@ -664,6 +664,35 @@ footer h4{
     border: 2px solid #ededed;
 }
 
+/*insert contact */
+.contactEmail{
+    margin-left: 3.5%;
+}
+
+.selectContact{
+    padding: 7px;
+    margin-left: 8px;
+    margin-top: 2.3%;
+    padding-right: 52px;
+    border-radius: #ccc 5px;
+    border: 2px solid #ededed;
+}
+
+.roleContact{
+    margin-left: 1.7%;
+}
+
+.telContact{
+    margin-left: 2.2%;
+}
+
+.errorContact{
+    text-align: left;
+    color: red;
+    font-style: italic;
+    padding-top: 15px;
+}
+
 
 
 

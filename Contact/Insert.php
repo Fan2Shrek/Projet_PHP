@@ -21,6 +21,7 @@ $host = $customer = null;
 
 $new = false;
 
+//host ou customer
 if (isset($_GET['type']) && $_GET['id'] != 0){
     if (isset($_GET['id']) &&  $_GET['type'] == 'H'){
         $host = HostRepository::getHostById($_GET["id"]);
@@ -30,6 +31,7 @@ if (isset($_GET['type']) && $_GET['id'] != 0){
     }
 }
 
+//insert
 if (isset($_POST['submit'])){
     if (isset($_POST['list'])){
         if  ($_GET['type'] == 'C'){
@@ -99,14 +101,14 @@ if ($_GET['id'] == 0){
 
                         <!-- lien -->
                         <div class="col-lg-12 col-md-12 col-sm-12">
-                        <h2 class="nouv">
-                            <?php
-                            if((!$new))
-                                echo isset($host) ? $host->getName() : $customer->getName();
-                            else
-                                echo 'Nouveau contact';
-                            ?>
-                        </h2>
+                            <h2 class="nouv">
+                                <?php
+                                if((!$new))
+                                    echo isset($host) ? $host->getName() : $customer->getName();
+                                else
+                                    echo 'Nouveau contact';
+                                ?>
+                            </h2>
                             <ul class="listContact">
                                 <?php 
                                     if(($_GET['type'] == 'C')){
@@ -119,7 +121,7 @@ if ($_GET['id'] == 0){
                                         if(($_GET['type'] == 'H')){
                                             echo'
                                             <a href="Host/Insert.php" class="infoGenerale2">INFORMATIONS GÉNÉRALES</a>&emsp;
-                                            <a href="Contact/H-' .$_GET['id'] .'-new" class="contactLien3">CONTACTS HEBERGEUR</a>';
+                                            <a href="Contact/H-' .$_GET['id'] .'-new" class="contactLien4">CONTACTS HEBERGEUR</a>';
                                         }
                                     }
                                 ?>
@@ -134,59 +136,90 @@ if ($_GET['id'] == 0){
 
                                         <div class="contactAffichage">
 
-                                            <div class='group-form'>
-                                                <label for='name'>Nom : </label>
-                                                <input name="name" class="AddClient" value="<?php echo $_POST['name'] ?? '' ?>">
-                                                <p class="error"><?php echo $errors['nameError'] ?? '' ?></p>
-                                            </div>
                                             <br>
-
+                                            
+                                            <!-- nom -->
                                             <div class='group-form'>
-                                                <label class="lab">Email : </label>
-                                                <input name='email' size="30" class="UpClient" value="<?php echo $_POST['email'] ?? '' ?>">
-                                                <p class="error"><?php echo $errors['emailError'] ?? '' ?></p>
+                                                <label for='name'>Nom du contact <span style="color: red;">*</span>&emsp;</label>
+                                                <input name="name" class="" value="<?php echo $_POST['name'] ?? '' ?>">
+                                                <p class="errorContact"><?php echo $errors['nameError'] ?? '' ?></p>
                                             </div>
 
-                                            <br>                                                
+                                            <br><br>
 
-                                            <br> <br>
-                                            <div class='form-right'>
-
-                                                <div class='group-form' id='role-form'>
-                                                    <label class="lab2">Role : </label>
-                                                    <input type='text' name="role" class="AddClient2"><?php echo $_POST['role'] ?? '' ?></textarea>
-                                                </div>
-
-                                                <div class='group-form'>
-                                                    <label class="lab">Telephone : </label>
-                                                    <input size="30" name='phone_number' class="UpClient" value="<?php echo $_POST['phone_number'] ?? '' ?>"> 
-                                                </div>
+                                            <!-- email -->
+                                            <div class='group-form'>
+                                                <label class="lab">Email &emsp;&emsp;&emsp;&emsp;&emsp;</label>
+                                                <input name='email'  class="contactEmail" value="<?php echo $_POST['email'] ?? '' ?>">
+                                                <p class="errorContact"><?php echo $errors['emailError'] ?? '' ?></p>
                                             </div>
 
                                             
-                                                <?php
+                                            <div class='form-right'>
+                                                
+                                                <!-- client / hebergeur -->
+                                                <div class='group-form'>
+
+                                                    <?php
+
+                                                    if(($_GET['type'] == 'C')){
+                                                        echo'
+                                                        <label class="lab">Client <span style="color: red;">*</span>&emsp;&emsp;&emsp;&emsp;&emsp;</label>';
+                                                    }
+                                                    else
+                                                    {
+                                                        if(($_GET['type'] == 'H')){
+                                                            echo'
+                                                            <label class="lab">Hébergeur <span style="color: red;">*</span>&emsp;&emsp;&emsp;</label>';
+                                                        }
+                                                    }
+                                                    ?>
+
+                                                    <?php
+
                                                     if (isset($list)){
-                                                        echo "<select name='list'>";
+                                                        echo "<select name='list' class='selectContact'>";
                                                         foreach ($list as $obj){
                                                             echo '<option value='.$obj->getId().'>'.$obj->getName().'</option>';
                                                         }
                                                         echo "</select>";
                                                     }
-            
-                                                ?>
+
+                                                    ?>
+
+                                                </div>
+
+                                                <!-- role -->
+                                                <div class='group-form'>
+                                                    <label class="lab">Rôle &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;</label>
+                                                    <input name="role" class="roleContact"><?php echo $_POST['role'] ?? '' ?>
+                                                </div>
+
+                                                <!-- telephone -->
+                                                <div class='group-form'>
+                                                    <label class="lab">Téléphone &emsp;&emsp;&emsp;</label>
+                                                    <input name='phone_number' class="telContact" value="<?php echo $_POST['phone_number'] ?? '' ?>"> 
+                                                </div>
+
+                                            </div>
+
                                         </div>
-                                        <button type="submit" name="submit" class="btnOrange" style='margin-top: 10px'><span class="glyphicon glyphicon-ok"></span> Ajouter</button>&emsp;
+
+                                        <!-- bouton -->
+                                        <br><br>
+                                        <button type="submit" name="submit" class="btnOrange" style='margin-top: 10px'><span class="glyphicon glyphicon-ok"></span> AJOUTER</button>&emsp;
 
                                     </form>
                                 </div>
                             </div>
                         </div>
+                    </div>
                 </div>
             </div>
         </section>
     
+        <!-- footer -->
         <?php require '../layout/footer.php' ?>
         
     </body>
-
 </html>
