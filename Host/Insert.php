@@ -9,21 +9,14 @@ use slugifier as s;
 
 $errors = array();
 
-//sécurité
-function verifyInput($var){
-    $var = trim($var);
-    $var = stripslashes($var);
-    $var = htmlspecialchars($var);
-    return $var;
-}
 
 //insert
 if (isset($_POST['submit'])){
-    $code = 'HOST_' . s\slugify(verifyInput($_POST['name']), '_');
+    $code = 'HOST_' . s\slugify(Validator::verifyInput($_POST['name']), '_');
     $host = new Host(0,
     strtoupper($code),
-    verifyInput($_POST['name']),
-    verifyInput($_POST['notes']));
+    Validator::verifyInput($_POST['name']),
+    Validator::verifyInput($_POST['notes']));
 
     $errors = Validator::checkHost($host);
 

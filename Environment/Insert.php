@@ -9,14 +9,6 @@ use App\Repository\ProjectRepository;
 use App\Forms\Validator;
 use slugifier as s;
 
-//sécurité
-function verifyInput($var){
-    $var = trim($var);
-    $var = stripslashes($var);
-    $var = htmlspecialchars($var);
-    return $var;
-}
-
 //insert
 if (isset($_POST['submit'])){
 
@@ -32,13 +24,13 @@ if (isset($_POST['submit'])){
 
     $environment = new Environment(
         0,
-        verifyInput($name),
-        verifyInput($link),
-        verifyInput($ip_address),
-        verifyInput(intval($ssh_port)),
-        verifyInput($ssh_username),
-        verifyInput($phpmyadmin_link),
-        verifyInput($ip_restriction),
+        Validator::verifyInput($name),
+        Validator::verifyInput($link),
+        Validator::verifyInput($ip_address),
+        Validator::verifyInput(intval($ssh_port)),
+        Validator::verifyInput($ssh_username),
+        Validator::verifyInput($phpmyadmin_link),
+        Validator::verifyInput($ip_restriction),
         $project,
     );
 
