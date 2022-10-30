@@ -10,8 +10,8 @@ use App\Forms\Validator;
 use slugifier as s;
 
 //variable
-$environments = EnvironmentRepository::getEnvironmentByProject($_GET['id']);
 $project = ProjectRepository::getProjectById($_GET["id"]);
+$environments = EnvironmentRepository::getEnvironmentByProject($_GET["id"]);
 
 //update
 if (isset($_POST['submit'])){
@@ -101,8 +101,8 @@ if (empty($_GET)){
                         <div class="col-lg-12 col-md-12 col-sm-12">
                             <h2 class="nouv"><?php echo $project->getName()?></h2>
                             <ul class="listContact">
-                                <a href="Project/View.php" class="infoGenerale2">INFORMATIONS GÉNÉRALES</a>&emsp;
-                                <a href="Environment/Update.php" class="contactLien4">ENVIRONNEMENTS PROJET</a>
+                                <a href="Project/<?php echo $_GET['id'] ?>" class="infoGenerale2">INFORMATIONS GÉNÉRALES</a>&emsp;
+                                <a class="contactLien4">ENVIRONNEMENTS PROJET</a>
                             </ul>
                         </div>
 
@@ -122,7 +122,7 @@ if (empty($_GET)){
 
                                     /* affichage des environnements */
 
-                                    foreach($environments as $environments){
+                                    foreach($environments as $environment){
                                         echo '
                                         <form method="Post">  
 
@@ -130,11 +130,11 @@ if (empty($_GET)){
 
                                                 ?>
                                                                                                 
-                                                <h3 class="nomContact"><?php echo $environments->getName();?></h3>
+                                                <h3 class="nomContact"><?php echo $environment->getName();?></h3>
                                                 
                                                 <?php echo'  
                                                 
-                                                <input type="hidden" name="idEnvironnement" value='.$environments->getId().'>
+                                                <input type="hidden" name="idEnvironnement" value='.$environment->getId().'>
 
                                                 <!-- nom -->
                                                 <div class="group-form">
@@ -169,7 +169,7 @@ if (empty($_GET)){
                                                     <div class="group-form">
 
                                                     <!-- supprimer -->
-                                                    <a href="#" data-toggle="modal" data-target="#modal'.$environments->getId().'"class="btnRouge"><span class="glyphicon glyphicon-trash"></span> SUPPRIMER</a>
+                                                    <a href="#" data-toggle="modal" data-target="#modal'.$environment->getId().'"class="btnRouge"><span class="glyphicon glyphicon-trash"></span> SUPPRIMER</a>
 
                                                         <!-- port ssh -->
                                                         <div class="ssh_port">
@@ -204,7 +204,7 @@ if (empty($_GET)){
                                                 <!-- bouton form -->
                                                 <div class="col-lg-12 col-md-12 col-sm-12">
                                                     <!-- modal suppression -->
-                                                    <div class="modal fade" id="modal'.$environments->getId().'"> 
+                                                    <div class="modal fade" id="modal'.$environment->getId().'"> 
                                                         <div class="modal-dialog">
                                                             <div class="modal-content"> 
                                                                 <div class="modal-header">
@@ -212,11 +212,11 @@ if (empty($_GET)){
                                                                     <h5 class="modal-title" style="font-weight: bold;">Suppression d\'un hébergeur</h5>
                                                                 </div>
                                                                 <div class="modal-body">
-                                                                    <p>Voulez-vous vraiment supprimer l\'hébergeur <strong>"'. $environments->getName() .' "</strong> ?</p>
+                                                                    <p>Voulez-vous vraiment supprimer l\'hébergeur <strong>"'. $environment->getName() .' "</strong> ?</p>
                                                                 </div>
                                                                 <div class="modal-footer">
                                                                     <form method="post">
-                                                                        <input type="hidden" name="id_env" value="'.$environments->getId().'">
+                                                                        <input type="hidden" name="id_env" value="'.$environment->getId().'">
                                                                         <button type="submit" name="submit_delete" class="btnOrange">Supprimer</button>&emsp;
                                                                     </form>
                                                                     <button type="button" class="btnBlanc" data-dismiss="modal">Fermer</button>

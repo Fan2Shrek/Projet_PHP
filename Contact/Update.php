@@ -165,7 +165,7 @@ if (empty($_GET)){
                                                         <input name="name" class="inputContact0" value="'.$contact->getName().'">
                                                         <p class="errorContact">';
                                                         echo (!isset($errors['nameError']))? '' : $errors['nameError'];
-                                                        echo'</p>
+                                                        echo'</p>   
                                                     </div>
                                                 </div>
 
