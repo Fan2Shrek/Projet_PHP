@@ -29,7 +29,7 @@ class EnvironmentRepository{
         $database = Connection::disconnect();
         while($environment = $statement->fetch()){
             $temp = new Environment ($environment['id'], $environment['name'], $environment['link'], $environment['ip_address'], $environment['ssh_port'],
-            $environment['ssh_username'], $environment['phpmyadmin_link'], $environment['ip_restriction'], $environment['project_id']);
+            $environment['ssh_username'], $environment['phpmyadmin_link'], $environment['ip_restriction'], project : ProjectRepository::getProjectById($environment['project_id']));
             $rep[] = $temp;
         }
         return $rep;
@@ -50,9 +50,9 @@ class EnvironmentRepository{
     public static function updateEnvironment(Environment $oldEnv, Environment $newEnv): void{
         $database = Connection::connect();
         $statement = $database->prepare ('UPDATE environment set name = ?, link = ?, ip_address = ?, ssh_port = ?, ssh_username = ?, 
-        phpmyadmin_link = ?, ip_restriction = ?, project_id = ? WHERE id = ?');
+        phpmyadmin_link = ?, ip_restriction = ? WHERE id = ?');
         $statement->execute(array($newEnv->getName(), $newEnv->getLink(), $newEnv->getIp_address(), $newEnv->getSsh_port(), $newEnv->getSsh_username(),
-        $newEnv->getPhpmyadmin_link(), $newEnv->getIp_restriction(), $newEnv->getProject()->getId(), $oldEnv->getId()));
+        $newEnv->getPhpmyadmin_link(), $newEnv->getIp_restriction(), $oldEnv->getId()));
         $database = Connection::disconnect();
     }
 

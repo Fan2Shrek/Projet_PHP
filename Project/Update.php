@@ -80,10 +80,10 @@ if (isset($_POST['submit_delete'])){
 
                         <!-- lien -->
                         <div class="col-lg-12 col-md-12 col-sm-12">
-                            <h2 class="nouv">Nouveau projet</h2>
+                            <h2 class="nouv"><?php echo $project->getName(); ?></h2>
                             <ul class="listContact">
-                                <a href="Customer/insert.php" class="infoGenerale">INFORMATIONS GÉNÉRALES</a>&emsp;
-                                <a href="Environment/view.php" class="contactLien1">ENVIRONNEMENT PROJET</a>
+                                <a href="Project/view.php" class="infoGenerale">INFORMATIONS GÉNÉRALES</a>&emsp;<?php echo'
+                                <a href="Environment/E-' .$_GET['id'] .'-2" class="contactLien1">ENVIRONNEMENTS PROJET</a>';?>
                             </ul>
                         </div>
 
