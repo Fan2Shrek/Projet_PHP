@@ -71,7 +71,7 @@ if ($_GET['id'] == 0){
 <html>
     <head>
         <base href='../'>
-        <title>Modifier un contact</title>
+        <title>Ajouter un contact</title>
         <base href="../">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
@@ -81,12 +81,10 @@ if ($_GET['id'] == 0){
     </head>
     
     <body>
-
-    <body>
         
         <?php require '../layout/navbar.php' ?>
         
-        <section id="update">
+        <section id="insert">
 
             <div class="container-fluid">
                 <div class="row">
@@ -101,10 +99,20 @@ if ($_GET['id'] == 0){
 
                         <!-- lien -->
                         <div class="col-lg-12 col-md-12 col-sm-12">
-                            <h2 class="nouv"><?php  if (!$new)echo isset($host) ? $host->getName() : $customer->getName()?></h2>
+                        <h2 class="nouv">
+                            <?php
+                            if((!$new))
+                                echo isset($host) ? $host->getName() : $customer->getName();
+                            else
+                                echo 'Nouveau contact';
+                            ?>
+                        </h2>
                             <ul class="listContact">
-                                <a href='Host/<?php echo $_GET['id']?>' class="infoGenerale">INFORMATIONS GÉNÉRALES</a>&emsp;
-                                <a href="Contact/<?php echo $_GET['id']?>" class="contactLien">CONTACTS CLIENT</a>
+                                <a href='Host/H-<?php echo $_GET['id']?>' class="infoGenerale2">INFORMATIONS GÉNÉRALES</a>&emsp;
+                                <?php 
+                                    // if()
+                                ?>
+                                <a href="Contact/<?php echo $_GET['id']?>-new" class="contactLien3">CONTACTS CLIENT</a>
                             </ul>
                         </div>
 
@@ -115,7 +123,6 @@ if ($_GET['id'] == 0){
                                     <form method="Post">  
 
                                         <div class="contactAffichage">
-                                            <h3 class="nomContact">Nouveau contact</h3>
 
                                             <div class='group-form'>
                                                 <label for='name'>Nom : </label>
