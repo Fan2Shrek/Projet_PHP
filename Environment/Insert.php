@@ -79,7 +79,7 @@ if (isset($_POST['submit'])){
                             <h2 class='nouv'>Nouvel environnement</h2>
                             <ul class="listContact">
                                 <a href="Project/insert.php" class="infoGenerale2">INFORMATIONS GÉNÉRALES</a>&emsp;
-                                <a href="Environment/insert.php" class="contactLien4">CONTACTS ENVIRONNEMENT</a>
+                                <a href="Environment/E-0-new" class="contactLien4">CONTACTS ENVIRONNEMENT</a>
                             </ul>
                         </div>
 
@@ -88,109 +88,109 @@ if (isset($_POST['submit'])){
                             <div class="add">
 
                                 <div class="col-lg-12 col-md-12 col-sm-12">
-                                        <form method="Post">  
+                                    <form method="Post">  
 
-                                            <div class="contactAffichage">
-                                                                                                                                                                                            
-                                                <input type="hidden" name="idContact" value=''>
+                                        <div class="envAffichage">
+                                                                                                                                                                                        
+                                            <input type="hidden" name="idContact" value=''>
 
-                                                <div class="group-form">
-                                                    <div class="nom">                                       
-                                                        <label class="lab" for="name">Nom&emsp;&emsp;&emsp;&emsp;</label>
-                                                        <input name="name" class="inputEnv0" value="<?php echo $_POST['name'] ?? '' ?>">
-                                                    </div>                                                    
-                                                </div>
+                                            <br>
+                                            <!-- nom -->
+                                            <div class="nom">                                       
+                                                <label class="labEnv" for="name">Nom &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;</label>
+                                                <input name="name" class="inputEnv0" value="<?php echo $_POST['name'] ?? '' ?>">
+                                            </div>
+                                            <br>
 
-                                                <div class="group-form">
-                                                    <div class="email">
-                                                        <label class="lab" for="ip_address">Adresse IP&emsp; </label>
-                                                        <input class="inputEnv1" name="ip_address" value="<?php echo $_POST['ip_address'] ?? '' ?>">
-                                                    </div>    
-                                                </div>
+                                            <!-- addresse ip -->
+                                            <div class="addresse_ip">
+                                                <label class="labEnv" for="ip_address">Adresse IP&emsp;&emsp;&emsp;&emsp;</label>
+                                                <input class="inputEnv1" name="ip_address" value="<?php echo $_POST['ip_address'] ?? '' ?>">
+                                            </div> 
+                                            <br>
+                                            
+                                            <!-- ssh username -->
+                                            <div class="ssh_username">
+                                                <label class="labEnv" for="ssh_username">Nom d'utilisateur &emsp;</label>
+                                                <input class="inputEnv2" name="ssh_username" value="<?php echo $_POST['ssh_username'] ?? '' ?>">
+                                            </div>  
+                                
+                                            <!-- project -->
+                                            <?php 
                                                 
+                                            if ($_GET['id'] == 0){
+                                                echo'
                                                 <div class="group-form">
-                                                    <div class="email">
-                                                        <label class="lab" for="ssh_username">Nom d'utilisateur&emsp;</label>
-                                                        <input class="inputEnv2" name="ssh_username" value="<?php echo $_POST['ssh_username'] ?? '' ?>">
-                                                    </div>    
+                                                    <div class="project">
+                                                        <label class="labEnv" for="project">Projet <span style="color:red">*&emsp;</span></label>
+                                                        <select type="text" name="project" class="selectEnv">
+                                                            
+                                                            <option require disabled selected value="0">Sélectionner un projet</option>';
+
+                                                            $project = ProjectRepository::getProject();
+
+                                                            foreach ($project as $project) 
+                                                            {
+                                                                echo '<option value="'. $project->getId() . '">'. $project->getName() . '</option>';
+                                                            }
+
+                                                        echo"
+                                                        </select>
+                                                        <p class='erreurEnv'> ". (!isset($errors['projectError']))? '' : $errors['projectError']."</p>
+                                                    </div>
+                                                </div>";
+                                                }
+
+                                            ?>
+
+                                            <br>
+
+                                            <div class="form-right">
+
+                                                <!-- port ssh -->
+                                                <div class="port_ssh">
+                                                    <label class="labContact" for="ssh_port">Port SSH &emsp;</label>
+                                                    <input class="inputEnv4" name="ssh_port" value="<?php echo $_POST['ssh_port'] ?? '' ?>">
+
+                                                    <!-- ip restriction -->
+                                                    <label for="ip_restriction">
+                                                    <input type="checkbox" name="ip_restriction">&emsp;Restriction IP</label>
                                                 </div> 
 
-                                                <?php 
+                                                <!-- PHPMyAdmin -->
+                                                <div class="PHPMyAdmin">
+                                                    <label class="labContact" for="phpmyadmin_link">Lien PHPMyAdmin &emsp;</label>
+                                                    <input class="inputEnv5" name="phpmyadmin_link" value="<?php echo $_POST['phpmyadmin_link'] ?? '' ?>">
+                                                </div>    
+                                                       
+                                                <br>
+
+                                                <!-- link -->
+                                                <div class="link">
+                                                    <label class="labContact" for="link">Lien&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;</label>
+                                                    <input class="inputEnv6" name="link" value="<?php echo $_POST['link'] ?? '' ?>">   
+                                                </div>    
                                                 
-                                                if ($_GET['id'] == 0){
-                                                    echo'
-                                                    <div class="group-form">
-
-                                                        <div class="email">
-                                                            <label class="lab" for="project">Projet <span style="color:red">*&emsp;</span></label>
-                                                            <select type="text" name="project" class="select0">
-                                                                
-                                                                <option require disabled selected value="0">Sélectionner un projet</option>';
-
-                                                                $project = ProjectRepository::getProject();
-
-                                                                foreach ($project as $project) 
-                                                                {
-                                                                    echo '<option value="'. $project->getId() . '">'. $project->getName() . '</option>';
-                                                                }
-
-                                                            echo"
-                                                            </select>
-                                                            <p class='error'> ". (!isset($errors['projectError']))? '' : $errors['projectError']."</p>
-                                                        </div>
-
-                                                    </div>";
-                                                }
-                                                ?>
-                                                
-                                                <div class="form-right2">
-                                                    
-                                                    <div class="group-form">
-                                                        <div class="role">
-                                                            <label class="labContact" for="ssh_port">Port SSH</label>
-                                                            <input name="ssh_port" class="inputEnv3" value="<?php echo $_POST['ssh_port'] ?? '' ?>">
-                                                            <br><br>
-                                                        </div>
-                                                        <label for="ip_restriction">
-                                                        <input type="checkbox" name="ip_restriction">Restriction IP</label>
-                                                    </div>
-
-                                                    <div class="group-form">
-                                                        <div class="telephone">
-                                                            <label class="labContact" for="phpmyadmin_link">Lien PHPMyAdmin</label>
-                                                            <input class="inputTel" name="phpmyadmin_link" value="<?php echo $_POST['phpmyadmin_link'] ?? '' ?>">
-                                                        </div>    
-                                                    </div>
-
-                                                    <div class="group-form">
-                                                        <div class="telephone">
-                                                            <label class="labContact" for="link">Lien</label>
-                                                            <input class="inputTel" name="link" value="<?php echo $_POST['link'] ?? '' ?>">   
-                                                        </div>    
-                                                    </div>
-                                                </div>
 
                                             </div>
+                                        </div>
 
-                                            <br><br>
+                                        <br>
 
-                                            <button type="submit" name="submit" class="btnOrange">+ AJOUTER</a>
+                                        <!-- ajouter -->
+                                        <button type="submit" name="submit" class="btnOrange">+ AJOUTER</a>
 
-                                        </form>
-                                                              
-
+                                    </form>
+                                </div>
                             </div>
                         </div>
-
                     </div>
-
                 </div>
             </div>
-
         </section>
         
+        <!-- footer -->
         <?php require '../layout/footer.php' ?>
         
     </body>
-
 </html>

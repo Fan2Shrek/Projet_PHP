@@ -714,38 +714,90 @@ footer h4{
     text-decoration: none;
 }
 
+/* carré */
+
+.envAffichage{
+    margin-top: 30px;
+    margin-bottom: 30px;
+    padding-bottom: 100px;
+    padding: 10px;
+    border: 2px solid #cb7857;
+    column-count: 2;
+}
+
+/* erreur */
+
+.erreurEnv{
+    text-align: left;
+    color: red;
+    font-style: italic;
+    padding-top: 15px;
+    padding-left: 2.3%;
+}
+
+/* carré */
+
+.labEnv{
+    padding-left: 2.3%;
+}
+
 /* inputs */
 
 .inputEnv0{
-    margin-left: 8%;
-}
-
-.inputEnv1{
-    margin-left: 9.5%;
-}
-
-.selectEnv{
-    margin-left: 7.8%;
     padding: 7px;
-    padding-right: 217px;
+    padding-right: 70px;
+    margin-left: 2.4%;
     border-radius: #ccc 5px;
     border: 2px solid #ededed;
 }
 
-.form-right2{
-    padding-top: 10px;
+.inputEnv1{
+    padding: 7px;
+    padding-right: 70px;
+    margin-left: 0.5%;
+    border-radius: #ccc 5px;
+    border: 2px solid #ededed;
 }
 
+.inputEnv2{
+    padding: 7px;
+    padding-right: 70px;
+    border-radius: #ccc 5px;
+    border: 2px solid #ededed;
+}
 
+.selectEnv{
+    margin-left: 14.5%;
+    margin-bottom: 8%;
+    padding: 7px;
+    padding-right: 85px;
+    border-radius: #ccc 5px;
+    border: 2px solid #ededed;
+}
 
+.inputEnv4{
+    margin-bottom: 4%;
+    margin-right: 2%;
+    padding: 2px;
+    padding-right: 10px;
+    border-radius: #ccc 5px;
+    border: 2px solid #ededed;   
+}
 
+.inputEnv5{
+    padding: 7px;
+    padding-right: 70px;
+    border-radius: #ccc 5px;
+    border: 2px solid #ededed;   
+}
 
-
-
-
-
-
-
+.inputEnv6{
+    margin-left: 0.3%;
+    padding: 7px;
+    padding-right: 70px;
+    border-radius: #ccc 5px;
+    border: 2px solid #ededed;   
+}
 
 
 
