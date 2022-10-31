@@ -99,7 +99,6 @@ if (isset($_POST['submit'])){
                                             <div class="nom">                                       
                                                 <label class="labEnv" for="name">Nom &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;</label>
                                                 <input name="name" class="inputEnv0" value="<?php echo $_POST['name'] ?? '' ?>">
-                                                <p class='erreurEnv'><?php echo $errors['nameError']?? '' ?></p>
                                             </div>
                                             <br>
 

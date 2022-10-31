@@ -41,7 +41,7 @@ if (isset($_POST['submit'])){
 if (isset($_POST['submit_delete'])){
     $environment = EnvironmentRepository::getEnvironmentById($_POST['id_env']);
     EnvironmentRepository::deleteEnvironment($environment);
-    header("Location: ".$project."-".$_GET['id'].'-1');
+    header("Location: E-".$_GET['id'].'-1');
 }
 
 //pagination
@@ -105,7 +105,7 @@ if (empty($_GET)){
                             <h2 class="nouv"><?php echo $project->getName()?></h2>
                             <ul class="listContact">
                                 <a href="Project/<?php echo $_GET['id'] ?>" class="infoGenerale2">INFORMATIONS GÉNÉRALES</a>&emsp;
-                                <a class="contactLien4">ENVIRONNEMENTS PROJET</a>
+                                <a href="Environment/E-<?php echo $_GET['id'] ?>-1" class="contactLien4">ENVIRONNEMENTS PROJET</a>
                             </ul>
                         </div>
 
@@ -139,70 +139,66 @@ if (empty($_GET)){
                                                 
                                                 <input type="hidden" name="idEnvironnement" value='.$environment->getId().'>
 
+                                                <br><br>
                                                 <!-- nom -->
-                                                <div class="group-form">
-                                                    <div class="nom">                                       
-                                                        <label class="labContact">Nom</label>
-                                                        <input name="name" class="inputContact0" value="'.$environment->getName().'">
-                                                    </div>
+                                                <div class="nom">                                       
+                                                    <label class="labEnv">Nom &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;</label>
+                                                    <input name="name" class="inputEnv0" value="'.$environment->getName().'">
                                                 </div>
+                                                
 
+                                                <br>
                                                 <!-- addresse ip -->
-                                                <div class="group-form">
-                                                    <div class="ip_addresse">
-                                                        <label class="labContact" for="ip_address">Adresse IP</label>
-                                                        <input class="inputContact1" name="ip_address" value="'.$environment->getIp_address().'">
-                                                    </div>    
-                                                </div>
+                                                <div class="ip_addresse">
+                                                    <label class="labEnv" for="ip_address">Adresse IP&emsp;&emsp;&emsp;&emsp;</label>
+                                                    <input class="inputEnv1" name="ip_address" value="'.$environment->getIp_address().'">
+                                                </div>  
 
+                                                <br>
                                                 <!-- ssh_username -->
-                                                <div class="group-form">
-                                                    <div class="ssh_username">
-                                                        <label class="labContact" for="ssh_username">Nom utilisateur ssh</label>
-                                                        <input class="inputContact1" name="ssh_username" value="'.$environment->getSsh_username().'">
-                                                    </div>    
-                                                </div>
-
+                                                <div class="ssh_username">
+                                                    <label class="labEnv" for="ssh_username">Nom utilisateur &emsp;&emsp;</label>
+                                                    <input class="inputEnv2" name="ssh_username" value="'.$environment->getSsh_username().'">
+                                                </div>  
+                                                
                                                 <!-- sauvegarder -->
                                                 <div class="group-form">
                                                     <button type="submit" name="submit" class="btnOrange"><span class="glyphicon glyphicon-ok"></span> SAUVEGARDER</button>&emsp;                                            
                                                 </div>
 
                                                 <div class="form-right">
-                                                    <div class="group-form">
+                                            
+                                                    <br>
 
                                                     <!-- supprimer -->
                                                     <a href="#" data-toggle="modal" data-target="#modal'.$environment->getId().'"class="btnRouge"><span class="glyphicon glyphicon-trash"></span> SUPPRIMER</a>
 
+                                                        <br><br><br>
                                                         <!-- port ssh -->
                                                         <div class="ssh_port">
                                                             <label class="labContact" for="ssh_port">Port SSH</label>
-                                                            <input name="ssh_port" class="inputRole" value="'.$environment->getSsh_port().'">
-                                                            <br><br>
+                                                            <input name="ssh_port" class="inputEnv4" value="'.$environment->getSsh_port().'">
+
+                                                            <label for="ip_restriction">
+                                                            <input name="ip_restriction" type="checkbox"'.(($environment->getIp_restriction() === 1)? 'checked' : "").'
+                                                            >&emsp;Restriction IP</label>
                                                         </div>
                                                         
-                                                        
-                                                        <label class="labCheck" for="ip_restriction">
-                                                        <input name="ip_restriction" type="checkbox"'.(($environment->getIp_restriction() === 1)? 'checked' : "").'
-                                                        ></label> Restriction IP
-
-                                                    </div>
-
-                                                    <!-- lien phpmyadmin -->
-                                                    <div class="group-form">
+                                                        <br>
+                                                        <!-- lien phpmyadmin -->
                                                         <div class="phpmyadmin_link">
-                                                            <label class="labContact" for="phpmyadmin_link">Lien phpmyadmin</label>
-                                                            <input class="inputTel" name="phpmyadmin_link" value="'.$environment->getPhpmyadmin_link().'">   
+                                                            <label class="labContact" for="phpmyadmin_link">Lien PHPMyAdmin &emsp;</label>
+                                                            <input class="inputEnv5" name="phpmyadmin_link" value="'.$environment->getPhpmyadmin_link().'">   
                                                         </div>    
-                                                    </div>
+                                                    
 
-                                                    <!-- link -->
-                                                    <div class="group-form">
+                                                        <br>
+                                                        <!-- link -->
                                                         <div class="link">
-                                                            <label class="labContact" for="link">Lien</label>
-                                                            <input class="inputTel" name="link" value="'.$environment->getLink().'">   
-                                                        </div>    
-                                                    </div>
+                                                            <label class="labContact" for="link">Lien&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;</label>
+                                                            <input class="inputEnv6" name="link" value="'.$environment->getLink().'">   
+                                                        </div>
+                                                        <br>
                                                 </div>
 
                                                 <!-- bouton form -->
@@ -238,7 +234,7 @@ if (empty($_GET)){
                                 
                                 <!-- ajouter -->
                                 <br><br>
-                                <a href="<?php echo $uri."-new" ?>" class="btnOrange">+ AJOUTER UN Environment</a>
+                                <a href="<?php echo $uri."-new" ?>" class="btnOrange">+ AJOUTER UN ENVIRONNEMENT</a>
                                 <br><br>
 
                                 <!-- pagination boutons -->
