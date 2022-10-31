@@ -99,6 +99,7 @@ if (isset($_POST['submit'])){
                                             <div class="nom">                                       
                                                 <label class="labEnv" for="name">Nom &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;</label>
                                                 <input name="name" class="inputEnv0" value="<?php echo $_POST['name'] ?? '' ?>">
+                                                <p class='erreurEnv'><?php echo $errors['nameError']?? '' ?></p>
                                             </div>
                                             <br>
 
@@ -123,9 +124,7 @@ if (isset($_POST['submit'])){
                                                 <div class="group-form">
                                                     <div class="project">
                                                         <label class="labEnv" for="project">Projet <span style="color:red">*&emsp;</span></label>
-                                                        <select type="text" name="project" class="selectEnv">
-                                                            
-                                                            <option require disabled selected value="0">Sélectionner un projet</option>';
+                                                        <select type="text" name="project" class="selectEnv">';
 
                                                             $project = ProjectRepository::getProject();
 
