@@ -24,7 +24,7 @@ if (isset($_POST['submit'])){
         Validator::verifyInput($_POST['name']),
         Validator::verifyInput($_POST['link']),
         Validator::verifyInput($ip_address),
-        Validator::verifyInput($_POST['ssh_port']),
+        Validator::verifyInput(intval($_POST['ssh_port'])),
         Validator::verifyInput($_POST['ssh_username']),
         Validator::verifyInput($_POST['phpmyadmin_link']),
         Validator::verifyInput($ip_restriction),
@@ -178,6 +178,10 @@ if (empty($_GET)){
                                                         <div class="ssh_port">
                                                             <label class="labContact" for="ssh_port">Port SSH</label>
                                                             <input name="ssh_port" class="inputEnv4" value="'.$environment->getSsh_port().'">
+                                                            <p class="error">';
+                                                            echo $errors['ssh_portError'] ?? '' ; 
+                                                            echo'</p>
+
 
                                                             <label for="ip_restriction">
                                                             <input name="ip_restriction" type="checkbox"'.(($environment->getIp_restriction() === 1)? 'checked' : "").'

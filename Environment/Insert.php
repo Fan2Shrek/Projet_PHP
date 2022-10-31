@@ -20,7 +20,12 @@ if (isset($_POST['submit'])){
     $phpmyadmin_link = (isset($_POST['phpmyadmin_link'])) ? $_POST['phpmyadmin_link'] : null ;
     $ip_restriction = (isset($_POST['ip_restriction'])) ? 1 : 0;
 
-    $project = isset($_POST['project']) ?ProjectRepository::getProjectById($_POST['project']) : null;
+    if (isset($_POST['project'])) {
+        $project = ProjectRepository::getProjectById($_POST['project']);
+    }
+    elseif (isset($_GET['id']) && $_GET['id'] != 0 ){
+        $project = ProjectRepository::getProjectById($_GET['id']);
+    }
 
     $environment = new Environment(
         0,
@@ -149,6 +154,7 @@ if (isset($_POST['submit'])){
                                                 <div class="port_ssh">
                                                     <label class="labContact" for="ssh_port">Port SSH &emsp;</label>
                                                     <input class="inputEnv4" name="ssh_port" value="<?php echo $_POST['ssh_port'] ?? '' ?>">
+                                                    <p class='error'><?php echo $errors['ssh_portError']?? '' ?></p>
 
                                                     <!-- ip restriction -->
                                                     <label for="ip_restriction">
