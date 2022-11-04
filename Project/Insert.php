@@ -15,7 +15,7 @@ $errors = array();
 
 //insert
 if (isset($_POST['submit'])){
-    $code = s\slugify('CUST_'. Validator::verifyInput($_POST['name']), '_');
+    $code = s\slugify('PROJECT_'. Validator::verifyInput($_POST['name']), '_');
     $code = strtoupper($code);
     $lastpass_folder = (isset($_POST['lastpass_folder'])) ? $_POST['lastpass_folder'] : null ;
     $link_mock_ups = (isset($_POST['link_mock_ups'])) ? $_POST['link_mock_ups'] : null ;

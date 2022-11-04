@@ -92,7 +92,7 @@ class Validator{
             $rep['projectError'] = 'Veuillez sélectionner un projet';
         }
 
-        if (!preg_match('/^[1-9][0-9]*$/',$environment->getSsh_port())){
+        if (null != $environment->getSsh_port() && !preg_match('/^[1-9][0-9]*$/',$environment->getSsh_port())){
             $rep['ssh_portError'] = 'Veuillez rentrez un port valide';
         }
 
