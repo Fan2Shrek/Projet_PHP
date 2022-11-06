@@ -8,26 +8,35 @@ use App\Traits\IdTrait;
 use App\Traits\NameTrait;
 use App\Classes\Project;
 
-class Environment implements IdInterface, nameInterface
+class Environment implements 
+    IdInterface,
+    nameInterface
 {
-    use idTrait, NameTrait;
+    use idTrait;
+    use NameTrait;
+    
     public function __construct
     (
         private int $id,
         private string $name,
-        private string $link,
-        private string $ip_address,
-        private int $ssh_port,
-        private string $ssh_username,
-        private string $phpmyadmin_link,
+        private ?string $link,
+        private ?string $ip_address,
+        private ?int $ssh_port,
+        private ?string $ssh_username,
+        private ?string $phpmyadmin_link,
         private int $ip_restriction,
-        private Project $project_id
+        private Project $project
     )
     {
     }
+
+    public function __toString()
+    {
+        return $this->id;
+    }
     
     //link
-    public function getLink(): string
+    public function getLink(): ?string
     {
         return $this->link;
     }
@@ -38,7 +47,7 @@ class Environment implements IdInterface, nameInterface
     }
 
     //ip_address
-    public function getIp_address(): string
+    public function getIp_address(): ?string
     {
         return $this->ip_address;
     }
@@ -49,7 +58,7 @@ class Environment implements IdInterface, nameInterface
     }
 
     //ssh_port
-    public function getSsh_port(): int
+    public function getSsh_port(): ?int
     {
         return $this->ssh_port;
     }
@@ -60,7 +69,7 @@ class Environment implements IdInterface, nameInterface
     }
 
     //ssh_username
-    public function getSsh_username(): string
+    public function getSsh_username(): ?string
     {
         return $this->ssh_username;
     }
@@ -71,7 +80,7 @@ class Environment implements IdInterface, nameInterface
     }
 
     //phpmyadmin_link
-    public function getPhpmyadmin_link(): string
+    public function getPhpmyadmin_link(): ?string
     {
         return $this->phpmyadmin_link;
     }
@@ -92,14 +101,14 @@ class Environment implements IdInterface, nameInterface
         $this->link = $ip_restriction;
     }
 
-    //project_id
-    public function getProject_id(): Project
+    //project
+    public function getProject(): Project
     {
-        return $this->project_id;
+        return $this->project;
     }
     
-    public function setProject_id(int $project_id): void
+    public function setProject(int $project): void
     {
-        $this->link = $project_id;
+        $this->link = $project;
     }
 }

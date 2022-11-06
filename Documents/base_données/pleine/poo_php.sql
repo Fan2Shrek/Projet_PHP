@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le : mar. 18 oct. 2022 à 16:42
+-- Généré le : dim. 30 oct. 2022 à 21:16
 -- Version du serveur : 10.4.24-MariaDB
 -- Version de PHP : 8.1.6
 
@@ -29,9 +29,10 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `contact` (
   `id` int(11) NOT NULL,
-  `email` varchar(255) NOT NULL,
-  `phone_number` varchar(255) NOT NULL,
-  `role` varchar(255) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `email` varchar(255) DEFAULT NULL,
+  `phone_number` varchar(255) DEFAULT NULL,
+  `role` varchar(255) DEFAULT NULL,
   `host_id` int(11) DEFAULT NULL,
   `customer_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -40,32 +41,32 @@ CREATE TABLE `contact` (
 -- Déchargement des données de la table `contact`
 --
 
-INSERT INTO `contact` (`id`, `email`, `phone_number`, `role`, `host_id`, `customer_id`) VALUES
-(1, 'dyson@contact.fr', '0344853614', 'Client', NULL, 1),
-(2, 'ca@contact.fr', '0344812514', 'Client', NULL, 2),
-(3, 'citroen@contact.fr', '0344813614', 'Client', NULL, 3),
-(4, 'philips@contact.fr', '0344818414', 'Client', NULL, 4),
-(5, 'orpi@contact.fr', '0344812314', 'Client', NULL, 5),
-(6, 'saint-gobain@contact.fr', '0344851354', 'Client', NULL, 6),
-(7, 'pmu@contact.fr', '0344100814', 'Client', NULL, 7),
-(8, 'pocalin@contact.fr', '0344817314', 'Client', NULL, 8),
-(9, 'cofidis@contact.fr', '0344853614', 'Client', NULL, 9),
-(10, 'ipsec@contact.fr', '0344853452', 'Client', NULL, 10),
-(11, 'eads@contact.f', '0344060606', 'Client', NULL, 11),
-(12, 'corporate@hotelbb.com', '0892788115', 'Client', NULL, 12),
-(13, 'marketing@assystem.com', '0341252900', 'Client', NULL, 13),
-(14, 'contact@ionos.fr', '0970808911', 'Hébergeur web', 1, NULL),
-(15, 'fr@hostinger.com', '0892977093', 'Hébergeur web', 2, NULL),
-(16, 'investors@godaddy.com', '0975187039', 'Gestion nom de domaine', 3, NULL),
-(17, 'support@gator.com', '0891150447', 'Hébergeur web', 4, NULL),
-(18, 'contact@com-network.fr', '03825745692', 'Gestion nom de domaine', 5, NULL),
-(19, 'contacta2hosting.com', '1734-222-4678', 'Hébergeur web', 6, NULL),
-(20, 'contact@inmotion.com', '888-321-4678', 'Hébergeur web', 7, NULL),
-(21, 'marketing@webhostingpad.com', '1847346180', 'Hébergeur web', 8, NULL),
-(22, 'contact@007hebergement.com', '0177623003', 'Hébergeur web', 9, NULL),
-(23, 'support@planethoster.com', '0176604143', 'Hébergeur web', 10, NULL),
-(24, 'support@ovh.com', '0972101007', 'Hébergeur web', 11, NULL),
-(25, 'support@lws.com', '0177623003', 'Hébergeur web', 12, NULL);
+INSERT INTO `contact` (`id`, `name`, `email`, `phone_number`, `role`, `host_id`, `customer_id`) VALUES
+(1, 'John Codeur', 'dyson@contact.fr', '0344853614', 'Client', NULL, 1),
+(2, 'Hugo Dupont', 'ca@contact.fr', '0344812514', 'Client', NULL, 1),
+(3, 'John Doe', 'citroen@contact.fr', '0344813614', 'Client', NULL, 3),
+(4, 'Josuke Higashikata', 'philips@contact.fr', '0344818414', 'Client', NULL, 4),
+(5, 'Nabil Ferry', 'orpi@contact.fr', '0344812314', 'Client', NULL, 5),
+(6, 'Loris Jolie', 'saint-gobain@contact.fr', '0344851354', 'Client', NULL, 6),
+(7, 'Titouan Trotinnette', 'pmu@contact.fr', '0344100814', 'Client', NULL, 7),
+(8, 'Pierre Aitrofort', 'pocalin@contact.fr', '0344817314', 'Client', NULL, 8),
+(9, 'Katy Ferry', 'cofidis@contact.fr', '0344853614', 'Client', NULL, 9),
+(10, 'Matthieu Ducil', 'ipsec@contact.fr', '0344853452', 'Client', NULL, 10),
+(11, 'Edouard Elric', 'eads@contact.f', '0344060606', 'Client', NULL, 11),
+(12, 'Theodort Grasset', 'corporate@hotelbb.com', '0892788115', 'Client', NULL, 12),
+(13, 'Jesus de Nazareth', 'marketing@assystem.com', '0341252900', 'Client', NULL, 13),
+(14, 'Christofer Palado', 'contact@ionos.fr', '0970808911', 'Hébergeur web', 1, NULL),
+(15, 'Alex Tiso', 'fr@hostinger.com', '0892977093', 'Hébergeur web', 1, NULL),
+(16, 'Ismaelle Venouillie', 'investors@godaddy.com', '0975187039', 'Gestion nom de domaine', 3, NULL),
+(17, 'Julia Blaze', 'support@gator.com', '0891150447', 'Hébergeur web', 4, NULL),
+(18, 'Oscar Koichi', 'contact@com-network.fr', '03825745692', 'Gestion nom de domaine', 5, NULL),
+(19, 'Jean-Pierre Polnareff', 'contacta2hosting.com', '1734-222-4678', 'Hébergeur web', 6, NULL),
+(20, 'Cassidy McCree', 'contact@inmotion.com', '888-321-4678', 'Hébergeur web', 7, NULL),
+(21, 'Noémie Pirame', 'marketing@webhostingpad.com', '1847346180', 'Hébergeur web', 8, NULL),
+(22, 'Eric Dufour', 'contact@007hebergement.com', '0177623003', 'Hébergeur web', 9, NULL),
+(23, 'Jean lecompte', 'support@planethoster.com', '0176604143', 'Hébergeur web', 10, NULL),
+(24, 'Jim Kim-Young', 'support@ovh.com', '0972101007', 'Hébergeur web', 11, NULL),
+(25, 'Chloe Descure', 'support@lws.com', '0177623003', 'Hébergeur web', 12, NULL);
 
 -- --------------------------------------------------------
 
@@ -87,16 +88,16 @@ CREATE TABLE `customer` (
 INSERT INTO `customer` (`id`, `code`, `name`, `notes`) VALUES
 (1, 'CUST_DYSON', 'DYSON', 'Ceci est un client'),
 (2, 'CUST_CREDIT_AGRICOLE', 'CREDIT AGRICOLE', 'Ceci est un autre client'),
-(3, 'CUST_CITROEN', 'CITROEN', 'Ceci est un troisiÃ¨me client'),
-(4, 'CUST_PHILIPS', 'PHILIPS', 'Ceci est un quatriÃ¨me client'),
-(5, 'CUST_ORPI', 'ORPI', 'Ceci est un cinquiÃ¨me client'),
-(6, 'CUST_SAINT_GOBAIN', 'SAINT-GOBAIN', 'Ceci est un sixiÃ¨me client'),
-(7, 'CUST_PMU', 'PMU', 'Ceci est un septiÃ¨me client'),
-(8, 'CUST_POCLAIN_HYDRAULICS', 'POCLAIN HYDRAULICS', 'Ceci est un huitiÃ¨me client'),
-(9, 'CUST_COFIDIS', 'COFIDIS', 'Ceci est un neuviÃ¨me client'),
-(10, 'CUST_IPSEC', 'IPSEC', 'Ceci est un dixiÃ¨me client'),
-(11, 'CUST_EADS', 'EADS', 'Ceci est un onziÃ¨me client'),
-(12, 'CUST_B&B_HOTELS', 'B&B HOTELS', 'Ceci est un douziÃ¨me client'),
+(3, 'CUST_CITROEN', 'CITROEN', 'Ceci est un troisième client'),
+(4, 'CUST_PHILIPS', 'PHILIPS', 'Ceci est un quatrième client'),
+(5, 'CUST_ORPI', 'ORPI', 'Ceci est un cinquième client'),
+(6, 'CUST_SAINT_GOBAIN', 'SAINT-GOBAIN', 'Ceci est un sixième client'),
+(7, 'CUST_PMU', 'PMU', 'Ceci est un septième client'),
+(8, 'CUST_POCLAIN_HYDRAULICS', 'POCLAIN HYDRAULICS', 'Ceci est un huitième client'),
+(9, 'CUST_COFIDIS', 'COFIDIS', 'Ceci est un neuvième client'),
+(10, 'CUST_IPSEC', 'IPSEC', 'Ceci est un dixième client'),
+(11, 'CUST_EADS', 'EADS', 'Ceci est un onzième client'),
+(12, 'CUST_B&B_HOTELS', 'B&B HOTELS', 'Ceci est un douzième client'),
 (13, 'CUST_ASSYSTEM', 'ASSYSTEM', 'Ceci est un autre client');
 
 -- --------------------------------------------------------
@@ -107,12 +108,12 @@ INSERT INTO `customer` (`id`, `code`, `name`, `notes`) VALUES
 
 CREATE TABLE `environment` (
   `id` int(11) NOT NULL,
-  `name` varchar(255) NOT NULL,
-  `link` varchar(255) NOT NULL,
-  `ip_address` varchar(255) NOT NULL,
-  `ssh_port` int(6) NOT NULL,
-  `ssh_username` varchar(255) NOT NULL,
-  `phpmyadmin_link` varchar(255) NOT NULL,
+  `name` varchar(255) DEFAULT NULL,
+  `link` varchar(255) DEFAULT NULL,
+  `ip_address` varchar(255) DEFAULT NULL,
+  `ssh_port` int(6) DEFAULT NULL,
+  `ssh_username` varchar(255) DEFAULT NULL,
+  `phpmyadmin_link` varchar(255) DEFAULT NULL,
   `ip_restriction` tinyint(1) NOT NULL,
   `project_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -153,18 +154,18 @@ CREATE TABLE `host` (
 --
 
 INSERT INTO `host` (`id`, `code`, `name`, `notes`) VALUES
-(1, 'HOST_IONOS', 'HOST_HOST_IONOS', 'Ceci est un hÃ©bergeur'),
-(2, 'HOST_HOSTINGER', 'HOST_HOST_HOSTINGER', 'Ceci est un autre hÃ©bergeur'),
-(3, 'HOST_GODADDY', 'HOST_HOST_GODADDY', 'Ceci est un troisiÃ¨me hÃ©bergeur'),
-(4, 'HOST_HOSTGATOR', 'HOST_HOST_HOSTGATOR', 'Ceci est un quatriÃ¨me hÃ©bergeur'),
-(5, 'HOST_NETWORK_SOLUTIONS', 'HOST_HOST_NETWORK_SOLUTIONS', 'Ceci est un cinquiÃ¨me hÃ©bergeur'),
-(6, 'HOST_A2_HOSTING', 'HOST_HOST_A2_HOSTING', 'Ceci est un sixiÃ¨me hÃ©bergeur'),
-(7, 'HOST_INMOTION', 'HOST_HOST_INMOTION', 'Ceci est un septiÃ¨me hÃ©bergeur'),
-(8, 'HOST_WEBHOSTINGPAD', 'HOST_HOST_WEBHOSTINGPAD', 'Ceci est un huitiÃ¨me hÃ©bergeur'),
-(9, 'HOST_007HEBERGEMENT', 'HOST_HOST_007HEBERGEMENT', 'Ceci est un neuviÃ¨me hÃ©bergeur'),
-(10, 'HOST_PLANETHOSTER', 'HOST_HOST_PLANETHOSTER', 'Ceci est un dixiÃ¨me hÃ©bergeur'),
-(11, 'HOST_OVH', 'HOST_HOST_OVH', 'Ceci est un onziÃ¨me hÃ©bergeur'),
-(12, 'LWS', 'HOST_LWS', 'Ceci est un douziÃ¨me hÃ©bergeur');
+(1, 'HOST_IONOS', 'IONOS', 'Ceci est un hébergeur'),
+(2, 'HOST_HOSTINGER', 'HOSTINGER', 'Ceci est un autre hébergeur'),
+(3, 'HOST_GODADDY', 'GODADDY', 'Ceci est un troisième hébergeur'),
+(4, 'HOST_HOSTGATOR', 'HOSTGATOR', 'Ceci est un quatrième hébergeur'),
+(5, 'HOST_NETWORK_SOLUTIONS', 'NETWORK_SOLUTIONS', 'Ceci est un cinquième hébergeur'),
+(6, 'HOST_A2_HOSTING', 'A2_HOSTING', 'Ceci est un sixième hébergeur'),
+(7, 'HOST_INMOTION', 'INMOTION', 'Ceci est un septième hébergeur'),
+(8, 'HOST_WEBHOSTINGPAD', 'WEBHOSTINGPAD', 'Ceci est un huitième hébergeur'),
+(9, 'HOST_007HEBERGEMENT', '007HEBERGEMENT', 'Ceci est un neuvième hébergeur'),
+(10, 'HOST_PLANETHOSTER', 'PLANETHOSTER', 'Ceci est un dixième hébergeur'),
+(11, 'HOST_OVH', 'OVH', 'Ceci est un onzième hébergeur'),
+(12, 'HOST_LWS', 'LWS', 'Ceci est un douzième hébergeur');
 
 -- --------------------------------------------------------
 

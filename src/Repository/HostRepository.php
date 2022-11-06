@@ -55,4 +55,73 @@ class HostRepository{
         $statement->execute(array($host->getId()));
         $database = Connection::disconnect();
     }
+
+    //filtre code 
+    public static function getByCode(string $code): ?array{
+        $tab=array();
+
+        $database = Connection::connect();
+        $statement = $database->prepare('SELECT * FROM Host WHERE name LIKE ?');
+        $statement->execute(array('%'.$code.'%'));
+
+        try{
+            while($host = $statement->fetch()){
+                
+                $temp = new Host($host['id'], $host['code'], $host['name'], $host['notes']);
+                $tab[] = $temp;
+            }
+        }
+        catch(int $i){
+            return null;
+        }
+
+        $database = Connection::disconnect();
+        return $tab;
+    }
+
+    //filtre name
+    public static function getByName(string $name): ?array{
+        $tab=array();
+
+        $database = Connection::connect();
+        $statement = $database->prepare('SELECT * FROM Host WHERE name LIKE ?');
+        $statement->execute(array('%'.$name.'%'));
+
+        try{
+            while($host = $statement->fetch()){
+                
+                $temp = new Host($host['id'], $host['code'], $host['name'], $host['notes']);
+                $tab[] = $temp;
+            }
+        }
+        catch(int $i){
+            return null;
+        }
+
+        $database = Connection::disconnect();
+        return $tab;
+    }
+
+    //filtre notes
+    public static function getByNotes(string $notes): ?array{
+        $tab=array();
+
+        $database = Connection::connect();
+        $statement = $database->prepare('SELECT * FROM Host WHERE name LIKE ?');
+        $statement->execute(array('%'.$notes.'%'));
+
+        try{
+            while($host = $statement->fetch()){
+                
+                $temp = new Host($host['id'], $host['code'], $host['name'], $host['notes']);
+                $tab[] = $temp;
+            }
+        }
+        catch(int $i){
+            return null;
+        }
+
+        $database = Connection::disconnect();
+        return $tab;
+    }
 }

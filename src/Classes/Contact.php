@@ -4,17 +4,24 @@ namespace App\Classes;
 
 use App\Interfaces\IdInterface;
 use App\Traits\IdTrait;
+use App\Interfaces\NameInterface;
+use App\Traits\NameTrait;
 use App\Classes\Customer;
 use App\Classes\Host;
 
-class Contact implements IdInterface
+class Contact implements 
+	IdInterface,
+	NameInterface
 {
 	use idTrait;
+	use NameTrait;
+	
 	private ?Customer $customer;
 	private ?Host $host;
 
 	public function __construct(
 	private int $id,
+	private string $name,
 	private string $email,
 	private string $phone_number,
 	private string $role,
@@ -66,7 +73,7 @@ class Contact implements IdInterface
 		$this->host = $host;
 	}
 
-	public function getCustomer(): Customer 
+	public function getCustomer(): ?Customer 
 	{
 		return $this->customer;
 	}
